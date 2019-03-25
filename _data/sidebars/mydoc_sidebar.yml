@@ -36,8 +36,16 @@ entries:
     output: web, pdf
     folderitems:
 
+    - title: "@property"
+      url: /mydoc_property_new.html
+      output: web, pdf
+
     - title: "@protocolclass"
       url: /mydoc_protocolclass.html
+      output: web, pdf
+
+    - title: "+dependencies"
+      url: /mydoc_class.html
       output: web, pdf
 
     - title: "Class-cluster"
@@ -78,10 +86,6 @@ entries:
 
     - title: "^block"
       url: /mydoc_block.html
-      output: web, pdf
-
-    - title: "@class"
-      url: /mydoc_class.html
       output: web, pdf
 
     - title: "Objective-C++"
@@ -130,6 +134,14 @@ entries:
     folderitems:
       - title: Getting started
         url: /tag_getting_started.html
+        output: web
+
+      - title: Runtime
+        url: /tag_runtime.html
+        output: web
+
+      - title: 8.0.0 Features
+        url: /tag_8.0.0.html
         output: web
 
       - title: Navigation pages
