@@ -21,11 +21,12 @@ Yup it's gone. Use locking or the atomic operations provided by
 
 When declaring a `@property` use `assign`.
 
+> Use C containers to manage weak references instead. They won't "magically" cleanup
+though.
 
 ## strong
 
-Use C containers to manage weak references. These don't "magically" cleanup
-though. When declaring a `@property` use `copy` or `retain`. You usually
+When declaring a `@property` use `copy` or `retain`. You usually
 use `copy` for `NSValue`, `NSDate`, `NSNumber` and `NSString` arguments,
 and `retain` for everything else.
 
