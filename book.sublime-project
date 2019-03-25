@@ -1,0 +1,45 @@
+{
+   "folders":
+   [
+      {
+         "path": ".",
+         "file_exclude_patterns":
+         [
+            "*~",
+            "*~.*",
+            "*.chk",
+            ".DS_Store",
+            "._.DS_Store",
+            "*.sublime-workspace",
+            "tmp.*"
+         ],
+         "folder_exclude_patterns":
+         [
+            ".git",
+            ".mulle/var",
+            ".mulle/share",
+            ".unison*",
+            "addiction",
+            "build",
+            "dependency",
+            "stash"
+         ],
+         "binary_patterns":
+         [
+            "*.o",
+            "*.lib",
+            "*.a",
+            "*.so",
+            "*.exe",
+            "*.zip",
+            "*.tgz",
+            "*.bz2",
+            "*.xz",
+            "*.gif",
+            "*.png",
+            "*.jpg",
+            "*.tiff"
+         ]
+      }
+   ]
+}

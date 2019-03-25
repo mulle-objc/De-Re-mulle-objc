@@ -1,0 +1,25 @@
+#! /bin/sh
+
+TITLE="$1"
+LOWERCASE_TITLE="`tr 'A-Z' 'a-z' <<< "${TITLE}" `"
+FILENAME="mydoc_${LOWERCASE_TITLE}"
+KEYWORDS="class"
+FILEPATH="pages/mydoc/${FILENAME}.md"
+
+
+cat <<EOF  > "${FILEPATH}"
+---
+title: ${TITLE}
+keywords: ${KEYWORDS}
+last_updated: March 26, 2019
+tags: [runtime]
+summary: ""
+sidebar: mydoc_sidebar
+permalink: ${FILENAME}.html
+folder: mydoc
+---
+
+## NOTHING HERE YET
+
+EOF
+
