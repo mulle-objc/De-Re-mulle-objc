@@ -26,7 +26,10 @@ port: 4000
 
 exclude:
   - .idea/
+  - .mulle/
+  - .git/
   - .gitignore
+  - .vscode
   - bin
   - book.sublime-project
   - pdf
@@ -34,6 +37,8 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - Dockerfile
+  - docker-compose.yml
+  - var
 
 
 # these are the files and directories that jekyll will exclude from the build
