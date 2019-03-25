@@ -17,13 +17,12 @@ also present some of the technical background." %}
 
 ## MulleObjC is different
 
-If you look at the [list of features](https://www.mulle-kybernetik.com/weblog/2015/mulle_objc_present_and_absent.html) you will see a lot of things
-"missing". They are missing for good reasons. Then there are also additions
-and improvements to the Objective-C language.
+If you look at the [list of features](/mydoc_differences.html) you will see a lot
+of things "missing". They are missing for good reasons. But there are also
+additions and improvements to the Objective-C language.
 
 This guide will tell you about them and how to use the new features and
 circumvent the missing ones on a source code level.
-
 
 
 {% include links.html %}

@@ -28,6 +28,10 @@ entries:
       output: web, pdf
       type: homepage
 
+    - title: Differences
+      url: /mydoc_differences.html
+      output: web
+
   - title: Features
     output: web, pdf
     folderitems:
@@ -117,7 +121,7 @@ entries:
     folderitems:
 
     - title: About the Jekyll theme author
-      url: /mydoc_about.html
+      url: /mydoc_jekyll_theme.html
       output: web, pdf
 
 
