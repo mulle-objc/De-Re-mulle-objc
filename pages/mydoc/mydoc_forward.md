@@ -11,8 +11,11 @@ folder: mydoc
 
 {% include note.html content='See Objective-C Runtime Programming Guide for more information about `NSInvocation` and forwarding in general. Most if not all of it is applicable to MulleObjC' %}
 
-One of the "Patterns" of OO programming is composition. Basically you add references to other objects into your 
-object and forward messages to them. An example would be this:
+## Introduction
+
+One of the "Patterns" of OO programming is composition. Basically you add
+references  to other objects into your object and forward messages to them.
+An example of composition would be this:
 
 ```
 @interface MyOrderedDictionary : NSDictionary
@@ -28,7 +31,7 @@ object and forward messages to them. An example would be this:
 ```
 
 ```
-@implementation MyOrderedDictionary 
+@implementation MyOrderedDictionary
 
 - (NSUInteger) count
 {
@@ -56,7 +59,7 @@ Once you have this code in place, you can forward all unknown method calls to
 the array instance but send  `-objectForKey:` to the dictionary instance:
 
 ```
-@implementation MyOrderedDictionary 
+@implementation MyOrderedDictionary
 
 - (NSMethodSignature *) methodSignatureForSelector:(SEL) sel
 {
@@ -86,18 +89,18 @@ still quite slow.
 As selectors are a type of integer in **mulle-objc**, we can even use a switch here:
 
 ```
-@implementation MyOrderedDictionary 
+@implementation MyOrderedDictionary
 
 - (void *) forward:(void *) _param
 {
    switch( _cmd)
    {
-   case @selector( objectForKey:) : 
-      target = _other; 
+   case @selector( objectForKey:) :
+      target = _other;
       break;
 
    default:
-      target = _order;   
+      target = _order;
       break;
    }
    return( mulle_objc_object_call( target, (mulle_objc_methodid_t) _cmd, _param));

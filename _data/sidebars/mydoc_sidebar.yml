@@ -36,7 +36,7 @@ entries:
       url: /mydoc_protocolclass.html
       output: web, pdf
 
-    - title: "Classcluster"
+    - title: "Class-cluster"
       url: /mydoc_classcluster.html
       output: web, pdf
 
@@ -80,7 +80,7 @@ entries:
       url: /mydoc_class.html
       output: web, pdf
 
-    - title: "^cpp"
+    - title: "Objective-C++"
       url: /mydoc_cpp.html
       output: web, pdf
 
