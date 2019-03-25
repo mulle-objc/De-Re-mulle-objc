@@ -101,6 +101,8 @@ Using the protocolclass is very simple. You just adopt the protocol.
 @end
 ```
 
+Now users of your class can call `-doTheFooThing`. Protocolclasses become a time and space saver, if multiple classes
+adopt them.
 
 ## Things to watch out for
 
