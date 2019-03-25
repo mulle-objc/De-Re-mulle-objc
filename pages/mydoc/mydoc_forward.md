@@ -56,6 +56,8 @@ Once you have this code in place, you can forward all unknown method calls to
 the array instance but send  `-objectForKey:` to the dictionary instance:
 
 ```
+@implementation MyOrderedDictionary 
+
 - (NSMethodSignature *) methodSignatureForSelector:(SEL) sel
 {
    if( sel == @selector( objectForKey:)
@@ -72,6 +74,8 @@ the array instance but send  `-objectForKey:` to the dictionary instance:
       [anInvocation setTarget:_order];
    [anInvocation invoke];
 }
+
+@end
 ```
 
 This is still a lot of typing, it's also slow. It's not as slow as in the Apple runtime (ca. 10* faster) but
@@ -82,6 +86,8 @@ still quite slow.
 As selectors are a type of integer in **mulle-objc**, we can even use a switch here:
 
 ```
+@implementation MyOrderedDictionary 
+
 - (void *) forward:(void *) _param
 {
    switch( _cmd)
@@ -96,6 +102,8 @@ As selectors are a type of integer in **mulle-objc**, we can even use a switch h
    }
    return( mulle_objc_object_call( target, (mulle_objc_methodid_t) _cmd, _param));
 }
+
+@end
 ```
 
 This is way faster than using NSInvocation and the difference to a handcoded forward method
