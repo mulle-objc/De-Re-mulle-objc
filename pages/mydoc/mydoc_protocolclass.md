@@ -77,8 +77,7 @@ Using the protocolclass is very simple. You just adopt the protocol.
 `MyClass.h`:
 
 ```
-@class Foo;      // if no header at hand 
-@protocol Foo;   // forward declare like so
+#import "Foo.h"
 
 @interface MyClass : NSObject < Foo>
 {
