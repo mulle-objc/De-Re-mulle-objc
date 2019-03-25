@@ -9,14 +9,12 @@ summary: What you need to know to use MulleObjC to its full potential.
 
 {% include note.html content="This is a draft. Stuff will appear and disappear haphazardly. See [mulle-objc](https://mulle-objc.github.io/) for a quick introduction and
 a collection of links, that will tell you how to install **mulle-objc** and
-also present some of the technical background.
-<p>
-This is not an introduction how to write Objective-C code. Check the [link section](https://github.com/MulleFoundation/foundation-developer#how-to-write-objective-c) of **foundation-developer** for a
-selection of books and tutorials covering Objective-C.
-<p>
-Some of the content is only applicable to version mulle-objc 8.0.0, which has not been released as of this writing." %}
+also present some of the technical background. %}
 
+{% include note.html content="This is not an introduction how to write Objective-C code. Check the [link section](https://github.com/MulleFoundation/foundation-developer#how-to-write-objective-c) of **foundation-developer** for a
+selection of books and tutorials covering Objective-C." %}
 
+{% include note.html content="Some of the content is only applicable to version mulle-objc 8.0.0, which has not been released as of this writing." %}
 
 ## MulleObjC is different
 
