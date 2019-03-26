@@ -378,7 +378,7 @@ int main()
 ```
 
 
-## Expected output
+### Expected output
 
 
 ```
