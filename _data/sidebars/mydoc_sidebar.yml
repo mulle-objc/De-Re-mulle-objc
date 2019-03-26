@@ -36,8 +36,8 @@ entries:
       url: /mydoc_links.html
       output: web
 
-    - title: MulleObjC Basics
-      url: /mydoc_good.html
+    - title: Basics
+      url: /mydoc_basics.html
       output: web
 
     - title: Good Code
