@@ -25,7 +25,7 @@ give a compiler error:
 @import Whatever;             // @import doesn't work
 ```
 
-See [Porting @property](/mydoc_modules.html) for code conversion tips.
+See [Porting @property](mydoc_modules.html) for code conversion tips.
 
 
 ### Unsupported @property attributes
@@ -52,7 +52,7 @@ The attributes **atomic**,**weak**,**strong**,**nullable**,**unsafe_retained**
 @end
 ```
 
-See [Porting @property](/mydoc_property.html) for conversion tips.
+See [Porting @property](mydoc_property.html) for conversion tips.
 
 
 ### @synthesize with different ivar name
@@ -69,7 +69,7 @@ You can not synthesize to a different name, ivar must be `'_'<name>`:
 @dynamic h;
 ```
 
-See [Porting @property](/mydoc_synthesize.html) for code conversion tips.
+See [Porting @property](mydoc_synthesize.html) for code conversion tips.
 
 
 ### Subscripting
@@ -85,7 +85,7 @@ supported. Instead the compiler will use C indexing:
 }
 ```
 
-See [Porting Subscripting](/mydoc_subscripting.html) for code conversion tips.
+See [Porting Subscripting](mydoc_subscripting.html) for code conversion tips.
 
 
 ### ARC
@@ -100,7 +100,7 @@ ARC code will crash or leak depending on what you are doing:
 }
 ```
 
-See [Porting ARC code](/mydoc_subscripting.html) for code conversion tips.
+See [Porting ARC code](mydoc_subscripting.html) for code conversion tips.
 
 ### Dot syntax
 
@@ -117,7 +117,7 @@ struct and union fields, not objects:
 ```
 
 
-See [Porting Dot Syntax](/mydoc_dotsyntax.html) for code conversion tips.
+See [Porting Dot Syntax](mydoc_dotsyntax.html) for code conversion tips.
 
 ### Generics
 
@@ -128,7 +128,7 @@ See [Porting Dot Syntax](/mydoc_dotsyntax.html) for code conversion tips.
 }
 ```
 
-See [Porting Generics](/mydoc_generics.html) for code conversion tips.
+See [Porting Generics](mydoc_generics.html) for code conversion tips.
 
 
 ### Block
@@ -141,7 +141,7 @@ See [Porting Generics](/mydoc_generics.html) for code conversion tips.
 ```
 
 
-See [Porting Blocks](/mydoc_blocks.html) for code conversion tips.
+See [Porting Blocks](mydoc_blocks.html) for code conversion tips.
 
 
 ### @synchronized,@dynamic
@@ -156,7 +156,7 @@ See [Porting Blocks](/mydoc_blocks.html) for code conversion tips.
 }
 ```
 
-See [Porting @synchronized](/mydoc_synchronized.html) for code conversion tips.
+See [Porting @synchronized](mydoc_synchronized.html) for code conversion tips.
 
 
 ### @YES ...
@@ -194,7 +194,7 @@ The literal @() is currently broken and returns `NSDictionary`:
 }
 ```
 
-See [Porting Protocol](/mydoc_protocol.html) for code conversion tips.
+See [Porting Protocol](mydoc_protocol.html) for code conversion tips.
 
 
 ### Casting SEL to `(char *)`
@@ -227,7 +227,7 @@ Variable arguments are NOT `va_list` in MulleObjC, but
 ```
 
 
-See [Porting Varargs](/mydoc_varargs.html) for code conversion tips.
+See [Porting Varargs](mydoc_varargs.html) for code conversion tips.
 
 
 ### @package
@@ -239,7 +239,7 @@ See [Porting Varargs](/mydoc_varargs.html) for code conversion tips.
 @package
 @end
 ```
-See [Porting Protocol](/mydoc_package.html) for code conversion tips.
+See [Porting Protocol](mydoc_package.html) for code conversion tips.
 
 
 ## See the output for yourself
@@ -250,5 +250,5 @@ all about it.
 
 ## Next
 
-[Differences](/mydoc_differences.html) will list succinctly the differences
+[Differences](mydoc_differences.html) will list succinctly the differences
 between MulleObjC and Objective-C 2.0.

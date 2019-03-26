@@ -132,7 +132,7 @@ static inline Foreign  *FooGetForeign( Foo *self)
 
 ### Protocolclasses
 
-You can declare [protocolclasses](/mydoc_protocolclass.html). This is a
+You can declare [protocolclasses](mydoc_protocolclass.html). This is a
 MulleObjC extension to the Objective-C language. This will not work with
 other runtimes (though it will compile):
 
@@ -399,4 +399,4 @@ literalSelector: <invalid selector>
 
 ## Next
 
-The followup to "good code" is of course [bad code](/mydoc_bad.html)
+The followup to "good code" is of course [bad code](mydoc_bad.html)

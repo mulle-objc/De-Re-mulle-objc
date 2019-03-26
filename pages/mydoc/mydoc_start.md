@@ -8,14 +8,14 @@ folder: mydoc
 ---
 
 Initally the "legacy workflow" for developing with MulleObjC, will be easiest,
-since it's the most familiar. Later you will probably want to use the 
-[modern workflow](/mydoc_modern.html) 
+since it's the most familiar. Later you will probably want to use the
+[modern workflow](mydoc_modern.html)
 
 
 # Install MulleObjC
 
-This guide doesn't have detailed installation instructions. Read the 
-instructions on 
+This guide doesn't have detailed installation instructions. Read the
+instructions on
 [foundation-developer](https://github.com/MulleFoundation/foundation-developer)
 and follow them.
 
@@ -44,7 +44,7 @@ optional component **MulleObjCDecimalFoundation**. This is harmless.
 mulle-sde install --standalone --prefix "${HOME}/usr" "https://github.com/MulleFoundation/Foundation/archive/latest.zip"
 ```
 
-A shared (dynamic) `libFoundation` library and some other static libraries 
+A shared (dynamic) `libFoundation` library and some other static libraries
 should be present in your `~/usr/lib`  folder.
 
 > #### Homebrew support
@@ -92,7 +92,7 @@ mulle-clang hello-world.m \
 ### MacOS:
 
 On MacOS we use Xcode platform headers and therefore need the SDK path first.
-It is assumed you used the **brew** install method, otherwise you need to 
+It is assumed you used the **brew** install method, otherwise you need to
 correct the `-isystem`, `-L`, `-rpath` values.
 
 ``` console
@@ -118,9 +118,9 @@ And run your first MulleObjC executable.
 
 ## Next
 
-With this succes in our bag, there are two routes to chose. If you know 
-Objetive-C continue with [how to write good MulleObjC code](/mydoc_good.html).
+With this succes in our bag, there are two routes to chose. If you know
+Objetive-C continue with [how to write good MulleObjC code](mydoc_good.html).
 
-Otherwise goto the [Learn ObjC](/mydoc_links.html) and follow some of
+Otherwise goto the [Learn ObjC](mydoc_links.html) and follow some of
 the links to learn Objective-C first.
 
