@@ -20,7 +20,7 @@ treatise.
 The code will be regular Objective-C, unless specifically noted to be an
 Objective-C extension.
 
-#### ARC
+### ARC
 
 Please note that ARC is not compatible with MulleObjC.
 Use manual `-retain/-release/-autorelease` memory management methods.
