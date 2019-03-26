@@ -2,7 +2,7 @@
 title: Bad MulleObjC Code
 keywords: class
 last_updated: March 26, 2019
-tags: [runtime]
+tags: [language,compiler]
 summary: "A non-functional `.m` file that contains all the features that are
 absent from MulleObjC."
 permalink: mydoc_bad.html
@@ -28,7 +28,7 @@ give a compiler error:
 See [Porting @property](/mydoc_modules.html) for code conversion tips.
 
 
-### Unsupported @property attributes 
+### Unsupported @property attributes
 
 The attributes **atomic**,**weak**,**strong**,**nullable**,**unsafe_retained**
 **class** are all unknown to MulleObjC and will produce errors:
@@ -41,11 +41,11 @@ The attributes **atomic**,**weak**,**strong**,**nullable**,**unsafe_retained**
 @property( weak) id  b;
 @property( strong) id  c;
 @property( nullable) id  d;   // nullable can be #defined away without trouble
-@property( unsafe_unretained) e; 
+@property( unsafe_unretained) e;
 @property( class) id  f;      // class has a chance of being supported sometime
 
-// assign is supported 
-// we need the next two declarations for @synthesize to complain 
+// assign is supported
+// we need the next two declarations for @synthesize to complain
 @property( assign) id g;
 @property( assign) id h;
 
@@ -74,7 +74,7 @@ See [Porting @property](/mydoc_synthesize.html) for code conversion tips.
 
 ### Subscripting
 
-Subscripting for `NSArray` and `NSDictionary` or any other class is not 
+Subscripting for `NSArray` and `NSDictionary` or any other class is not
 supported. Instead the compiler will use C indexing:
 
 ```
@@ -87,6 +87,20 @@ supported. Instead the compiler will use C indexing:
 
 See [Porting Subscripting](/mydoc_subscripting.html) for code conversion tips.
 
+
+### ARC
+
+ARC code will crash or leak depending on what you are doing:
+
+
+```
+- (id) ARC
+{
+   return( [[NSArray alloc] init]);
+}
+```
+
+See [Porting ARC code](/mydoc_subscripting.html) for code conversion tips.
 
 ### Dot syntax
 
@@ -159,7 +173,7 @@ See [Porting @synchronized](/mydoc_synchronized.html) for code conversion tips.
 
 ### @()
 
-The literal @() is currently broken and returns `NSDictionary`: 
+The literal @() is currently broken and returns `NSDictionary`:
 
 ```
 - (NSDictionary *) literalAnything
@@ -197,7 +211,7 @@ MulleObjC:
 
 ### Accessing variable arguments with va_list
 
-Variable arguments are NOT `va_list` in MulleObjC, but 
+Variable arguments are NOT `va_list` in MulleObjC, but
 [mulle-vararg](//github.com/mulle-c/mulle-vararg) instead:
 
 ```
@@ -230,7 +244,7 @@ See [Porting Protocol](/mydoc_package.html) for code conversion tips.
 
 ## See the output for yourself
 
-Download ([bad-code.m](/files/bad-code.m)) and let the compiler tell you 
+Download ([bad-code.m](/files/bad-code.m)) and let the compiler tell you
 all about it.
 
 

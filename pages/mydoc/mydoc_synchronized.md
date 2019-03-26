@@ -2,7 +2,7 @@
 title: Synchronized is gone
 keywords: locking
 last_updated: March 26, 2019
-tags: [runtime]
+tags: [compiler,runtime]
 summary: "Synchronized as a keyword and property is not available"
 permalink: mydoc_synchronized.html
 folder: mydoc

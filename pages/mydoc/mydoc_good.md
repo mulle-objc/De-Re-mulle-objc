@@ -2,7 +2,7 @@
 title: Good MulleObjC Code
 keywords: class
 last_updated: March 26, 2019
-tags: [runtime]
+tags: [language]
 summary: "A functional `.m` file that contains all the features that are
 available in MulleObjC."
 permalink: mydoc_good.html
@@ -13,12 +13,17 @@ folder: mydoc
 ## Good Code
 
 Objective-C is a fairly simple language extension. In this file all available
-Objective-C keywords and concepts will be discussed. Absent will be library 
+Objective-C keywords and concepts will be discussed. Absent will be library
 features  introduced by the Foundation, because this blows the scope of this
 treatise.
 
 The code will be regular Objective-C, unless specifically noted to be an
 Objective-C extension.
+
+#### ARC
+
+Please note that ARC is not compatible with MulleObjC.
+Use manual `-retain/-release/-autorelease` memory management methods.
 
 
 ### Forward Declaration and Import
@@ -26,7 +31,7 @@ Objective-C extension.
 You can `#import`  and forward declare code:
 
 ```
-#import <Foundation/Foundation.h>   
+#import <Foundation/Foundation.h>
 
 // forward declarations of a class and a protocol
 @protocol SomeProtocol;
@@ -35,7 +40,7 @@ You can `#import`  and forward declare code:
 
 ### Protocol
 
-You can declare a protocol with **@optional**  and **@required** methods and 
+You can declare a protocol with **@optional**  and **@required** methods and
 properties:
 
 ```
@@ -52,7 +57,7 @@ properties:
 // properties can be declared in protocols, yet the
 // class must redeclare them
 
-@property( assign) NSUInteger  value;  
+@property( assign) NSUInteger  value;
 
 @end
 ```
@@ -61,7 +66,7 @@ You can extend forward declared classes with your protocol, but this is rarely
 useful:
 
 ```
-// extend Foreign class with this method, so 
+// extend Foreign class with this method, so
 // we know we can message it with that protocol
 @class Foreign< MethodProtocol>;
 ```
@@ -79,15 +84,15 @@ useful:
 }
 
 // properties and all supported property attributes
-@property( readwrite, assign) NSUInteger  value;      // reimplement Protocol 
+@property( readwrite, assign) NSUInteger  value;      // reimplement Protocol
 @property( nonatomic, retain) Foreign     *foreign;   // creates own ivar
 @property( readonly, nonnull) NSString    *backedByIvar; // creates own ivar
 
 @end
 ```
 
-The implementation can **@synthesize** a property but it is superflous. The name 
-of the instance variable is fixed by the compiler to be `'_'<name>`. 
+The implementation can **@synthesize** a property but it is superflous. The name
+of the instance variable is fixed by the compiler to be `'_'<name>`.
 `Foo` implements the required method from `MethodProtocol`.
 
 ```
@@ -127,8 +132,8 @@ static inline Foreign  *FooGetForeign( Foo *self)
 
 ### Protocolclasses
 
-You can declare [protocolclasses](/mydoc_protocolclass.html). This is a 
-MulleObjC extension to the Objective-C language. This will not work with 
+You can declare [protocolclasses](/mydoc_protocolclass.html). This is a
+MulleObjC extension to the Objective-C language. This will not work with
 other runtimes (though it will compile):
 
 ```
@@ -138,7 +143,7 @@ other runtimes (though it will compile):
 - (NSString *) description;
 
 // properties can not be declared in protocolclases yet
-// @property( assign) NSUInteger  value;  
+// @property( assign) NSUInteger  value;
 @end
 #pragma clang diagnostic ignored "-Wobjc-root-class"
 
@@ -147,7 +152,7 @@ other runtimes (though it will compile):
 @end
 
 // implementation will serve the default implementation of description
-@implementation Description 
+@implementation Description
 
 - (NSString *) description
 {
@@ -173,12 +178,12 @@ implement `-description`. It can override it though if desired:
 }
 ```
 
-### Keywords 
+### Keywords
 
 
 #### PROTOCOL
 
-**PROTOCOL** is a compiler keyword. Objective-C's `Protocol *` does not work, as 
+**PROTOCOL** is a compiler keyword. Objective-C's `Protocol *` does not work, as
 PROTOCOL is a kind of **@selector** in MulleObjC:
 
 
@@ -219,7 +224,7 @@ PROTOCOL is a kind of **@selector** in MulleObjC:
 You can use **@autoreleasepool**:
 
 ```
-// keyword autoreleasepool 
+// keyword autoreleasepool
 - (void) autoreleasepool
 {
    @autoreleasepool
@@ -267,7 +272,7 @@ NS_ENDHANDLER
 Literals are supported *except* **@YES**, **@NO** and **@()**.
 
 
-#### @1848,@18.48,@'A' 
+#### @1848,@18.48,@'A'
 
 ```
 - (NSNumber *) literalInteger
@@ -351,7 +356,7 @@ int main()
 
    // don't need an enclosing @autoreleasepool in MulleObjC
 
-   bar = [Bar new]; 
+   bar = [Bar new];
 
    [bar fastEnumerate:[NSArray arrayWithObject:@"foo"]];
 
@@ -365,7 +370,7 @@ int main()
 // NSStringFromProtocol is a 8.0.0 feature
 #if MULLE_FOUNDATION_VERSION  >= ((0 << 20) | (15 << 8) | 0)
    NSLog( @"literalProtocol: %@", NSStringFromProtocol( [bar literalProtocol]));
-#endif   
+#endif
    NSLog( @"literalSelector: %@", NSStringFromSelector( [bar literalSelector]));
 
    return( 0);

@@ -2,7 +2,7 @@
 title: . syntax for properties
 keywords: protocol
 last_updated: March 26, 2019
-tags: [runtime]
+tags: [compiler]
 summary: "It's gone"
 permalink: mydoc_dotsyntax.html
 folder: mydoc

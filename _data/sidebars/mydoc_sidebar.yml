@@ -19,7 +19,7 @@ entries:
       output: pdf
       type: frontmatter
 
-  - title: Overview
+  - title: Book
     output: web, pdf
     folderitems:
 
@@ -28,7 +28,7 @@ entries:
       output: web, pdf
       type: homepage
 
-    - title: Start
+    - title: Get Started
       url: /mydoc_start.html
       output: web
 
@@ -36,7 +36,7 @@ entries:
       url: /mydoc_links.html
       output: web
 
-    - title: Good code 
+    - title: Good code
       url: /mydoc_good.html
       output: web
 
@@ -52,93 +52,110 @@ entries:
       url: /mydoc_modern.html
       output: web
 
-  - title: Features
-    output: web, pdf
-    folderitems:
+    - title: Runtime Features
+      url: /mydoc_runtime.html
+      output: web
 
-    - title: "@property"
-      url: /mydoc_property_new.html
-      output: web, pdf
+      subfolders:
+      - title: Features
+        output: web, pdf
+        subfolderitems:
 
-    - title: "@protocolclass"
-      url: /mydoc_protocolclass.html
-      output: web, pdf
+        - title: "@property"
+          url: /mydoc_property_new.html
+          output: web, pdf
 
-    - title: "+dependencies"
-      url: /mydoc_class.html
-      output: web, pdf
+        - title: "@protocolclass"
+          url: /mydoc_protocolclass.html
+          output: web, pdf
 
-    - title: "Class-cluster"
-      url: /mydoc_classcluster.html
-      output: web, pdf
+        - title: "+dependencies"
+          url: /mydoc_class.html
+          output: web, pdf
 
-    - title: "Singleton"
-      url: /mydoc_singleton.html
-      output: web, pdf
+        - title: "Class-cluster"
+          url: /mydoc_classcluster.html
+          output: web, pdf
 
-    - title: "Forwarding"
-      url: /mydoc_forward.html
-      output: web, pdf
+        - title: "Singleton"
+          url: /mydoc_singleton.html
+          output: web, pdf
 
-    - title: "Tagged Pointer"
-      url: /mydoc_tps.html
-      output: web, pdf
+        - title: "Forwarding"
+          url: /mydoc_forward.html
+          output: web, pdf
 
-    - title: "Unload"
-      url: /mydoc_unload.html
-      output: web, pdf
+        - title: "Tagged Pointer"
+          url: /mydoc_tps.html
+          output: web, pdf
 
-    - title: "KeyValueCoding"
-      url: /mydoc_kvc.html
-      output: web, pdf
+        - title: "Unload"
+          url: /mydoc_unload.html
+          output: web, pdf
 
-    - title: "Universe"
-      url: /mydoc_universe.html
-      output: web, pdf
+        - title: "KeyValueCoding"
+          url: /mydoc_kvc.html
+          output: web, pdf
 
-  - title: Porting
-    output: web, pdf
-    folderitems:
+        - title: "Universe"
+          url: /mydoc_universe.html
+          output: web, pdf
 
-    - title: "ARC"
-      url: /mydoc_arc.html
-      output: web, pdf
+      - title: Porting
+        output: web, pdf
+        subfolderitems:
 
-    - title: "^block"
-      url: /mydoc_block.html
-      output: web, pdf
+        - title: "array[0]"
+          url: /mydoc_subscripting.html
+          output: web, pdf
 
-    - title: "Objective-C++"
-      url: /mydoc_cpp.html
-      output: web, pdf
+        - title: "ARC"
+          url: /mydoc_arc.html
+          output: web, pdf
 
-    - title: "dot syntax"
-      url: /mydoc_dotsyntax.html
-      output: web, pdf
+        - title: "^block"
+          url: /mydoc_block.html
+          output: web, pdf
 
-    - title: "nullable"
-      url: /mydoc_nullable.html
-      output: web, pdf
+        - title: "Objective-C++"
+          url: /mydoc_cpp.html
+          output: web, pdf
 
-    - title: "@property"
-      url: /mydoc_property.html
-      output: web, pdf
+        - title: "dot syntax"
+          url: /mydoc_dotsyntax.html
+          output: web, pdf
 
-    - title: "@protocol"
-      url: /mydoc_protocol.html
-      output: web, pdf
+        - title: "@import"
+          url: /mydoc_modules.html
+          output: web, pdf
 
-    - title: "@synchronized"
-      url: /mydoc_synchronized.html
-      output: web, pdf
+        - title: "@package"
+          url: /mydoc_property.html
+          output: web, pdf
 
-    - title: "- method:... (varargs)"
-      url: /mydoc_varargs.html
-      output: web, pdf
+        - title: "@protocol"
+          url: /mydoc_protocol.html
+          output: web, pdf
 
-    - title: "NSZone"
-      url: /mydoc_nszone.html
-      output: web, pdf
+        - title: "@property"
+          url: /mydoc_property.html
+          output: web, pdf
+
+        - title: "@synthesize"
+          url: /mydoc_synthesize.html
+          output: web, pdf
+
+        - title: "@synchronized"
+          url: /mydoc_synchronized.html
+          output: web, pdf
+
+        - title: "- method:... (varargs)"
+          url: /mydoc_varargs.html
+          output: web, pdf
+
+        - title: "NSZone"
+          url: /mydoc_nszone.html
+          output: web, pdf
 
   - title: Acknowledgments
     output: web, pdf
@@ -149,21 +166,25 @@ entries:
       output: web, pdf
 
 
-  - title: Tag archives
+  - title: Index
     output: web
     folderitems:
-      - title: Getting started
-        url: /tag_getting_started.html
-        output: web
+        - title: Compiler
+          url: /tag_compiler.html
+          output: web
 
-      - title: Runtime
-        url: /tag_runtime.html
-        output: web
+        - title: Language
+          url: /tag_language.html
+          output: web
 
-      - title: 8.0.0 Features
-        url: /tag_8.0.0.html
-        output: web
+        - title: Foundation
+          url: /tag_library.html
+          output: web
 
-      - title: Navigation pages
-        url: /tag_navigation.html
-        output: web
+        - title: Runtime
+          url: /tag_runtime.html
+          output: web
+
+        - title: 8.0.0 Features
+          url: /tag_8.0.0.html
+          output: web

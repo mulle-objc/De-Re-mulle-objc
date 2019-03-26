@@ -12,7 +12,7 @@ cat <<EOF  > "${FILEPATH}"
 title: ${TITLE}
 keywords: ${KEYWORDS}
 last_updated: March 26, 2019
-tags: [runtime]
+tags: [language]
 summary: ""
 permalink: ${FILENAME}.html
 folder: mydoc

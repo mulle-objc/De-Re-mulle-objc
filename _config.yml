@@ -83,7 +83,7 @@ defaults:
       layout: "page"
       comments: true
       search: true
-      sidebar: test_sidebar
+      sidebar: mydoc_sidebar
       topnav: topnav
 
 

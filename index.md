@@ -1,7 +1,7 @@
 ---
 title: "De Re MulleObjC"
 keywords: homepage
-tags: [getting_started]
+tags: [intro]
 permalink: index.html
 summary: What you need to know to use MulleObjC to its full potential.
 ---
@@ -29,12 +29,12 @@ in C++ beaureaucracy, Objective-C is the answer. It is:
 
 ## MulleObjC is different
 
-If you look at the [list of features](/mydoc_differences.html) you will see a 
+If you look at the [list of features](/mydoc_differences.html) you will see a
 lot of things "missing". They are missing for good reasons. But there are also
 additions and improvements to the Objective-C language.
 
-This developer guide will how to use the new features and circumvent the 
-missing ones on  a source code level. 
+This developer guide will how to use the new features and circumvent the
+missing ones on  a source code level.
 
 
 ## TODO

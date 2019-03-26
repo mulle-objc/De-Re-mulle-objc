@@ -2,7 +2,7 @@
 title: Objective-C++
 keywords: protocol
 last_updated: March 26, 2019
-tags: [runtime]
+tags: [compiler]
 summary: "It's just not a good idea"
 permalink: mydoc_cpp.html
 folder: mydoc
