@@ -52,10 +52,6 @@ entries:
       url: /mydoc_differences.html
       output: web
 
-    - title: Class Anatomy
-      url: /mydoc_anatomy.html
-      output: web
-
     - title: Modern Workflow
       url: /mydoc_modern.html
       output: web
