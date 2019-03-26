@@ -36,16 +36,24 @@ entries:
       url: /mydoc_links.html
       output: web
 
-    - title: Good code
+    - title: MulleObjC Basics
       url: /mydoc_good.html
       output: web
 
-    - title: Bad code
+    - title: Good Code
+      url: /mydoc_good.html
+      output: web
+
+    - title: Bad Code
       url: /mydoc_bad.html
       output: web
 
     - title: Differences
       url: /mydoc_differences.html
+      output: web
+
+    - title: Class Anatomy
+      url: /mydoc_anatomy.html
       output: web
 
     - title: Modern Workflow

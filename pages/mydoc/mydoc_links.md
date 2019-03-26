@@ -17,6 +17,13 @@ a good tutorial start. Ignore the parts about "gcc", "MacOSX", "GNUStep"
 though. They also have a much larger tutorial, where you should ignore
 "Blocks", "Posing", and anything mentioning "ARC".
 
+### Objective-C Tutorial, Codecrackers
+
+[Objective-C Tutorial](https://codescracker.com/objective-c/index.htm) is
+basically the same as whats offered at Tutorialspoint, but there are
+differences. Someone plagiarized but I can't tell who did it.
+The codecrackers page looks a bit nicer.
+
 
 ### Programming with Objective-C, by Apple
 
@@ -44,5 +51,5 @@ An interactive tutorial site to learn the basics of C is
 
 ## Next
 
-Now that you know Objective-C, it is important to learn what is possible with
-MulleObjC and what not. First learn, [how to write good MulleObjC code](mydoc_good.html).
+Now that you know Objective-C, yout are now ready to learn the
+[MulleObjC basics](mydoc_basics.html).

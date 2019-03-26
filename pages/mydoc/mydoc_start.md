@@ -119,8 +119,9 @@ And run your first MulleObjC executable.
 ## Next
 
 With this succes in our bag, there are two routes to chose. If you know
-Objetive-C continue with [how to write good MulleObjC code](mydoc_good.html).
+Objetive-C continue with [MulleObjC basics](mydoc_basics.html).
 
-Otherwise goto the [Learn ObjC](mydoc_links.html) and follow some of
-the links to learn Objective-C first.
+Otherwise use one of the tutorials of [Learn ObjC](mydoc_links.html) to get
+up to speed.
+
 

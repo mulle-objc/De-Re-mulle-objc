@@ -20,11 +20,6 @@ treatise.
 The code will be regular Objective-C, unless specifically noted to be an
 Objective-C extension.
 
-### Use -retain and -release/-autorelease
-
-Please note that ARC is not compatible with MulleObjC.
-Use manual `-retain/-release/-autorelease` memory management methods.
-
 
 ### Forward Declaration and Import
 
@@ -266,6 +261,21 @@ NS_HANDLER
 NS_ENDHANDLER
 }
 ```
+
+## inout ...
+
+These @encode adornments should still work and should be properly encoded
+and decoded, but noone uses them:
+
+* in
+* out
+* inout
+* bycopy
+* byref
+* oneway
+
+> See: https://stackoverflow.com/questions/5609564/objective-c-in-out-inout-byref-byval-and-so-on-what-are-they
+
 
 ### Literals
 
