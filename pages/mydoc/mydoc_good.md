@@ -346,7 +346,7 @@ Literals are supported *except* **@YES**, **@NO** and **@()**.
 
 ## Putting all the pieces together
 
-Run the `main` function, to verify the truth of what's been written ([good-code.m](/files/good-code.m)).
+Run the `main` function, to verify the truth of what's been written ([good-code.m]({{ site.baseurl}}/files/good-code.m)).
 
 
 ```

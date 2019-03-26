@@ -244,7 +244,7 @@ See [Porting Protocol](mydoc_package.html) for code conversion tips.
 
 ## See the output for yourself
 
-Download ([bad-code.m](/files/bad-code.m)) and let the compiler tell you
+Download ([bad-code.m]( {{ site.baseurl}}/files/bad-code.m)) and let the compiler tell you
 all about it.
 
 
