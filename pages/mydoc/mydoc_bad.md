@@ -40,9 +40,9 @@ The attributes **atomic**,**weak**,**strong**,**nullable**,**unsafe_retained**
 @property( atomic) id  a;
 @property( weak) id  b;
 @property( strong) id  c;
-@property( nullable) id  d;   // nullable can be #defined away without trouble
-@property( unsafe_unretained) e;
-@property( class) id  f;      // class has a chance of being supported sometime
+@property( nullable) id  d;      // nullable can be #defined away without trouble
+@property( unsafe_unretained) e; // shpuld be no different to assign though
+@property( class) id  f;         // class has a chance of being supported sometime
 
 // assign is supported
 // we need the next two declarations for @synthesize to complain
