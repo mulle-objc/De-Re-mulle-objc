@@ -4,7 +4,6 @@ keywords: protocol
 last_updated: March 26, 2019
 tags: [runtime]
 summary: "It's gone"
-sidebar: mydoc_sidebar
 permalink: mydoc_dotsyntax.html
 folder: mydoc
 ---

@@ -4,10 +4,16 @@ keywords: documentation theme, jekyll, technical writers, help authoring tools, 
 last_updated: July 3, 2016
 tags: [getting_started]
 summary: "I have used this theme for projects that I've worked on as a professional technical writer."
-sidebar: mydoc_sidebar
 permalink: mydoc_jekyll_theme.html
 folder: mydoc
 ---
+
+"De Re MulleObjC" is based on [tomjoht/documentation-theme-jekyll
+](https://github.com/tomjoht/documentation-theme-jekyll). This is the short
+bio of the author.
+
+
+## Tom Johnson
 
 My name is Tom Johnson, and I'm a technical writer, blogger, and podcaster based in San Jose, California. For more details, see my [technical writing blog](http://idratherbewriting.com) and my [course on API documentation](http://idratherbewriting.com/learnapidoc/).  See [my blog's about page](http://idratherbewriting.com/aboutme/) for more details about me.
 

@@ -4,7 +4,6 @@ keywords: load unload
 last_updated: March 26, 2019
 tags: [runtime]
 summary: "There are no blocks and never will be"
-sidebar: mydoc_sidebar
 permalink: mydoc_block.html
 folder: mydoc
 ---

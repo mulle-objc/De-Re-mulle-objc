@@ -4,22 +4,19 @@ keywords: class
 last_updated: March 26, 2019
 tags: [runtime]
 summary: "But how can less be more ? It's impossible! More is more! -- Y. Malmsteen"
-sidebar: mydoc_sidebar
 permalink: mydoc_differences.html
 folder: mydoc
 ---
 
 In terms of language features, **mulle_objc** resets the basis of Objective-C
-back to ObjC 1.0 and cherrypicks improvements from the later versions. If you
-aren't familiar with Objective-C, just skip this chapter for now.
+back to ObjC 1.0 and cherrypicks improvements from the later versions. 
 
 
 
 ## Differences to Objective-C 2.0
 
-Do not use the "not planned" features. The **mulle-objc** compiler might still
-understand the `@import` keyword but the runtime or the linker will not support
-it.
+Do not use the "not planned" features even if the **mulle-objc** compiler might 
+still understand them. The runtime or the linker will not support them.
 
 
 Topic                     | State                                  | Link
@@ -49,6 +46,7 @@ variadic arguments (:...) | supported: but not compatible to `<stdarg.h>`
 
 
 -----
+### Appendix
 
 #### Footnotes
 
@@ -80,7 +78,6 @@ For the discussed concepts and terminology check any of the following links.
 
 1. [Wikipedia: Objective-C](https://en.wikipedia.org/wiki/Objective-C#Objective-C_2.0)
 2. [Apple: Objective-C Feature Availability Index](https://developer.apple.com/library/prerelease/ios/releasenotes/ObjectiveC/ObjCAvailabilityIndex/index.html)
-3. [NSHipster: @](http://nshipster.com/at-compiler-directives)
+3. [NSHipster: @compiler directives](http://nshipster.com/at-compiler-directives)
 
----
 

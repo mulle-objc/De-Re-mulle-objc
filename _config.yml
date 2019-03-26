@@ -83,7 +83,7 @@ defaults:
       layout: "page"
       comments: true
       search: true
-      sidebar: mydoc_sidebar
+      sidebar: test_sidebar
       topnav: topnav
 
 
@@ -91,6 +91,7 @@ defaults:
 
 sidebars:
 - mydoc_sidebar
+- test_sidebar
 
 description: "This book tells you what you need to know, to navigate the more trickier waters of Objective-C using MulleObjC"
 # the description is used in the feed.xml file

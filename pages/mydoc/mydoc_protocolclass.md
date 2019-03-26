@@ -4,7 +4,6 @@ keywords: protocol class protocolclass
 last_updated: March 26, 2019
 tags: [runtime]
 summary: "Protocolclasses allow default implementations"
-sidebar: mydoc_sidebar
 permalink: mydoc_protocolclass.html
 folder: mydoc
 ---

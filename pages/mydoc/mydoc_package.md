@@ -1,10 +1,10 @@
 ---
-title: classcluster
+title: package
 keywords: class
 last_updated: March 26, 2019
 tags: [runtime]
 summary: ""
-permalink: mydoc_classcluster.html
+permalink: mydoc_package.html
 folder: mydoc
 ---
 

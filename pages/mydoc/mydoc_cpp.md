@@ -4,7 +4,6 @@ keywords: protocol
 last_updated: March 26, 2019
 tags: [runtime]
 summary: "It's just not a good idea"
-sidebar: mydoc_sidebar
 permalink: mydoc_cpp.html
 folder: mydoc
 ---

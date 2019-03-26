@@ -4,7 +4,6 @@ keywords: protocol
 last_updated: March 26, 2019
 tags: [runtime]
 summary: "The generic type of Objective-C is id, use it"
-sidebar: mydoc_sidebar
 permalink: mydoc_generics.html
 folder: mydoc
 ---

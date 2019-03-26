@@ -4,7 +4,6 @@ keywords: locking
 last_updated: March 26, 2019
 tags: [runtime]
 summary: "Synchronized as a keyword and property is not available"
-sidebar: mydoc_sidebar
 permalink: mydoc_synchronized.html
 folder: mydoc
 ---

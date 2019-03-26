@@ -1,10 +1,10 @@
 ---
-title: classcluster
+title: sde
 keywords: class
 last_updated: March 26, 2019
 tags: [runtime]
 summary: ""
-permalink: mydoc_classcluster.html
+permalink: mydoc_sde.html
 folder: mydoc
 ---
 

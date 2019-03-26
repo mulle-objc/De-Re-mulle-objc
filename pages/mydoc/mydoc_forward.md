@@ -4,7 +4,6 @@ keywords: class
 last_updated: March 26, 2019
 tags: [runtime]
 summary: "MulleObjC forward speed makes object composition an alternative"
-sidebar: mydoc_sidebar
 permalink: mydoc_forward.html
 folder: mydoc
 ---

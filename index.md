@@ -2,7 +2,6 @@
 title: "De Re MulleObjC"
 keywords: homepage
 tags: [getting_started]
-sidebar: mydoc_sidebar
 permalink: index.html
 summary: What you need to know to use MulleObjC to its full potential.
 ---
@@ -11,18 +10,48 @@ summary: What you need to know to use MulleObjC to its full potential.
 a collection of links, that will tell you how to install **mulle-objc** and
 also present some of the technical background." %}
 
-{% include note.html content="This is not an introduction how to write Objective-C code. Check the [link section](https://github.com/MulleFoundation/foundation-developer#how-to-write-objective-c) of **foundation-developer** for a selection of books and tutorials covering Objective-C." %}
 
 {% include note.html content="Some of the content is only applicable to version mulle-objc 8.0.0, which has not been released as of this writing." %}
 
+
+## Why Objective-C ?
+
+If you are comfortable writing in C, you will notice that C is fine until you
+reach a certain level of complexity. If you don't want to spend your lifetime
+in C++ beaureaucracy, Objective-C is the answer. It is:
+
+* Easy to learn
+* Fun
+* Manages complexity easily
+* No magic
+* Powerful class-system
+
+
 ## MulleObjC is different
 
-If you look at the [list of features](/mydoc_differences.html) you will see a lot
-of things "missing". They are missing for good reasons. But there are also
+If you look at the [list of features](/mydoc_differences.html) you will see a 
+lot of things "missing". They are missing for good reasons. But there are also
 additions and improvements to the Objective-C language.
 
-This guide will tell you about them and how to use the new features and
-circumvent the missing ones on a source code level.
+This developer guide will how to use the new features and circumvent the 
+missing ones on  a source code level. 
 
+
+## TODO
+
+* Mention not being ARC more prominently
+* ARC to AAM porting guide
+* ARC to M porting guide
+* Intro text for features
+* Run through modern workflow
+    * Write an executable
+    * Write a library
+    * Write a library thats based on a library
+
+
+
+## Next
+
+Get going with the [MulleObjC Start](/mydoc_start.html).
 
 {% include links.html %}
