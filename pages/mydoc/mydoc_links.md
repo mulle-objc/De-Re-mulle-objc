@@ -43,6 +43,13 @@ Ignore the chapters "Delegates and Data Sources", "Model View Controller",
 [Learn Objective-C](https://www.cocoadevcentral.com/d/learn_objectivec) gives a
 quick overview of concepts. Ignore the part about "Dot Syntax" though.
 
+
+### Learn C for Cocoa, CocoaDev
+
+[Learn C for Cocoa](http://cocoadevcentral.com/articles/000081.php) is a bit
+outdated but an easy read.
+
+
 ### Learn-C.org
 
 An interactive tutorial site to learn the basics of C is
