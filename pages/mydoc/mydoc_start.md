@@ -107,6 +107,9 @@ mulle-clang  hello-world.m \
             -lFoundation
 ```
 
+{% include note.html content="You can also use Xcode to build MulleObjC
+code. See [Xcode integration](//github.com/mulle-objc/mulle-objc-developer/wiki/Xcode-integration) for setup instructions." %}
+
 
 ## Run Hello World
 

@@ -8,8 +8,9 @@ permalink: mydoc_cpp.html
 folder: mydoc
 ---
 
-> C++ is already the most complex language in the world and adding Objective-C
-> on top of it, is like the worst of both worlds.
+{% include note.html content="C++ is already the most complex language in the
+world and adding Objective-C on top of it, is like the worst of both worlds." %}
+
 
 ## Use C++ from Objective-C
 
