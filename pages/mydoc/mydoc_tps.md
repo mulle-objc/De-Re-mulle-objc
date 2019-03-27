@@ -2,7 +2,7 @@
 title: tps
 keywords: class
 last_updated: March 26, 2019
-tags: [runtime]
+tags: [runtime,8.0.0]
 summary: ""
 permalink: mydoc_tps.html
 folder: mydoc
@@ -10,7 +10,7 @@ folder: mydoc
 
 {% include note.html content="If you are using the **MulleFoundation**, then tagged pointers will be used for **NSNumber** and **NSString** leaving little (64 bit) or no (32 bit) room for own tagged pointer classes." %}
 
-## Create a tagged pointer (TPS) class 
+## Create a tagged pointer (TPS) class
 
 A tagged pointer class is great, if you have a lot of instances that are extremely small. Let's say you want to encode a 24 bit color in a tagged pointer, here's how to do it.
 
@@ -74,22 +74,23 @@ Convert you color to a 24 bit value and create the instance with the `C` functio
 static inline MyColor   *TPSColorNew( unsigned char r, unsigned char g , unsigned char b)
 {
    NSUInteger   value;
-   
+
    value = (((NSUInteger) << 16) | ((NSUInteger) g << 8) | (NSUInteger) b);
    return( (MyColor *) MulleObjCCreateTaggedPointerWithUnsignedIntegerValueAndIndex( value, 0x3));
 }
 ```
 
-### Retrieve value from TPS instance 
+### Retrieve value from TPS instance
 
 ```
+@implementation MyTPSColor
+
+...
+
 - (unsigned char) getRedComponent
 {
-
-static inline MyColor   *TPSColorNew( unsigned char r, unsigned char g , unsigned char b)
-{
    NSUInteger   value;
-   
+
    value = MulleObjCTaggedPointerGetUnsignedIntegerValue( self);
    return( value >> 16);
 }

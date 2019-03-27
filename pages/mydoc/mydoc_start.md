@@ -47,14 +47,15 @@ mulle-sde install --standalone --prefix "${HOME}/usr" "https://github.com/MulleF
 A shared (dynamic) `libFoundation` library and some other static libraries
 should be present in your `~/usr/lib`  folder.
 
-> #### Homebrew support
->
-> On MacOS there is a brew formula, which will install a
-> `libFoundation.dylib` and all required headers into `/usr/local`:
->
-> ```
-> brew install mulle-kybernetik/software/Foundation
-> ```
+
+{% include note.html content="On MacOS there is a brew formula, which will
+install into `/usr/local` a `libFoundation.dylib` and all required headers:
+
+```
+brew install mulle-kybernetik/software/Foundation
+```
+" %}
+
 
 
 ## Write Hello World
@@ -118,10 +119,9 @@ And run your first MulleObjC executable.
 
 ## Next
 
-With this succes in our bag, there are two routes to chose. If you know
+With this succes in your bag, there are two routes to choose from. If you know
 Objetive-C continue with [MulleObjC basics](mydoc_basics.html).
 
-Otherwise use one of the tutorials of [Learn ObjC](mydoc_links.html) to get
+Otherwise use one of the tutorials in [Learn ObjC](mydoc_links.html) to get
 up to speed.
-
 

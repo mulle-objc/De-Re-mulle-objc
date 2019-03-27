@@ -134,7 +134,7 @@ entries:
           output: web, pdf
 
         - title: "@package"
-          url: /mydoc_property.html
+          url: /mydoc_package.html
           output: web, pdf
 
         - title: "@protocol"
@@ -153,7 +153,7 @@ entries:
           url: /mydoc_synchronized.html
           output: web, pdf
 
-        - title: "- method:... (varargs)"
+        - title: "... (varargs)"
           url: /mydoc_varargs.html
           output: web, pdf
 

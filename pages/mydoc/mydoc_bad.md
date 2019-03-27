@@ -25,7 +25,7 @@ give a compiler error:
 @import Whatever;             // @import doesn't work
 ```
 
-See [Porting @property](mydoc_modules.html) for code conversion tips.
+See [Porting @import](mydoc_modules.html) for code conversion tips.
 
 
 ### Unsupported @property attributes
@@ -69,7 +69,7 @@ You can not synthesize to a different name, ivar must be `'_'<name>`:
 @dynamic h;
 ```
 
-See [Porting @property](mydoc_synthesize.html) for code conversion tips.
+See [Porting @synthesize](mydoc_synthesize.html) for code conversion tips.
 
 
 ### Subscripting
@@ -100,7 +100,7 @@ ARC code will crash or leak depending on what you are doing:
 }
 ```
 
-See [Porting ARC code](mydoc_subscripting.html) for code conversion tips.
+See [Porting ARC code](mydoc_arc.html) for code conversion tips.
 
 ### Dot syntax
 

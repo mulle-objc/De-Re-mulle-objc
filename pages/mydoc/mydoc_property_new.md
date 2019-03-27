@@ -29,9 +29,9 @@ E.g.
 
 ## serializable
 
-Indicate that a property should be serialized by NSCoder, MulleEOF or some
-other persistence method. Then initWithCoder: -encodeWithCoder: does not need
-to be written but can be inherited from the NSCoder protocol running on
+Indicate that a property should be serialized by `NSCoder`, MulleEOF or some
+other persistence method. Then `-initWithCoder:`, `-encodeWithCoder:` do not
+need to be written but can be inherited from the `NSCoder` protocol running on
 properties only. The optional value can be used to indicate the destination
 class.
 

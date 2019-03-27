@@ -33,16 +33,14 @@ If you look at the [list of features](mydoc_differences.html) you will see a
 lot of things "missing". They are missing for good reasons. But there are also
 additions and improvements to the Objective-C language.
 
-This developer guide will how to use the new features and circumvent the
-missing ones on  a source code level.
+This developer guide will show you how to use the new features and circumvent
+the missing ones on.
 
 
 ## TODO
 
-* Mention not being ARC more prominently
-* ARC to AAM porting guide
-* ARC to M porting guide
 * Intro text for features
+* Text for C runtime porting
 * Run through modern workflow
     * Write an executable
     * Write a library

@@ -1,12 +1,13 @@
 ---
-title: modules
+title: Porting @import
 keywords: class
 last_updated: March 26, 2019
-tags: [runtime]
+tags: [compiler]
 summary: ""
 permalink: mydoc_modules.html
 folder: mydoc
 ---
 
-## NOTHING HERE YET
+You will have to use `#import` instead.
+
 
