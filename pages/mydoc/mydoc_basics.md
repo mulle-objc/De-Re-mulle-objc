@@ -8,9 +8,9 @@ permalink: mydoc_basics.html
 folder: mydoc
 ---
 
-Lets write a MulleObjC class that highlights alls the basics of MulleObjC
-runtime and memory management. Most of the topics are unusual for coding
-the average Objective-C class, but it's good to be aware of them.
+Lets write a MulleObjC class that highlights all the basics of memory management
+and being a good class in the MulleObjC runtime. Some of the topics are seldom
+employed in the average Objective-C class, but it's good to be aware of them.
 
 The main takeaway points are
 
@@ -152,6 +152,7 @@ at least.
 
 If you want to specify classes and categories in a more finegrained way, see
 [dependencies](mydoc_dependencies.html).
+
 
 
 ### +load
