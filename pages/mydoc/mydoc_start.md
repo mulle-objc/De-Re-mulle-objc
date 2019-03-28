@@ -9,7 +9,7 @@ folder: mydoc
 
 Initally the "legacy workflow" for developing with MulleObjC, will be easiest,
 since it's the most familiar. Later you will probably want to use the
-[modern workflow](mydoc_modern.html)
+[modern workflow](mydoc_modern.html).
 
 
 # Install MulleObjC
