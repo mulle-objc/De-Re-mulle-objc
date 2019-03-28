@@ -37,7 +37,7 @@ and **retain** for everything else.
 
 One of the strong points of Objective-C is its gracious handling of
 `nil` values, which simplifies coding a lot. Remember that messaging `nil`
-also produces `nil`. With the introduction of `nonnullable` `nullable` was
+also produces `nil`. With the introduction of `nonnull` `nullable` was
 also introduced. It is superflous.
 
 You can easily get rid of `nullable` compile errors with:
@@ -47,8 +47,8 @@ You can easily get rid of `nullable` compile errors with:
 ```
 
 {% include note.html content="Tedious checks for `nil` means you are optimizing
-your code for the error case. Use **nonnullable** sparingly. If a `nil` parameter
-has no ill effect, don't mark the code **nonnullable**." %}
+your code for the error case. Use **nonnull** sparingly. If a `nil` parameter
+has no ill effect, don't mark the code **nonnull**." %}
 
 ### unsafe_unretained
 
