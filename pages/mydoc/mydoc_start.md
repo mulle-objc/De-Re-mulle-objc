@@ -30,7 +30,7 @@ mulle-sde --version
 ## Legacy workflow
 
 The legacy workflow installs the **mulle-objc** Foundation as a shared library
-into 'usr' of your homedirectory. You can change the location by changing the
+into `usr` of your home directory. You can change the location by changing the
 `--prefix`.
 
 ### Create shared Foundation library
@@ -122,8 +122,8 @@ And run your first MulleObjC executable.
 
 ## Next
 
-With this succes in your bag, there are two routes to choose from. If you know
-Objetive-C continue with [MulleObjC basics](mydoc_basics.html).
+With this success in your bag, there are two routes to choose from. If you know
+Objective-C continue with [MulleObjC basics](mydoc_basics.html).
 
 Otherwise use one of the tutorials in [Learn ObjC](mydoc_links.html) to get
 up to speed.
