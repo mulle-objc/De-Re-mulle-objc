@@ -51,5 +51,4 @@ An interactive tutorial site to learn the basics of C is
 
 ## Next
 
-Now that you know Objective-C, yout are now ready to learn the
-[MulleObjC basics](mydoc_basics.html).
+Now that you know Objective-C, your are well prepared for the [MulleObjC basics](mydoc_basics.html).
