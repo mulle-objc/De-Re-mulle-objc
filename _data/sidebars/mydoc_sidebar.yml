@@ -60,6 +60,14 @@ entries:
       url: /mydoc_runtime.html
       output: web
 
+    - title: Coverage
+      url: /mydoc_coverage.html
+      output: web
+
+    - title: Tools
+      url: /mydoc_tools.html
+      output: web
+
       subfolders:
       - title: Features
         output: web, pdf
