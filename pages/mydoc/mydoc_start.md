@@ -30,14 +30,19 @@ mulle-sde --version
 ## Legacy workflow
 
 The legacy workflow installs the **mulle-objc** Foundation as a shared library
-into `usr` of your home directory. You can change the location by changing the
-`--prefix`.
+on your system. 
 
-### Create shared Foundation library
+{% include note.html content="The \"modern workflow\" uses static libraries." %}
+
+
+### Install a shared MulleFoundation library
 
 **mulle-sde** will now download all required components of the Foundation
 library and build them. There will be an error, because it can not find an
 optional component **MulleObjCDecimalFoundation**. This is harmless.
+
+You can change the install location with the `--prefix` option. Otherwise
+the `usr` directory of your home directory, will be the install destination.
 
 
 ``` console
@@ -45,8 +50,7 @@ mulle-sde install --standalone --prefix "${HOME}/usr" "https://github.com/MulleF
 ```
 
 A shared (dynamic) `libFoundation` library and some other static libraries
-should be present in your `~/usr/lib`  folder.
-
+should be present in your `~/usr/lib` folder now.
 
 {% include note.html content="On MacOS there is a brew formula, which will
 install into `/usr/local` a `libFoundation.dylib` and all required headers:
