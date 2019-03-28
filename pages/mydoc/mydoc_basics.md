@@ -258,8 +258,8 @@ You should release all resources, that aren't automatically reclaimed.
 ```
 
 Calling `-[super init]` if `NSObject` is the direct superclass is superflous
-and can be avoided. Remember that MulleObjC uses manual retain counting,
-so `-retain` what needs to be retained.
+and can be avoided. MulleObjC uses manual retain counting, so `-retain` what 
+needs to be retained by the instance.
 
 
 ### -finalize
