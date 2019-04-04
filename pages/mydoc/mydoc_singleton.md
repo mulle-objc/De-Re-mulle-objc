@@ -1,5 +1,5 @@
 ---
-title: singleton
+title: Singleton classes
 keywords: class
 last_updated: March 26, 2019
 tags: [runtime]
