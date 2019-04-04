@@ -23,8 +23,8 @@ via `+sharedInstance`, you merely adopt the **MulleObjCSingleton** protocol and 
 
 That's because **MulleObjCSingleton** is a [protocolclass](mydoc_protocolclass.html).
 
-If you subclass as singleton class, your subclass should also adopt  **MulleObjCSingleton** to create a new
-shared instance, otherwise your subclass will be ignored. This will then coexist with the base class singleton.
+If you subclass a singleton class, your subclass should also adopt  **MulleObjCSingleton**. Now your class will create a new
+shared instance. Otherwise your subclass would be ignored by `sharedInstance`. Your subclass singleton will now coexist with the base class singleton.
 
 ## Modifications
 
