@@ -72,6 +72,13 @@ entries:
       - title: Features
         output: web, pdf
         subfolderitems:
+         - title: "+dependencies"
+          url: /mydoc_class.html
+          output: web, pdf
+
+        - title: "-finalize"
+          url: /mydoc_finalize.html
+          output: web, pdf
 
         - title: "@property"
           url: /mydoc_property_new.html
@@ -79,10 +86,6 @@ entries:
 
         - title: "@protocolclass"
           url: /mydoc_protocolclass.html
-          output: web, pdf
-
-        - title: "+dependencies"
-          url: /mydoc_class.html
           output: web, pdf
 
         - title: "Class-cluster"
