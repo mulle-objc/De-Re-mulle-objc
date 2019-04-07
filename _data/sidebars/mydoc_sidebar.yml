@@ -72,7 +72,7 @@ entries:
       - title: Features
         output: web, pdf
         subfolderitems:
-         - title: "+dependencies"
+        - title: "+dependencies"
           url: /mydoc_class.html
           output: web, pdf
 
