@@ -10,11 +10,11 @@ folder: mydoc
 
 ## `-finalize` runs automatically before dealloc
 
-When the `-retainCount` is decremented to zero via `-release`, an object gets the `-finalize` message first.
+When the `-retainCount` is decremented to zero via `-release`, an object gets the `-finalize` message first before `-dealloc`.
 If the retainCount remains unchanged throughout `-finalize`, then `-dealloc` is called. 
-It is guaranteed that -finalize is only called once.
+It is guaranteed that `-finalize` is only called once.
 
-During finalize all `@properties` with pointers (e.g. `void *`) or objects (e.g. `NSArray *`) will be cleared.
+During `-finalize` all **@properties** with pointers (e.g. `void *`) or objects (e.g. `NSArray *`) will be cleared.
 
 So `-finalize` is used to free resources and cut links to other objects. Objects that are cleared by `-finalize` 
 will be released with  `-autorelease` and not with `-release`.
