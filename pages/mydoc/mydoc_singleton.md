@@ -42,7 +42,8 @@ If you want to use a different name than `+sharedInstance` add this to your clas
 ###  Init the singleton differently
 
 Usually the singleton will be allocated with `-init`. You can override `-init` for the singleton instance with `-__initSingleton`.
-This can be useful, if you have a not-so-true singleton class like **NSNotificationCenter**, which can instantiate other instances.
+This could be useful, if your singleton needs a special setup and you have a not-so-true singleton class 
+like **NSNotificationCenter**, which can instantiate other instances.
 
 
 ### Prevent other instances of the same class
