@@ -105,13 +105,28 @@ adopt them.
 
 ## Things to watch out for
 
-### What does super call ?
+### Reaching the protocolclass via super
 
 In the class adopting your protocol, a call to super will first search the protocolclasses in order
-of adoption - there are none others in `MyClass` -  then `NSObject`.
+of adoption then the superclass, in this case `NSObject`.
 
-In the protocolclass, a call to super will search the subsequent protocolclasses in order
-of adoption by the `MyClass` - then `NSObject`.
+### Calling super from the protocolclass
+
+As a protocolclass is a root class, there is no way to call super from a protocolclass. There is a way 
+around this though.
+
+You can search for the overridden implementation of a selector, given the class and category of the
+implementation.
+
+```
+   IMP   imp;
+   
+   imp = MulleObjCSearchOverriddenIMP( self, @selector( doTheFooThing), @selector( Foo), 0);
+   return( (*imp)( self, @selector( doTheFooThing), self));
+```
+
+This works fine, unless the receiver is implementing the same protocolclass again and is calling super.
+
 
 ### Do not use @property in your protocol (yet)
 
