@@ -12,6 +12,8 @@ to do "tricky" stuff with Objective-C.
 
 ## Allocation
 
+### Allocation methods
+
 The example implementation of NSObject:
 
 ```
@@ -34,18 +36,18 @@ The example implementation of NSObject:
 ```
 
 
-### `+alloc`
+#### `+alloc`
 
 If  you are implementing your own `+alloc` routine you should also implement `+new`.
 
 
-### `+new`
+#### `+new`
 
 `+new` is shorter than writing `+alloc` and `-init` and in MulleObjC `+new`
 will not call `+alloc`. Users can rely on `-init` being called by `+new` though.
 
 
-### `+allocWithZone:`
+#### `+allocWithZone:`
 
 The  *legacy* allocation method is `+allocWithZone:`, but you 
 should use `+alloc` in MulleObjC. For compatibility with legacy code
@@ -55,7 +57,7 @@ You may safely ignore the `zone` pointer.
 Do not call `+alloc` from `+allocWithZone:` or vice versa.
 
 
-## Extra bytes and `class_getInstanceSize`
+### Extra bytes and `class_getInstanceSize`
 
 Allocating extra bytes at the end of an instance can be done with `NSAllocateObject` as usual.
 You should be aware, that for compatibility reasons `class_getInstanceSize` will return 
@@ -70,10 +72,6 @@ static inline void   *getFooExtraBytes( Foo *self)
    return( (void *) &((char *) self)[ sizeof( Foo)]);
 }
 ```
-
-
-
-
 
 ## Retain Counting
 
