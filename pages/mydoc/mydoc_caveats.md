@@ -53,3 +53,12 @@ also implement `+allocWithZone:` the same as you implemented `+alloc`.
 You may safely ignore the `zone` pointer.
 
 Do not call `+alloc` from `+allocWithZone:` or vice versa.
+
+
+## Retain Counting
+
+Do not override `-retain`, `-release` except for debugging purposes. In the highest 
+compiler optimization level these methods will not be used.
+
+
+
