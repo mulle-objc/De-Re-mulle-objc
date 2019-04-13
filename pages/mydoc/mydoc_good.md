@@ -274,7 +274,7 @@ and decoded, but noone uses them:
 * byref
 * oneway
 
-> See: https://stackoverflow.com/questions/5609564/objective-c-in-out-inout-byref-byval-and-so-on-what-are-they
+> See: []/(https://stackoverflow.com/questions/5609564/objective-c-in-out-inout-byref-byval-and-so-on-what-are-they)
 
 
 ### Literals
