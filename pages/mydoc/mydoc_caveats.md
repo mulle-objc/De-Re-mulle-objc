@@ -39,7 +39,7 @@ The example implementation of NSObject:
 If  you are implementing your own `+alloc` routine you should also implement `+new`.
 
 
-# `+new`
+### `+new`
 
 `+new` is shorter than writing `+alloc` and `-init` and in MulleObjC `+new`
 will not call `+alloc`. Users can rely on `-init` being called by `+new` though.
