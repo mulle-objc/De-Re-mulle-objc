@@ -64,14 +64,19 @@ You should be aware, that for compatibility reasons `class_getInstanceSize` will
 the number of bytes that are required to allocate an instance. This is *not* the same as
 the offset to the extra bytes.
 
-This will work:
-
 ```
 static inline void   *getFooExtraBytes( Foo *self)
 {
-   return( (void *) &((char *) self)[ sizeof( Foo)]);
+   size_t    size;
+  
+   size = class_getInstanceSize( [self class]);
+#ifdef __MULLE_OBJC__
+   size -= sizeof( struct _mulle_objc_objectheader);
+#endif
+   return( (void *) &((char *) self)[ size]);
 }
 ```
+
 
 ## Retain Counting
 
