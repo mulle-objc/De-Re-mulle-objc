@@ -21,7 +21,6 @@ still understand them. The runtime or the linker will not support them.
 
 Topic                     | State                                  | Link
 --------------------------|----------------------------------------|----------
-**@compatibility_alias**  | unknown | ([what is this ?](https://www.acrc.bris.ac.uk/acrc/RedHat/rhel-gcc-en-4/compatibility_alias.html))
 **@encode()**             | supported: 90% the same as the Apple runtime | ([what is this ?](https://nshipster.com/type-encodings/))
 **@package**              | never: will produce an error
 **@synchronized()**       | not planned | ([what is this ?](https://rykap.com/objective-c/2015/05/09/synchronized/))
@@ -35,7 +34,6 @@ Topic                     | State                                  | Link
 `__unsafe_unretained`     | could be a nop #define  (`_autoreleasing`)
 ARC                       | never: but look for mulle-objc's AAM | ([what is this ?](https://www.yorkhua.com/objective-c-arc/))
 **@implementation()**     | never: class extension with added instance variables don't work
-for ( i in x)             | supported: what is known as "Fast Enumeration"
 **NSArray\<NSString\* \>**| never: generics are not in the cards | ([what is this ?](https://www.thomashanning.com/objective-c-lightweight-generics/)
 ObjectiveC++              | never: But the mulle-objc instance memory layout should be `this->__vtab` compatible to allow dual facing objects.
 NSArray *foo; foo[ 1]     | not planned: [^1] what is known as "Subscripting" | ([what is this ?](https://nshipster.com/object-subscripting/))
@@ -63,11 +61,7 @@ adorn non-nullable parameters.
 
 Wording           | Meaning
 ------------------|-------------------------------------------------
-supported         | should work already
-will be supported | must work with the first release
 not supported     | might just accidentally work
-planned           | may not be in the first release
-unknown           | neither "planned" not "not planned"
 not planned       | never say never, but this probably won't happen
 never             | sometimes you have to say never :)
 
