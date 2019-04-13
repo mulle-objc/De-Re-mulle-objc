@@ -113,8 +113,8 @@ as you don't have to `#if __has_feature(objc_arc)` in `-dealloc`.
 
 ```
 
-Remember to use `-autorelease` instead of `-release` as you would
-use in `-dealloc`. Also `nil` out the instance variable in `-finalize`.
-You don't have to do this in `-dealloc`.
+Remember to use `-autorelease` instead of `-release`. Also `nil` out the instance variable in `-finalize`.
+
+> You don't have to do this in `-dealloc` and you would use `-release` in `-dealloc`.
 
 
