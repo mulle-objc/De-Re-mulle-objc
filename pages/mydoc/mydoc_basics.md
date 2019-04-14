@@ -219,7 +219,7 @@ as static variables.
 
 * `+initialize` is only called for classes not for categories
 * your `+initialize` is called by subclasses, if they don't implement `+initialize` themselves
-* it is OK for subclasses to call `+[super initialize]`
+* it is OK for subclasses to call `+[super initialize]` if a superclass defines it
 * your class will get it's `+initialize` call first before subclasses
 
 So to avoid leaks, check if your variables aren't already initialized.
@@ -235,6 +235,10 @@ members of the universe object graph.
 implement `+initialize` then `+deinitialize` has no effect.
 
 You should release all resources, that aren't automatically reclaimed.
+
+* `+initialize` is only called for classes not for categories
+* it is OK for subclasses to call `+[super initialize]` if a superclass defines it
+* subclasses will get the `+deinitialize` call first before superclasses
 
 ```
 + (void) deinitialize
