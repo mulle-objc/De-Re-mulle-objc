@@ -30,6 +30,10 @@ counted object.
 
 {% include note.html content="Never call `-finalize` directly, always use `-performFinalize`." %}
 
+## Your `-finalize` must call `[super finalize]` 
+
+If you write a `-finalize` method call `[super finalize]` so that NSObject can clean up any properties.
+
 
 ## Caveat
 
