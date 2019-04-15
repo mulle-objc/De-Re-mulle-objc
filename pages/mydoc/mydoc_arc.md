@@ -58,10 +58,8 @@ You could also use this idea to wrap your `[[obj alloc] init]` code
 ```
 #if __has_feature(objc_arc)
 # define AUTORELEASE( x)  x
-# define SUPER_DEALLOC()  
 #else
 # define AUTORELEASE( x)  NSAutoreleaseObject( x)
-# define SUPER_DEALLOC()  [super dealloc]
 #endif
 ```
 
@@ -71,6 +69,25 @@ So you can simplify the above written `+fooWithRandomNumber` like this:
 + (instancetype) fooWithRandomNumber
 {
    return( AUTORELEASE( [[Foo alloc] initWithRandomNumber:rand()] ));
+}
+```
+
+### Add `[super dealloc]` to `-dealloc`
+
+You could use this idea to modify your `-dealloc` code
+
+```
+#if __has_feature(objc_arc)
+# define SUPER_DEALLOC()  
+#else
+# define SUPER_DEALLOC()  [super dealloc]
+#endif
+```
+
+```
+- (void) dealloc
+{
+   SUPER_DEALLOC();
 }
 ```
 
