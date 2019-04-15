@@ -58,8 +58,10 @@ You could also use this idea to wrap your `[[obj alloc] init]` code
 ```
 #if __has_feature(objc_arc)
 # define AUTORELEASE( x)  x
+# define SUPER_DEALLOC()  
 #else
 # define AUTORELEASE( x)  NSAutoreleaseObject( x)
+# define SUPER_DEALLOC()  [super dealloc]
 #endif
 ```
 
