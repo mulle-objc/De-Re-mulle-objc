@@ -14,16 +14,17 @@ a class to inherit default implementations from a protocol.
 `@protocolclass` as a keyword doesn't exist yet, but it's effect can be
 simulated by: `@class foo; @protocol foo; @end; @interface foo <foo>; @end`.
 
-For a regular class to become a protocolclass it must meet the following
+For a class to become a protocolclass it must meet the following
 requirements:
 
 * it must be a root class (not inherit from another class)
-* it must implement the protocol
+* it must implement the protocol of the same name
 * it must not implement any other protocols
 * it must not have instance variables
 
 Also a protocolclass can not have any categories, this isn't enforced, but
 categories on protocolclass aren't used by the runtime for method lookup.
+The protocol of the protocolclass can adopt other protocols.
 
 
 ## Creating a protocolclass
