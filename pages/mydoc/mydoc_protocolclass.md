@@ -71,7 +71,9 @@ struct FooIvars
 
 ### PROTOCOLCLASS macros
 
-You can make your life a little easier with PROTOCOLCLASS macros:
+You can make your life a little easier with PROTOCOLCLASS macros. The above would be transformed into:
+
+`Foo.h`:
 
 ```objective-c
 struct FooIvars 
@@ -85,6 +87,11 @@ PROTOCOLCLASS_INTERFACE( Foo)
 - (void) doTheFooThing;
 PROTOCOLCLASS_END()
 
+`Foo.m`:
+
+```objective-c
+#import "Foo.h"
+
 PROTOCOLCLASS_IMPLEMENTATION( Foo)
 PROTOCOLCLASS_END()
 
@@ -92,9 +99,11 @@ PROTOCOLCLASS_END()
 
 ### Supplementing an existing protocol with protocolclass methods
 
-When you do this, your protocolclass should adpot that other protocol
+When you do this, your protocolclass should adopt that other protocol
 and redeclare those methods, for which implementations are provided as
 `@optional`.
+
+{% include note.html content="Redeclaration as optional is a mulle-objc specific feature." %}
 
 
 ### Calling NSObject methods from your protocolclass methods
@@ -103,11 +112,21 @@ If your protocolclass wants to use NSObject methods, it should declare this
 in its protocol. This will create a lot of unimplemented method warnings though. They are
 usefully turned off with #pragmas.
 
+`Foo.h`:
+
 ```objective-c
+#import <Foundation/Foundation.h>
+
 PROTOCOLCLASS_INTERFACE( MyProtocolClass, NSObject)
 @optional
 - (void) doSomethingWithObject:(id) object;
 PROTOCOLCLASS_END()
+```
+
+`Foo.m`:
+
+```
+#import "Foo.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wprotocol"
