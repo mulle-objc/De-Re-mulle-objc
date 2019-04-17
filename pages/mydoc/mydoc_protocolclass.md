@@ -70,9 +70,20 @@ struct FooIvars
 @end
 ```
 
-### PROTOCOLCLASS macros
+## Supplement an existing protocol with protocolclass methods
 
-You can make your life a little easier with PROTOCOLCLASS macros. The above would be transformed into:
+When you do this, your protocolclass should adopt that other protocol
+and redeclare those methods, for which implementations are provided as
+`@optional`.
+
+{% include note.html content="Redeclaration as optional is a mulle-objc specific feature." %}
+
+
+
+## Use of PROTOCOLCLASS macros
+
+You can make your life a little easier with `PROTOCOLCLASS` macros. The above example 
+would be transformed into:
 
 `Foo.h`:
 
@@ -82,7 +93,7 @@ struct FooIvars
    int   a;
 };
 
-PROTOCOLCLASS_INTERFACE( Foo)
+PROTOCOLCLASS_INTERFACE0( Foo)
 - (struct FooIvars *) getFooIvars;
 @optional
 - (void) doTheFooThing;
@@ -93,25 +104,20 @@ PROTOCOLCLASS_END()
 ```objective-c
 #import "Foo.h"
 
+#pragma clang diagnostic ignored "-Wobjc-root-class"
 PROTOCOLCLASS_IMPLEMENTATION( Foo)
 PROTOCOLCLASS_END()
-
 ```
 
-### Supplementing an existing protocol with protocolclass methods
-
-When you do this, your protocolclass should adopt that other protocol
-and redeclare those methods, for which implementations are provided as
-`@optional`.
-
-{% include note.html content="Redeclaration as optional is a mulle-objc specific feature." %}
+Due to deficiences in the way variadic arguments are handled in C macros, you must use
+`PROTOCOLCLASS_INTERFACE0` instead of `PROTOCOLCLASS_INTERFACE`, if your protocolclass
+adopts no further protocols.
 
 
 ### Calling NSObject methods from your protocolclass methods
 
 If your protocolclass wants to use NSObject methods, it should declare this
-in its protocol. This will create a lot of unimplemented method warnings though. They are
-usefully turned off with #pragmas.
+in its protocol. 
 
 `Foo.h`:
 
@@ -124,12 +130,14 @@ PROTOCOLCLASS_INTERFACE( MyProtocolClass, NSObject)
 PROTOCOLCLASS_END()
 ```
 
+This will create a lot of unimplemented method warnings though. They are
+usefully turned off with a `#pragma`:
+
 `Foo.m`:
 
 ```
 #import "Foo.h"
 
-#pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wprotocol"
 #pragma clang diagnostic ignored "-Wobjc-root-class"
 
@@ -139,8 +147,6 @@ PROTOCOLCLASS_IMPLEMENTATION( Foo)
    return( [object isKindOfClass:[NSString class]]);
 }
 PROTOCOLCLASS_END()
-
-#pragma clang diagnostic pop
 ```
 
 ## Using the protocolclass
