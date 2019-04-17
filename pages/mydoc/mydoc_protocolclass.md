@@ -82,8 +82,8 @@ and redeclare those methods, for which implementations are provided as
 
 ## Use of PROTOCOLCLASS macros
 
-You can make your life a little easier with `PROTOCOLCLASS` macros. The above example 
-would be transformed into:
+`PROTOCOLCLASS` macros can make your life a little easier. The above example 
+would be transformed with macros into:
 
 `Foo.h`:
 
