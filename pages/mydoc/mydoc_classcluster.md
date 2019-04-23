@@ -8,6 +8,9 @@ permalink: mydoc_classcluster.html
 folder: mydoc
 ---
 
+
+## UNTESTED DRAFT 
+
 A classcluster is a fairly complicated setup, that is used to hide implementation details of various classes under one common name. **mulle-objc** simplifies the setup, but it is by no means simple. 
 
 As an example, we want to create a classcluster for a [**BitSet**](https://en.wikipedia.org/wiki/Bitset) class.
@@ -26,8 +29,8 @@ It also adopts the MulleObjCClassCluster protocolclass.
 ```
 @interface BitSet : NSObject < MulleObjCClassCluster>
 
-- (id) initWithBits:(NSUInteger *) bits
-              count:(NSUInteger) count;
+- (instancetype) initWithBits:(NSUInteger *) bits
+                        count:(NSUInteger) count;
 @end
 
 // methods to be implemented by classcluster classes
@@ -44,8 +47,13 @@ bits being clear or not:
 
 @implementation BitSet
 
-- (id) initWithBits:(NSUInteger *) bits
-              count:(NSUInteger) count
+- (instancetype) init
+{
+    return( [[EmptyBitSet sharedInstance] retain]);
+}
+
+- (instancetype) initWithBits:(NSUInteger *) bits
+                        count:(NSUInteger) count
 {
    NSUInteger   *p;
    NSUInteger   *sentinel;
@@ -67,7 +75,7 @@ bits being clear or not:
 
 As we are implementing a classcluster, we know that the `-initWithBits:count:` method is operating on a special kind of
 object, the placeholder. A placeholder is a constant instance of **BitSet** in our case. A constant instance ignores
-all -retain/-release calls, so we do not need to `-[self release]` self in `-initWithBits:count:` to avoid leaks.
+all -retain/-release calls, so we do not need to `-[self release]` in `-initWithBits:count:` to avoid leaks.
 
 We are using a shared instance for **EmptyBitSet** to reduce the footprint of the application. Only one instance of
 this immutable bitset will be generated.
@@ -110,6 +118,7 @@ by `MulleObjCSingleton` already:
     NSUInteger   *_bits;
     NSUInteger   _count;
 }
+
 - (BOOL) boolAtIndex:(NSUInteger) index;
 
 @end
@@ -143,5 +152,77 @@ instance creation and deallocation with primitive runtime functions ourselves:
    MulleObjCObjectDeallocateMemory( self->_bits);
    NSDeallocateObject( self);
 }
+
+- (BOOL) boolAtIndex:(NSUInteger) index
+{
+   NSUInteger  i;
+   NSUInteger  bit;
+   
+   i   = index / (sizeof( NSUInteger) * CHAR_BIT);
+   bit = 1 << (index & (sizeof( NSUInteger) * CHAR_BIT - 1)); 
+   
+   if( i >= _count)
+      return( NO);
+   return( _bits[ i] & bit ? YES : NO);
+}
+
 @end
 ```
+
+## Adding a class to a classcluster
+
+You chance upon the [CountOnes](https://github.com/CountOnes/hamming_weight) project and its AVX2 implementation 
+and would like to  support it, for larger bitsets.
+
+You could either add a new `-init` function to **BitSet** or expand the current initializer:
+
+
+- (instancetype) initWithBits:(NSUInteger *) bits
+                        count:(NSUInteger) count
+{
+   NSUInteger   *p;
+   NSUInteger   *sentinel;
+  
+   p        = bits;
+   sentinel = &p[ count];
+   while( p < sentinel)
+      if( *p++)
+         if( count >= 16)
+             return( [ConcreteAVX2Bitset newWithBits:bits
+                                               count:count]);
+         else
+             return( [ConcreteBitset newWithBits:bits
+                                           count:count]);
+   return( [[EmptyBitSet sharedInstance] retain]);
+}
+
+
+## Subclassing a classcluster
+
+The main obstacle to subclassing a classcluster is the reimplementation of the instance allocation methods.
+You should reimplement the following methods in your subclass:
+
+```
++ (instancetype) alloc
+{
+   return( NSAllocateObject( self, 0, NULL));
+}
+
+
++ (instancetype) allocWithZone:(NSZone *) zone
+{
+   return( NSAllocateObject( self, 0, NULL));
+}
+
+
++ (instancetype) new
+{
+   return( [NSAllocateObject( self, 0, NULL) init]);
+}
+```
+
+Now your subclass and its subclass will create instances of the proper class. But you will also need to override
+the init functions of the classcluster. In the case of **BitSet** there is only one `-initWithBits:count:`, which 
+makes this easy.
+
+
