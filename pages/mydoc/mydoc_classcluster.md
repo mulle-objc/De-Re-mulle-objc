@@ -8,7 +8,7 @@ permalink: mydoc_classcluster.html
 folder: mydoc
 ---
 
-A classcluster is a fairly complicated setup, that is used to hide implementation details of various classes under one common name. **mulle-objc*** simplifies the setup, but it is by no means simple. 
+A classcluster is a fairly complicated setup, that is used to hide implementation details of various classes under one common name. **mulle-objc** simplifies the setup, but it is by no means simple. 
 
 As an example, we want to create a classcluster for a [**BitSet**](https://en.wikipedia.org/wiki/Bitset) class.
 We assume, that in the majority of cases, the bitset will be empty. So as an optimization we want to provide a special
