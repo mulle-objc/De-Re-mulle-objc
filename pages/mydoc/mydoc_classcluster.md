@@ -36,7 +36,8 @@ It also adopts the MulleObjCClassCluster protocolclass.
 @end
 ```
 
-The implementation now either produces an **EmptyBitSet** or a **ConcreteBitSet**:
+The implementation now either produces an **EmptyBitSet** or a **ConcreteBitSet**, depending on all input
+bits being clear or not:
 
 ```
 #import "BitSet.h"
@@ -65,7 +66,7 @@ The implementation now either produces an **EmptyBitSet** or a **ConcreteBitSet*
 #### Some notes on the implementation.
 
 As we are implementing a classcluster, we know that the `-initWithBits:count:` method is operating on a special kind of
-object, the placeholder. As we have implemented it this is a constant instance of **BitSet**. A constant instance ignores
+object, the placeholder. A placeholder is a constant instance of **BitSet** in our case. A constant instance ignores
 all -retain/-release calls, so we do not need to `-[self release]` self in `-initWithBits:count:` to avoid leaks.
 
 We are using a shared instance for **EmptyBitSet** to reduce the footprint of the application. Only one instance of
@@ -74,6 +75,10 @@ this immutable bitset will be generated.
 {% include "note.html" contents="Memo: **EmptyBitSet** is sort of superflous, if **ConcreteBitSet** with zero length would also be usable as a singleton. That would save a class" %}
 
 ## The concrete classes
+
+The **EmptyBitSet** is very simple, as the instance creation is done with `+sharedInstance` provided
+by `MulleObjCSingleton` already:
+
 
 ```
 #import "BitSet.h"
@@ -109,6 +114,10 @@ this immutable bitset will be generated.
 
 @end
 ```
+
+In the case of **ConcreteBitSet** we need to be aware that we are subclassing the placeholder class **BitSet**. So 
+`+alloc` will just produce the same placeholder object that 'self' already is. We therefore need to implement the 
+instance creation and deallocation with primitive runtime functions ourselves:
 
 ```
 #import "ConcreteBitSet.h"
