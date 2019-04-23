@@ -180,8 +180,7 @@ You chance upon the [CountOnes](https://github.com/CountOnes/hamming_weight)
 project and its AVX2 implementation and would like to  support it with
 a class `ConcreteAVX2Bitset` for larger bitsets, when AVX2 is available.
 
-You could either add a new `-initWithAVX2Bits:count:` function to **BitSet** 
-or expand the current method:
+You could then expand the current init method in **BitSet**:
 
 ```
 - (instancetype) initWithBits:(NSUInteger *) bits
@@ -201,6 +200,20 @@ or expand the current method:
              return( [ConcreteBitset newWithBits:bits
                                            count:count]);
    return( [[EmptyBitSet sharedInstance] retain]);
+}
+```
+
+Or you could add a new `-initWithAVX2Bits:count:` method. The advantage of using another `-init` 
+methods is, that you can add it to your classcluster using a category:
+
+```
+@implementation BitSet( ConcreteAVX2Bitset)
+
+- (instancetype) initWithAVX2Bits:(NSUInteger *) bits
+                            count:(NSUInteger) count
+{
+   return( [ConcreteAVX2Bitset newWithBits:bits
+                                     count:count]);
 }
 ```
 
