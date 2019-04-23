@@ -177,14 +177,13 @@ instance creation and deallocation with primitive runtime functions ourselves:
 ## Adding a class to a classcluster
 
 You chance upon the [CountOnes](https://github.com/CountOnes/hamming_weight)
-project and its AVX2 implementation and would like to  support it, for larger
-bitsets.
+project and its AVX2 implementation and would like to  support it with
+a class `ConcreteAVX2Bitset` for larger bitsets, when AVX2 is available.
 
-You could either add a new `-init` function to **BitSet** or expand the
-current initializer:
+You could either add a new `-initWithAVX2Bits:count:` function to **BitSet** 
+or expand the current method:
 
 ```
-
 - (instancetype) initWithBits:(NSUInteger *) bits
                         count:(NSUInteger) count
 {
@@ -235,9 +234,39 @@ But you will also need to override the init functions of the classcluster. In
 the case of **BitSet** there is only one `-initWithBits:count:`, which makes
 this easy.
 
+
 ## Classcluster on top of classcluster
 
 It's entirely possible to create a classcluster on top of another classcluster,
 as we will show with **MutableBitSet**.
 
 
+```
+#import "BitSet.h"
+
+@interface MutableBitSet : BitSet <MulleObjCSingleton>
+
+- (BOOL) setBool:(BOOL) flag
+         atIndex:(NSUInteger) index;
+- (BOOL) boolAtIndex:(NSUInteger) index;
+
+@end
+```
+
+The main thing we will have to override is the init method, as we will have to 
+use different classes. Because I am extremely lazy, I will restrict the code to
+just one class:
+
+```
+#import "MutableBitSet.h"
+
+@implementation MutableBitSet 
+
+- (instancetype) initWithBits:(NSUInteger *) bits
+                        count:(NSUInteger) count
+{
+   return( [ConcreteMutableBitset newWithBits:bits
+                                        count:count]);
+}
+@end
+```
