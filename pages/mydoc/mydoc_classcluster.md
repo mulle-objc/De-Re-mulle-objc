@@ -9,13 +9,13 @@ folder: mydoc
 ---
 
 
-## UNTESTED DRAFT 
+## UNTESTED DRAFT
 
-A classcluster is a fairly complicated setup, that is used to hide implementation details of various classes under one common name. **mulle-objc** simplifies the setup, but it is by no means simple. 
+A classcluster is a fairly complicated setup, that is used to hide implementation details of various classes under one common name. **mulle-objc** simplifies the setup, but it is by no means simple.
 
 As an example, we want to create a classcluster for a [**BitSet**](https://en.wikipedia.org/wiki/Bitset) class.
 We assume, that in the majority of cases, the bitset will be empty. So as an optimization we want to provide a special
-**EmptyBitSet** class, to conserve space. Otherwise 
+**EmptyBitSet** class, to conserve space. Otherwise
 
 We also want to have a mutable variant **MutableBitSet**, that is a subclass of **BitSet** (and not the other way around,
 like in Apple Foundation).
@@ -24,7 +24,7 @@ like in Apple Foundation).
 ## The base class
 
 This is the "user" facing class. All other classes will be more or less hidden. This class defines the API.
-It also adopts the MulleObjCClassCluster protocolclass. 
+It also adopts the MulleObjCClassCluster protocolclass.
 
 ```
 @interface BitSet : NSObject < MulleObjCClassCluster>
@@ -57,7 +57,7 @@ bits being clear or not:
 {
    NSUInteger   *p;
    NSUInteger   *sentinel;
-  
+
    p        = bits;
    sentinel = &p[ count];
    while( p < sentinel)
@@ -73,19 +73,23 @@ bits being clear or not:
 
 #### Some notes on the implementation.
 
-As we are implementing a classcluster, we know that the `-initWithBits:count:` method is operating on a special kind of
-object, the placeholder. A placeholder is a constant instance of **BitSet** in our case. A constant instance ignores
-all -retain/-release calls, so we do not need to `-[self release]` in `-initWithBits:count:` to avoid leaks.
+As we are implementing a classcluster, we know that the `-initWithBits:count:`
+method is operating on a special kind of object, the placeholder. A placeholder
+is a constant instance of **BitSet** in our case. A constant instance ignores
+all `-retain`/`-release` calls, so we do not need to `-[self release]` in
+`-initWithBits:count:` to avoid leaks.
 
-We are using a shared instance for **EmptyBitSet** to reduce the footprint of the application. Only one instance of
-this immutable bitset will be generated.
+We are using a shared instance for **EmptyBitSet** to reduce the footprint of
+the application. Only one instance of this immutable bitset will be generated.
 
-{% include "note.html" contents="Memo: **EmptyBitSet** is sort of superflous, if **ConcreteBitSet** with zero length would also be usable as a singleton. That would save a class" %}
+{% include note.html contents="Memo: **EmptyBitSet** is sort of superflous,
+if **ConcreteBitSet** with zero length would also be usable as a singleton.
+That would save a class" %}
 
 ## The concrete classes
 
-The **EmptyBitSet** is very simple, as the instance creation is done with `+sharedInstance` provided
-by `MulleObjCSingleton` already:
+The **EmptyBitSet** is very simple, as the instance creation is done with +
+`+sharedInstance` provided by `MulleObjCSingleton` already:
 
 
 ```
@@ -113,7 +117,7 @@ by `MulleObjCSingleton` already:
 ```
 #import "BitSet.h"
 
-@interface ConcreteBitSet : BitSet 
+@interface ConcreteBitSet : BitSet
 {
     NSUInteger   *_bits;
     NSUInteger   _count;
@@ -124,8 +128,9 @@ by `MulleObjCSingleton` already:
 @end
 ```
 
-In the case of **ConcreteBitSet** we need to be aware that we are subclassing the placeholder class **BitSet**. So 
-`+alloc` will just produce the same placeholder object that 'self' already is. We therefore need to implement the 
+In the case of **ConcreteBitSet** we need to be aware that we are subclassing
+the placeholder class **BitSet**. So `+alloc` will just produce the same
+placeholder object that 'self' already is. We therefore need to implement the
 instance creation and deallocation with primitive runtime functions ourselves:
 
 ```
@@ -138,7 +143,7 @@ instance creation and deallocation with primitive runtime functions ourselves:
 {
     ConcreteBitSet  *set;
     size_t          size;
-    
+
     set         = NSAllocateObject( self, 0, NULL);
     size        = sizeof( NSUInteger) * count;
     set->_bits  = MulleObjCObjectAllocateNonZeroedMemory( set, size);
@@ -157,10 +162,10 @@ instance creation and deallocation with primitive runtime functions ourselves:
 {
    NSUInteger  i;
    NSUInteger  bit;
-   
+
    i   = index / (sizeof( NSUInteger) * CHAR_BIT);
-   bit = 1 << (index & (sizeof( NSUInteger) * CHAR_BIT - 1)); 
-   
+   bit = 1 << (index & (sizeof( NSUInteger) * CHAR_BIT - 1));
+
    if( i >= _count)
       return( NO);
    return( _bits[ i] & bit ? YES : NO);
@@ -171,18 +176,21 @@ instance creation and deallocation with primitive runtime functions ourselves:
 
 ## Adding a class to a classcluster
 
-You chance upon the [CountOnes](https://github.com/CountOnes/hamming_weight) project and its AVX2 implementation 
-and would like to  support it, for larger bitsets.
+You chance upon the [CountOnes](https://github.com/CountOnes/hamming_weight)
+project and its AVX2 implementation and would like to  support it, for larger
+bitsets.
 
-You could either add a new `-init` function to **BitSet** or expand the current initializer:
+You could either add a new `-init` function to **BitSet** or expand the
+current initializer:
 
+```
 
 - (instancetype) initWithBits:(NSUInteger *) bits
                         count:(NSUInteger) count
 {
    NSUInteger   *p;
    NSUInteger   *sentinel;
-  
+
    p        = bits;
    sentinel = &p[ count];
    while( p < sentinel)
@@ -199,8 +207,9 @@ You could either add a new `-init` function to **BitSet** or expand the current 
 
 ## Subclassing a classcluster
 
-The main obstacle to subclassing a classcluster is the reimplementation of the instance allocation methods.
-You should reimplement the following methods in your subclass:
+The main obstacle to subclassing a classcluster is the reimplementation of the
+instance allocation methods. You should reimplement the following methods in
+your subclass:
 
 ```
 + (instancetype) alloc
@@ -221,13 +230,14 @@ You should reimplement the following methods in your subclass:
 }
 ```
 
-Now your subclass and its subclass will create instances of the proper class. But you will also need to override
-the init functions of the classcluster. In the case of **BitSet** there is only one `-initWithBits:count:`, which 
-makes this easy.
+Now your subclass and its subclass will create instances of the proper class.
+But you will also need to override the init functions of the classcluster. In
+the case of **BitSet** there is only one `-initWithBits:count:`, which makes
+this easy.
 
 ## Classcluster on top of classcluster
 
-It's entirely possible to create a classcluster on top of another classcluster, as we will show
-with **MutableBitSet**.
+It's entirely possible to create a classcluster on top of another classcluster,
+as we will show with **MutableBitSet**.
 
 
