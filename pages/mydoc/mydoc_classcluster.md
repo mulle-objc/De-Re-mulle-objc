@@ -195,7 +195,7 @@ You could either add a new `-init` function to **BitSet** or expand the current 
                                            count:count]);
    return( [[EmptyBitSet sharedInstance] retain]);
 }
-
+```
 
 ## Subclassing a classcluster
 
@@ -224,5 +224,10 @@ You should reimplement the following methods in your subclass:
 Now your subclass and its subclass will create instances of the proper class. But you will also need to override
 the init functions of the classcluster. In the case of **BitSet** there is only one `-initWithBits:count:`, which 
 makes this easy.
+
+## Classcluster on top of classcluster
+
+It's entirely possible to create a classcluster on top of another classcluster, as we will show
+with **MutableBitSet**.
 
 
