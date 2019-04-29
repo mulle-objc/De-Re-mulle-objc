@@ -11,7 +11,7 @@ folder: mydoc
 Zones are dead. Do not use the `withZone:` methods anymore.
 
 MulleObjC will work well enough if you use them, but they are just superflous.
-Incidentally I don't think Apple Objective-C uses them either anymore.
+Incidentally I don't think Apple Objective-C uses zones either anymore.
 
 ### Compiler transforms -zone calls
 
