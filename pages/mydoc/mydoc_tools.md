@@ -78,6 +78,11 @@ coverage information.
 Grep through libraries to find the matching string for a selector, classid,
 protocol et.c.  This can be useful when debugging optimized code.
 
+```
+$ mulle-objc-searchid ab1bb16b
+@selector( alloc) is ab1bb16b
+```
+
 See [mulle-objc-list](//github.com/mulle-objc/mulle-objc-list) for more
 details.
 
