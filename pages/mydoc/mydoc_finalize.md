@@ -48,8 +48,9 @@ by structuring your `-finalize/-dealloc` code like this:
 
 - (void) finalize
 {
-  [super finalize];
   [self _finalize];
+
+   [super finalize];
 }
 
 ```
