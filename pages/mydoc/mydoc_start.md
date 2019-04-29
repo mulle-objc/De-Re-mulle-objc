@@ -29,8 +29,7 @@ mulle-sde --version
 
 ## Legacy workflow
 
-The legacy workflow installs the **mulle-objc** Foundation as a shared library
-on your system. 
+The legacy workflow installs the **mulle-objc** Foundation as a *shared* library. 
 
 {% include note.html content="The \"modern workflow\" uses static libraries." %}
 
