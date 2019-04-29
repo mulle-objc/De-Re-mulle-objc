@@ -8,7 +8,7 @@ permalink: mydoc_finalize.html
 folder: mydoc
 ---
 
-## `-finalize` runs automatically before dealloc
+## `-finalize` runs automatically before `-dealloc`
 
 When the `-retainCount` is decremented to zero via `-release`, an object gets the `-finalize` message first before `-dealloc`.
 If the retainCount remains unchanged throughout `-finalize`, then `-dealloc` is called. 
@@ -53,7 +53,6 @@ by structuring your `-finalize/-dealloc` code like this:
    [super finalize];
 }
 
-```
 - (void) dealloc
 {
 #ifndef __MULLE_OBJC__
