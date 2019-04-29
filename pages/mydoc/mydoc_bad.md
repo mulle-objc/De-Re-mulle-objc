@@ -44,12 +44,6 @@ The attributes **atomic**,**weak**,**strong**,**nullable**,**unsafe_retained**
 @property( unsafe_unretained) e; // shpuld be no different to assign though
 @property( class) id  f;         // class has a chance of being supported sometime
 
-// assign is supported
-// we need the next two declarations for @synthesize to complain
-@property( assign) id g;
-@property( assign) id h;
-
-@end
 ```
 
 See [Porting @property](mydoc_property.html) for conversion tips.
@@ -61,6 +55,13 @@ You can not synthesize to a different name, ivar must be `'_'<name>`:
 
 
 ```
+// continuing the interface declaration...
+// we need the next two declarations for @synthesize to complain
+@property( assign) id g;
+@property( assign) id h;
+
+@end
+
 @implementation Foo
 
 @synthesize g = _g1;
@@ -116,8 +117,8 @@ struct and union fields, not objects:
 
 ```
 
-
 See [Porting Dot Syntax](mydoc_dotsyntax.html) for code conversion tips.
+
 
 ### Generics
 
@@ -139,7 +140,6 @@ See [Porting Generics](mydoc_generics.html) for code conversion tips.
 {
 }
 ```
-
 
 See [Porting Blocks](mydoc_blocks.html) for code conversion tips.
 
@@ -225,7 +225,6 @@ Variable arguments are NOT `va_list` in MulleObjC, but
 
 @end
 ```
-
 
 See [Porting Varargs](mydoc_varargs.html) for code conversion tips.
 
