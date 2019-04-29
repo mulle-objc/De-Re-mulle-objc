@@ -99,6 +99,7 @@ MULLE_OBJC_DEPENDS_ON_LIBRARY( Foundation);
 
 
 // run before dealloc, can be triggered with -performFinalize
+- (void) finalize
 {
    [_kids autorelease];
    _kids = nil;
