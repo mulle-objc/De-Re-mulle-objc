@@ -71,11 +71,10 @@ MULLE_OBJC_DEPENDS_ON_LIBRARY( Foundation);
 {
    if( ! lookupTable)
    {
-      lookupTable= @{ @"a": @1,
+      lookupTable = [@{ @"a": @1,
                       @"b": @2,
                       @"c": @3
-                    };
-      [lookupTable _becomeRootObject]
+                    } retain];
       info = mulle_strdup( "some text");
    }
 }
@@ -84,7 +83,10 @@ MULLE_OBJC_DEPENDS_ON_LIBRARY( Foundation);
 // run when the universe winds down (before unload)
 + (void) deinitialize
 {
+   [lookupTable release];
+   lookupTable = nil;
    mulle_free( info);
+   info = NULL;
 }
 
 
@@ -237,8 +239,8 @@ implement `+initialize` then `+deinitialize` has no effect.
 
 You should release all resources, that aren't automatically reclaimed.
 
-* `+initialize` is only called for classes not for categories
-* it is OK for subclasses to call `+[super initialize]` if a superclass defines it
+* `+deinitialize` is only called for classes not for categories
+* it is OK for subclasses to call `+[super deinitialize]` if a superclass defines it
 * subclasses will get the `+deinitialize` call first before superclasses
 
 ```
