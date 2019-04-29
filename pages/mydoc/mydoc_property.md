@@ -25,7 +25,7 @@ be cleared during `-finalize`. But this incurs a possibly significant performanc
 properties, due to ivar lookup.
 
 
-Here is how to write `-dealloc` compatibly for compatiblity with MMR (also see [ARC Porting tips](mydoc_arc.html)):
+Here is how to write `-dealloc` for compatiblity with MMR (also see [ARC Porting tips](mydoc_arc.html)):
 
 ```
 #if __has_feature(objc_arc) || defined( __MULLE_OBJC__)
