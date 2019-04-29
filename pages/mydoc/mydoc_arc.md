@@ -118,10 +118,11 @@ class has only properties. Then MulleObjC will clean up automatically.
 If your class has non-property instance variables, they must be released in
 `-dealloc` or `-finalize`.
 
-Since `-finalize` isn't used in ARC code, this can be a good place to do it,
-as you don't have to `#if __has_feature(objc_arc)` in `-dealloc`.
+Since `-finalize` isn't used in ARC code, it can be a good place to do it.
+Othewise you could use `#if __has_feature( objc_arc)` in `-dealloc`.
 
 ```
+#ifdef __MULLE_OBJC__
 - (void) finalize
 {
    [_foo autorelease];
@@ -129,7 +130,7 @@ as you don't have to `#if __has_feature(objc_arc)` in `-dealloc`.
 
    [super finalize];
 }
-
+#endif
 ```
 
 Remember to use `-autorelease` instead of `-release`. Also `nil` out the instance variable in `-finalize`.
