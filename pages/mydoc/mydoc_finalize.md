@@ -35,6 +35,33 @@ counted object.
 If you write a `-finalize` method call `[super finalize]` so that NSObject can clean up any properties.
 
 
+## Write `-finalize/-dealloc` portably 
+
+If you use -finalize, you will be incompatible with non-ARC Apple. This can be remedied,
+by structuring your `-finalize/-dealloc` code like this:
+
+
+```
+- (void) _finalize
+{
+}
+
+- (void) finalize
+{
+  [super finalize];
+  [self _finalize];
+}
+
+```
+- (void) dealloc
+{
+#ifndef __MULLE_OBJC__
+   [self _finalize];
+#endif
+   [super dealloc];
+}
+```
+
 ## Caveat
 
 `-finalize` is single-threaded, just like `-init` and `-dealloc` when called during `release`. When you `-performFinalize` 
