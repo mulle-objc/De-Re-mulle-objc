@@ -135,6 +135,7 @@ Othewise you could use `#if __has_feature( objc_arc)` in `-dealloc`.
 
 Remember to use `-autorelease` instead of `-release`. Also `nil` out the instance variable in `-finalize`.
 
-> Note: You would not nil out in `-dealloc` and you would use `-release` in `-dealloc`.
+{% include note.html contents="You would not nil out in `-dealloc` and you would use `-release` in `-dealloc`." %}
+
 
 
