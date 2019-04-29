@@ -206,11 +206,10 @@ memory leak  checking that much more convenient.
    {
       @autoreleasepool
       {
-         lookupTable= @{ @"a": @1,
+         lookupTable= [@{ @"a": @1,
                          @"b": @2,
                          @"c": @3
-                       };
-         [lookupTable _becomeRootObject];
+                       } retain];
       }
       info = mulle_strdup( "some text");
    }
@@ -227,17 +226,13 @@ as static variables.
 
 So to avoid leaks, check if your variables aren't already initialized.
 
-Use `-_becomeRootObject` instead of `-retain` for class variables. Then
-you don't have to release them in `+deinitialize` and they become proper
-members of the universe object graph.
-
 
 ### +deinitialize
 
 `+deinitialize` is only called if `+initialize` has been called. If you did not
 implement `+initialize` then `+deinitialize` has no effect.
 
-You should release all resources, that aren't automatically reclaimed.
+You should release all resources, that were allocated during `+initialize`.
 
 * `+deinitialize` is only called for classes not for categories
 * it is OK for subclasses to call `+[super deinitialize]` if a superclass defines it
