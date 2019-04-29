@@ -105,6 +105,8 @@ MULLE_OBJC_DEPENDS_ON_LIBRARY( Foundation);
 {
    [_kids autorelease];
    _kids = nil;
+
+   [super finalize];
 }
 
 
