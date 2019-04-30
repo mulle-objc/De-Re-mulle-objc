@@ -17,7 +17,7 @@ generic `NSUnicodeStringEncoding` instead of `NSUTF32StringEncoding`/`NSUTF16Str
 
 ```
   data = [s dataUsingEncoding:NSUnicodeStringEncoding];
-  here_some_unichars( [data bytes], [data length] / sizeof( unichar));
+  here_some_unichars( (unichar *) [data bytes], [data length] / sizeof( unichar));
 ```
 
 TODO:  How about `printf` with `%S` ?
