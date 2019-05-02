@@ -14,7 +14,7 @@ folder: mydoc
 
 Rewrite code that imports specific headers to use the envelope header.
 
-Ex.
+Example: Rewrite
 
 
 ```
