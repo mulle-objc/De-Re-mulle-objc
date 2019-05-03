@@ -1,7 +1,7 @@
 ---
 title: sde
 keywords: class
-last_updated: March 26, 2019
+last_updated: May 3, 2019
 tags: [runtime,foundation,porting]
 summary: ""
 permalink: mydoc_porting.html
@@ -40,20 +40,38 @@ Two typical uses for `class_getInstanceSize` are
 #### Instance creation
 
 The number of bytes returned by `class_getInstanceSize` is the amount of bytes required to hold an instance.
-But the actual object will be at an offset. Use the return value of `objc_constructInstance` as the
-instance pointer. Use `object_dispose` to free the instance, if you allocated with the `mulle_default_allocator
+But the actual object will be at an offset. Pass the allocated memory to  `objc_constructInstance`
+and use the return value as the instance pointer. 
+
+```
+id        obj;
+size_t    size;
+void      *allocation;
+
+size       = class_getInstanceSize( cls);
+allocation = calloc( 1, size);
+obj        = objc_constructInstance( cls, allocation);
+...
+allocation = objc_getAllocation( obj);
+free( obj);
+```
+
+You could also use `object_dispose` to free the instance, if you allocated with the `mulle_default_allocator` or
+`class_createInstance`.
+
 
 #### Access extra bytes
 
 Remember that your class may be subclassed. An offset from the last known instance variable
-may not be correct. The proper and portable way to get a pointer to the extra bytes is:
+in your class implementation may not be correct. The proper and portable way to get a pointer 
+to the extra bytes is:
 
 ```
 size_t    size;
 void      *allocation;
 void      *extra;
 
-size       = class_getInstanceSize( object_getClass( obj))
+size       = class_getInstanceSize( object_getClass( self));
 allocation = objc_getAllocation( obj);
 extra      = &((char *) allocation)[ size];
 ```
