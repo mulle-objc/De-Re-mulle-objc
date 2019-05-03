@@ -72,6 +72,9 @@ allocation = objc_getAllocation( obj);
 extra      = &((char *) allocation)[ size];
 ```
 
+{% include note.html contents="`objc_getAllocation` is defined in [objc-compat](). If you don't have it you can 
+easily implement it for non mulle-objc runtimes as `static inline void  *objc_getAllocation( id obj) { return( obj); }`" %}
+
 
 ### Register composed selectors before using messaging
 
