@@ -55,8 +55,12 @@ entries:
     - title: Modern Workflow
       url: /mydoc_modern.html
       output: web
+      
+    - title: Porting Tips
+      url: /mydoc_porting.html
+      output: web
 
-    - title: Runtime Features
+- title: Runtime Features
       url: /mydoc_runtime.html
       output: web
 
