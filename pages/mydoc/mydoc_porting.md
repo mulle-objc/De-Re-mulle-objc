@@ -53,12 +53,8 @@ allocation = calloc( 1, size);
 obj        = objc_constructInstance( cls, allocation);
 ...
 allocation = objc_getAllocation( obj);
-free( obj);
+free( allocation);
 ```
-
-You could also use `object_dispose` to free the instance, if you allocated with the `mulle_default_allocator` or
-`class_createInstance`.
-
 
 #### Access extra bytes
 
