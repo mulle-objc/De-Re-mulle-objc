@@ -52,15 +52,16 @@ size       = class_getInstanceSize( cls);
 allocation = calloc( 1, size);
 obj        = objc_constructInstance( cls, allocation);
 ...
-allocation = objc_getAllocation( obj);
+allocation = object_getAlloc( obj);
 free( allocation);
 ```
 
 #### Access extra bytes
 
 Remember that your class may be subclassed. An offset from the last known instance variable
-in your class implementation may not be correct. The proper and portable way to get a pointer 
-to the extra bytes is:
+in your class implementation may not be correct. 
+
+The proper and portable way to get a pointer to the extra bytes is:
 
 ```
 size_t    size;
@@ -68,12 +69,20 @@ void      *allocation;
 void      *extra;
 
 size       = class_getInstanceSize( object_getClass( self));
-allocation = objc_getAllocation( obj);
+#ifdef __MULLE_OBJC__
+allocation = object_getAlloc( obj);
+#else
+allocation = obj;
+#endif
 extra      = &((char *) allocation)[ size];
 ```
 
-{% include note.html contents="`objc_getAllocation` is defined in [objc-compat](). If you don't have it you can 
-easily implement it for non mulle-objc runtimes as `static inline void  *objc_getAllocation( id obj) { return( obj); }`" %}
+{% include note.html contents="`object_getAlloc` is defined in [objc-compat](https://github.com/MulleFoundation/objc-compat). 
+If you don't have it you can easily implement it for non mulle-objc runtimes as 
+`static inline void  *objc_getAllocation( id obj) { return( obj); }`" %}
+
+If you use [objc-compat](https://github.com/MulleFoundation/objc-compat), you can use `object_getExtraBytes`, which does
+exactly the above.
 
 
 ### Register composed selectors before using messaging
