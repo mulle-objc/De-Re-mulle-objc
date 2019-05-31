@@ -29,6 +29,7 @@ Topic                     | State                                  | Link
 **BOOL**                  | supported: but it is an `int`. If you really need to use `bool` use `_Bool`.
 **@import**               | not planned | ([what is this ?](https://stoneofarc.wordpress.com/2013/06/25/introduction-to-objective-c-modules/))
 **nullable**              | not planned: will produce an error [^2]
+**readonly**              | supported: but an ivar will be synthesized 
 **weak**, **strong**      | never
 `__bridge`                | will be a nop #define (also `__bridge_retained`, `__bridge_transfer`)
 `__unsafe_unretained`     | could be a nop #define  (`_autoreleasing`)
