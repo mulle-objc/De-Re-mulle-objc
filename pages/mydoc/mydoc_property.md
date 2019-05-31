@@ -20,10 +20,11 @@ In Apple ARC, properties are automatically cleared during `-dealloc`. In Apple M
 you have to do it yourself during `-dealloc`.
 
 In MulleObjC all properties that reference objects or pointers are cleared during `-finalize` by
-setting them to **0**. The values of **readonly** properties, which have no default setter, will
-be cleared during `-finalize`. But this incurs a possibly significant performance penalty for **readonly** 
-properties, due to ivar lookup.
+setting them to **0**. 
 
+**readonly** properties - they have no setter - are not cleared. But in mulle-objc _they are backed by an **ivar**_.
+It is open to discussion if you want to release them in `-dealloc` for compatibility or use `-finalize` to break
+possible retain cycles.
 
 Here is how to write `-dealloc` for compatiblity with MMR (also see [ARC Porting tips](mydoc_arc.html)):
 
