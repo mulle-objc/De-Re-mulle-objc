@@ -73,6 +73,37 @@ At this point you're done.
 statements to your `CMakeLists.txt`, it's all done for you with
 `mulle-sde update`, which you run in both projects." %}
 
+## Writing classes that benefit from the modern workflow
+
+It is not only that libraries are plug-n-play in **mulle-objc**. It is also
+a goal, that source-files are motile. They should be easily moved between
+various libraries without the need to edit anything. Read [The beauty of generic header-names](https://www.mulle-kybernetik.com/weblog/2019/beauty_of_generic_headers.html) for more on that.
+
+In general write your `@interface` headerfiles like this:
+
+```
+#import "import.h"
+
+
+@interface Foo : NSObject
+@end
+```
+
+And your implementations like so:
+
+```
+#import "Foo.h"
+
+#import "import-private.h"
+
+@implementation Foo
+@end
+```
+
+and your class will partake in the "modern workflow".
+
+{% include note.html content="Avoid referencing dependency headers in your source files directly. Use the generic `import.h` and `import-private.h` headers instead" %}
+
 
 ## Adding files to or removing files from a project
 
@@ -100,35 +131,4 @@ this with `mulle-sde list`.
 {% include note.html content="You do not need to edit `CMakeLists.txt` when
 adding or removing files from your project." %}
 
-
-## Writing files that benefit from the modern workflow
-
-It is not only that libraries are plug-n-play in **mulle-objc**. It is also
-a goal, that source-files are motile. They should be easily moved between
-various libraries without the need to edit anything. Read [The beauty of generic header-names](https://www.mulle-kybernetik.com/weblog/2019/beauty_of_generic_headers.html) for more on that.
-
-In general write your `@interface` headerfiles like this:
-
-```
-#import "import.h"
-
-
-@interface Foo : NSObject
-@end
-```
-
-And your implementations like so:
-
-```
-#import "Foo.h"
-
-#import "import-private.h"
-
-@implementation Foo
-@end
-```
-
-and you will partake in the "modern workflow".
-
-{% include note.html content="Avoid referencing dependency headers in your source files directly. Use the generic `import.h` and `import-private.h` headers instead" %}
 
