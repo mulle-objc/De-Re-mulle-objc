@@ -56,6 +56,10 @@ entries:
       url: /mydoc_modern.html
       output: web
 
+    - title: Porting Xcode projects
+      url: /mydoc_xcodeproj.html
+      output: web
+
     - title: Porting Tips
       url: /mydoc_porting.html
       output: web
