@@ -101,6 +101,14 @@ convention to pass parameters and inspect return values.
 `Protocol *` does not exist. Replace it with `PROTOCOL`. You can not treat `PROTOCOL` as an object
 and message it. 
 
+### Find `+initialize` and `+load` methods and add dependency information
+
+The proper dependencies must be declared, the only known dependency to exist is the runtime during loading and initialization. Everything else must be declared.
+
+```
+MULLE_OBJC_DEPENDS_ON_LIBRARY( Foundation);
+```
+
 #### Issues
 
 * the runtime only knows about protocols that are adopted by a class
@@ -108,7 +116,7 @@ and message it.
 * you can not message protocols
 
 
-### There is no enveloping NSAutoreleasePool around +load in mulle-objc
+### There is no enveloping NSAutoreleasePool around `+load in mulle-objc
 
 If you create ephemeral instances in your `+load` method, you should wrap the code yourself inside an `NSAutoreleasePool`.
 
