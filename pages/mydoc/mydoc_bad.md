@@ -161,24 +161,13 @@ See [Porting @synchronized](mydoc_synchronized.html) for code conversion tips.
 
 ### @YES ...
 
-**@YES** and **@NO** are not supported, use `+numberWithBool:` instead
+**@YES** and **@NO** are not supported, use `@(YES)`,`@(NO)` or `+numberWithBool:` instead
 
 ```
 // literal BOOL is not supported
 - (NSNumber *) literalBOOL
 {
    return( @YES);
-}
-```
-
-### @()
-
-The literal @() is currently broken and returns `NSDictionary`:
-
-```
-- (NSDictionary *) literalAnything
-{
-   return( @( 32));
 }
 ```
 
