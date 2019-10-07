@@ -8,6 +8,11 @@ permalink: mydoc_subscripting.html
 folder: mydoc
 ---
 
+The use of [] to index into an Objective-C array like into a C array is known
+as "subscripting". It will never be supported by **mulle-objc**, because it
+introduces an un-C like ambiguity. This also precludes subscripting for
+dictionaries.
+
 ## Translate array[ 0]
 
 Use `[array objectAtIndex:0]` or the MulleObjC shortcut `[array :0]`. The latter

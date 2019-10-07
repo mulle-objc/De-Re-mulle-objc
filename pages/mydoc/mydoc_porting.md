@@ -8,7 +8,13 @@ permalink: mydoc_porting.html
 folder: mydoc
 ---
 
+
+
 ## Tips
+
+Use the Foundation as your base and not the MulleFoundation, as Foundation also
+include [objc-compat](//github.com/mulle-objc/objc-compat).
+
 
 ### Use envelope headers
 
@@ -25,12 +31,15 @@ Example: Rewrite
 to
 
 ```
-#import <Foundation/Foundation.h>
+#import "import.h" // or <Foundation/Foundation.h> without the modern workflow
 ```
 
-The exception being `<Foundation/NSDebug.h>` or any other header not exposed by `<Foundation/Foundation.h>`.
 
-### Find and correct uses of `class_getInstanceSize`  
+The exception being `<Foundation/NSDebug.h>` or any other header not exposed by
+`<Foundation/Foundation.h>`.
+
+
+### Find and correct uses of `class_getInstanceSize`
 
 Two typical uses for `class_getInstanceSize` are
 
@@ -39,11 +48,12 @@ Two typical uses for `class_getInstanceSize` are
 
 #### Instance creation
 
-The number of bytes returned by `class_getInstanceSize` is the amount of bytes required to hold an instance.
-But the actual object will be at an offset. Pass the allocated memory to  `objc_constructInstance`
-and use the return value as the instance pointer. 
+The number of bytes returned by `class_getInstanceSize` is the amount of bytes
+required to hold an instance (including mulle-objc runtime overhead).
+But the actual object will be at an offset. Pass the allocated memory to
+`objc_constructInstance` and use the return value as the instance pointer.
 
-```
+``` c
 id        obj;
 size_t    size;
 void      *allocation;
@@ -52,18 +62,22 @@ size       = class_getInstanceSize( cls);
 allocation = calloc( 1, size);
 obj        = objc_constructInstance( cls, allocation);
 ...
+#ifdef __MULLE_OBJC__
 allocation = object_getAlloc( obj);
+#else
+allocation = obj;
+#endif
 free( allocation);
 ```
 
 #### Access extra bytes
 
 Remember that your class may be subclassed. An offset from the last known instance variable
-in your class implementation may not be correct. 
+in your class implementation may not be correct.
 
 The proper and portable way to get a pointer to the extra bytes is:
 
-```
+``` c
 size_t    size;
 void      *allocation;
 void      *extra;
@@ -77,18 +91,16 @@ allocation = obj;
 extra      = &((char *) allocation)[ size];
 ```
 
-{% include note.html contents="`object_getAlloc` is defined in [objc-compat](https://github.com/MulleFoundation/objc-compat). 
-If you don't have it you can easily implement it for non mulle-objc runtimes as 
-`static inline void  *objc_getAllocation( id obj) { return( obj); }`" %}
-
-If you use [objc-compat](https://github.com/MulleFoundation/objc-compat), you can use `object_getExtraBytes`, which does
-exactly the above.
+If you use [objc-compat](https://github.com/MulleFoundation/objc-compat), you
+can use `object_getExtraBytes`, which does exactly the above.
 
 
 ### Register composed selectors before using messaging
 
-If you compose a selector from a C string, you must then use `sel_registerName` to acquire a `SEL` from the string. 
-Then use this `SEL` for messaging. (You can also use `NSSelectorFromString`)
+If you compose a selector from a C string, you must then use `sel_registerName`
+to acquire a `SEL` from the string. Then use this `SEL` for messaging.
+(You can also use `NSSelectorFromString`)
+
 
 ### Find and correct uses of `objc_msgSend` and `objc_msgSend_stret`
 
@@ -96,10 +108,11 @@ Use the [mulle-objc MetaABI](https://www.mulle-kybernetik.com/weblog/2015/mulle_
 convention to pass parameters and inspect return values.
 
 
-### Find and correct uses of `Protocol` 
+### Find and correct uses of `Protocol`
 
-`Protocol *` does not exist. Replace it with `PROTOCOL`. You can not treat `PROTOCOL` as an object
-and message it. 
+`Protocol *` does not exist. Replace it with `PROTOCOL`. You can not treat
+`PROTOCOL` as an object and message it.
+
 
 ### Find `+initialize` and `+load` methods and add dependency information
 
@@ -116,8 +129,7 @@ MULLE_OBJC_DEPENDS_ON_LIBRARY( Foundation);
 * you can not message protocols
 
 
-### There is no enveloping NSAutoreleasePool around `+load in mulle-objc
+### There is no enveloping NSAutoreleasePool around `+load` in mulle-objc
 
-If you create ephemeral instances in your `+load` method, you should wrap the code yourself inside an `NSAutoreleasePool`.
-
-
+If you create ephemeral instances in your `+load` method, you should wrap
+the code yourself inside an `NSAutoreleasePool`.

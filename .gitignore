@@ -6,3 +6,5 @@ _pdf
 .DS_Store
 .idea
 .mulle/var/
+dependency/
+*.sublime-workspace

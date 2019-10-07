@@ -8,6 +8,9 @@ permalink: mydoc_links.html
 folder: mydoc
 ---
 
+An Objective-C tutorial is outside the scope of this manual (currently), but
+there are some useful resources online.
+
 ## Objective-C Resources
 
 ### Learn Objective-C, Tutorialspoint

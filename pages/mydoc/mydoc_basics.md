@@ -16,7 +16,7 @@ The main takeaway points are
 
 * use `-release` only in `-init` and `-dealloc`
 * use `-autorelease` everywhere else
-* protect your setters with `NSParameterAssert`
+* protect your setters with `NSParameterAssert` (if using Foundation, else use `assert`)
 * `+load` and `+initialize` behave as expected if you declare `MULLE_OBJC_DEPENDS_ON_LIBRARY`
 * try to write proper `+unload` and `+deinitialize` methods to be a well behaved class, that doesn't leak in tests
 * ARC is not compatible with MulleObjC, use manual `-retain/-release/-autorelease` memory management methods
@@ -40,11 +40,21 @@ The main takeaway points are
 
 @implementation Foo
 
-// class variables are declared as static
-static Class                  FooClass;
-static mulle_thread_mutex_t   *lock;
-static NSDictionary           *lookupTable;
-static char                   *info;
+// class variables are declared as static. It's somewhat convenient to wrap
+// these into a struct. In most cases you will need to protect your class
+// variables with a lock.
+
+static struct
+{
+   mulle_thread_mutex_t   _lock;
+
+// mutable, needs locking
+   NSMutableDictionary    *_lookupTable;
+
+// immutable, need no locking
+   Class                  _FooClass;
+   char                   *_info;
+} Self;
 
 
 // Ensure that Foundation is loaded completely before our class
@@ -53,29 +63,29 @@ MULLE_OBJC_DEPENDS_ON_LIBRARY( Foundation);
 // run as soon as class is added to the runtime
 + (void) load
 {
-   FooClass = self;
+   Self._FooClass = self;
 
-   lock = mulle_malloc( struct mulle_thread_mutex_t)
-   mulle_thread_mutex_init( lock);
+   mulle_thread_mutex_init( &Self._lock);
 }
+
 
 // run when the universe winds down
 + (void) unload
 {
-   mulle_free( lock);
+   mulle_thread_mutex_done( &Self._lock);
 }
 
 
 // run when the class is messaged for the first time
 + (void) initialize
 {
-   if( ! lookupTable)
+   if( ! Self._lookupTable)
    {
-      lookupTable = [@{ @"a": @1,
-                      @"b": @2,
-                      @"c": @3
-                    } retain];
-      info = mulle_strdup( "some text");
+      Self._lookupTable = [@{ @"a": @1,
+                              @"b": @2,
+                              @"c": @3
+                            } mutableCopy];
+      Self._info = mulle_strdup( "some text");
    }
 }
 
@@ -83,17 +93,31 @@ MULLE_OBJC_DEPENDS_ON_LIBRARY( Foundation);
 // run when the universe winds down (before unload)
 + (void) deinitialize
 {
-   [lookupTable release];
-   lookupTable = nil;
-   mulle_free( info);
-   info = NULL;
+   [Self._lookupTable release];
+   Self._lookupTable = nil;
+   mulle_free( Self._info);
+   Self._info = NULL;
+}
+
+
++ (NSNumber *) lookup:(NSString *) key
+{
+   NSNumber   *value;
+
+   mulle_thread_mutex_lock( &Self._lock);
+   {
+      value = [Self._lookupTable objectForKey:key];
+      value = [[value retain] autorelease];
+   }
+   mulle_thread_mutex_unloc( &Self._lock);
+   return( value);
 }
 
 
 - (id) init
 {
-   _a = [[NSNumber alloc] initWithInt:18];
-   _b = [[NSNumber alloc] initWithInt:48];
+   _a    = [[NSNumber alloc] initWithInt:18];
+   _b    = [@48 retain];
    _kids = [[NSMutableArray array] retain];
 
    return( self);
@@ -145,8 +169,15 @@ MULLE_OBJC_DEPENDS_ON_LIBRARY( Foundation);
 @end
 ```
 
+## Analysing Foo step by step
+
 
 ### MULLE_OBJC_DEPENDS_ON_LIBRARY
+
+```
+// Ensure that Foundation is loaded completely before our class
+MULLE_OBJC_DEPENDS_ON_LIBRARY( Foundation);
+```
 
 `MULLE_OBJC_DEPENDS_ON_LIBRARY` is only required if you are implementing
 `+load`, `+unload`, `+initialize`, `+deinitialize`.
@@ -163,12 +194,12 @@ If you want to specify classes and categories in a more finegrained way, see
 ### +load
 
 ```
+// run as soon as class is added to the runtime
 + (void) load
 {
-   FooClass = self;
+   Self._FooClass = self;
 
-   lock = mulle_malloc( struct mulle_thread_mutex_t)
-   mulle_thread_mutex_init( lock);
+   mulle_thread_mutex_init( &Self._lock);
 }
 ```
 
@@ -194,7 +225,7 @@ memory leak  checking that much more convenient.
 ```
 + (void) unload
 {
-   mulle_free( lock);
+   mulle_thread_mutex_done( &Self._lock);
 }
 ```
 
@@ -204,16 +235,13 @@ memory leak  checking that much more convenient.
 ```
 + (void) initialize
 {
-   if( ! lookupTable)
+   if( ! Self._lookupTable)
    {
-      @autoreleasepool
-      {
-         lookupTable= [@{ @"a": @1,
-                         @"b": @2,
-                         @"c": @3
-                       } retain];
-      }
-      info = mulle_strdup( "some text");
+      Self._lookupTable = [@{ @"a": @1,
+                              @"b": @2,
+                              @"c": @3
+                            } mutableCopy];
+      Self._info = mulle_strdup( "some text");
    }
 }
 ```
@@ -225,8 +253,11 @@ as static variables.
 * your `+initialize` is called by subclasses, if they don't implement `+initialize` themselves
 * it is OK for subclasses to call `+[super initialize]` if a superclass defines it
 * your class will get it's `+initialize` call first before subclasses
+* `+initialize` is single-threaded, so you don't need to lock
+* `+initialize` will be called for subclasses, that do not define their own `+initialize` method
 
-So to avoid leaks, check if your variables aren't already initialized.
+To avoid leaks, check if your variables aren't already initialized.
+
 
 
 ### +deinitialize
@@ -238,23 +269,30 @@ You should release all resources, that were allocated during `+initialize`.
 
 * `+deinitialize` is only called for classes not for categories
 * it is OK for subclasses to call `+[super deinitialize]` if a superclass defines it
-* subclasses will get the `+deinitialize` call first before superclasses
+* subclasses will get the `+deinitialize` call first before their superclass (!)
+* `+deinitialize` is running single-threaded
+
 
 ```
 + (void) deinitialize
 {
-   mulle_free( info);
-   info = NULL;      // a second deinitialize can't hurt us now
+   [Self._lookupTable release];
+   Self._lookupTable = nil;
+   mulle_free( Self._info);
+   Self._info = NULL;
 }
 ```
+
+To avoid crashes, zero your variables after freeing them.
+
 
 ### -init
 
 ```
 - (id) init
 {
-   _a = [[NSNumber alloc] initWithInt:18];
-   _b = [[NSNumber alloc] initWithInt:48];
+   _a    = [[NSNumber alloc] initWithInt:18];
+   _b    = [[NSNumber alloc] initWithInt:48];
    _kids = [[NSMutableArray array] retain];
 
    return( self);
@@ -262,7 +300,7 @@ You should release all resources, that were allocated during `+initialize`.
 ```
 
 Calling `-[super init]` if `NSObject` is the direct superclass is superflous
-and can be avoided. MulleObjC uses manual retain counting, so `-retain` what 
+and can be avoided. MulleObjC uses manual retain counting, so `-retain` what
 needs to be retained by the instance.
 
 
@@ -299,6 +337,30 @@ finalized once.
 
 Non property instance variables should be freed manually. You can do this
 also in `-finalize`, but often an object needs some values until the very end.
+
+
+### +lookup:
+
+```
++ (NSNumber *) lookup:(NSString *) key
+{
+   NSNumber   *value;
+
+   mulle_thread_mutex_lock( &Self._lock);
+   {
+      value = [Self._lookupTable objectForKey:key];
+      value = [[value retain] autorelease]; // if
+   }
+   mulle_thread_mutex_unloc( &Self._lock);
+   return( value);
+}
+```
+
+`+lookup` accesses a mutable class variable, therefore you should protect
+the contents with a lock. You should also `retain`/`autorelease` the return
+value inside the lock, to push the value into the current threads
+autoreleasepool.
+
 
 
 ### -setA:
@@ -361,4 +423,4 @@ We can not add *nil* to an array. So the assert ensures that
 ## Next
 
 With the basics covered, the next topic is
-[how to write good MulleObjC code](mydoc_good.html).
+on how to write [good MulleObjC code](mydoc_good.html).

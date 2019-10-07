@@ -8,26 +8,47 @@ permalink: mydoc_modern.html
 folder: mydoc
 ---
 
-Objective-C is an [Object Oriented Programming Language](https://en.wikipedia.org/wiki/Object-oriented_programming).
-With that comes the expectation of a plug-n-play programming environment,
-where classes and categoroie can be added and removed, without having to
-edit part of application. This expectation was largely never fulfilled in,
-due to deficiencies with the compilation tools, the Objective-C runtime and
-the general way headers are imported.
+The preferred development workflow is the "modern worflow".
+The modern workflow is static library based. You can also use the
+[legacy workflow](mydoc_legacy.html), which is shared library based.
 
-**mulle-objc** wants to achieve such a plug-n-play environment, and for that the
-modern workflow has been created. First of all it is static library based.
 
-The immediate advantages of that approach are:
+The advantages of the static library approach are:
 
 * static linking works on platforms that do not support dynamic libraries
 * static linking can be optimized to remove unused classes and categories
 * static linking produces executables that are easier to install and deploy
 
 
+## Foundation vs MulleObjC
+
+There are two starting points. If you want a full class system with strings,
+containers and OS support, you will want to base your code on the **Foundation**.
+This will be the default.
+
+If you just want to play with a minimal runtime base your code on **MulleObjC**.
+Instead of `-m foundation/objc-developer` use `-m mulle-objc/objc-developer`
+
+
+## Quick example "Hello World"
+
+Generate a new executable project, build and run it:
+
+``` console
+mulle-sde init -m foundation/objc-developer -d hello-world executable
+cd hello-world
+```
+
+You can see the demo source in `src/main.m` and edit it to taste.
+
+``` console
+mulle-sde craft
+./kitchen/debug/hello-world
+```
+
 ## Setting up a project for the modern workflow
 
-As a golden rule of the modern workflow do not create projects
+As a golden rule of the modern workflow: do not create projects
 with multiple targets. If you have a library and an executable, make it two
 separate projects.
 
@@ -41,7 +62,7 @@ mulle-sde init -m foundation/objc-developer -d myexe executable
 Your project layout would be then like this:
 
 ```
-src
+myproject
 ├── myexe
 └── mylib
 ```
@@ -73,39 +94,16 @@ At this point you're done.
 statements to your `CMakeLists.txt`, it's all done for you with
 `mulle-sde update`, which you run in both projects." %}
 
-## Writing classes that benefit from the modern workflow
-
-It is not only that libraries are plug-n-play in **mulle-objc**. It is also
-a goal, that source-files are motile. They should be easily moved between
-various libraries without the need to edit anything. Read [The beauty of generic header-names](https://www.mulle-kybernetik.com/weblog/2019/beauty_of_generic_headers.html) for more on that.
-
-In general write your `@interface` headerfiles like this:
-
-```
-#import "import.h"
-
-
-@interface Foo : NSObject
-@end
-```
-
-And your implementations like so:
-
-```
-#import "Foo.h"
-
-#import "import-private.h"
-
-@implementation Foo
-@end
-```
-
-and your class will partake in the "modern workflow".
-
-{% include note.html content="Avoid referencing dependency headers in your source files directly. Use the generic `import.h` and `import-private.h` headers instead" %}
-
 
 ## Adding files to or removing files from a project
+
+Add and remove sourcefiles in `${PROJECT_SOURCE_DIR}` which is by default the
+`src` folder of your project. Then run
+`mulle-sde update`.  `mulle-sde update` will notice the file changes and will
+reflect them into the `CMakeLists.txt` indirectly via `cmake/_Headers.cmake`
+and `cmake/_Sources.cmake`. You can check if your files will be found with
+`mulle-sde list`.
+
 
 If you look at the default project settings with `mulle-sde environment list`
 you will find amongst those these relevant entries:
@@ -123,12 +121,7 @@ should trigger a rebuilt. These files are searched for in the places given by
 `MULLE_MATCH_PATH`, which is a combination of files and directories of your
 project.
 
-Knowing this, it is now clear that sourcefiles should be placed into
-`${PROJECT_SOURCE_DIR}` which is `src`. These files will be found by
-`mulle-sde update` and incorporated into the `CMakeLists.txt`. You can check
-this with `mulle-sde list`.
 
-{% include note.html content="You do not need to edit `CMakeLists.txt` when
-adding or removing files from your project." %}
+## Next
 
-
+Add a third party [dependency](mydoc_pnp_dependency.html) to your project.

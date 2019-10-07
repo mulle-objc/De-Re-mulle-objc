@@ -3,7 +3,7 @@
 @import Whatever;             // @import doesn't work
 
 
-@interface Foo 
+@interface Foo
 
 // unsupported property attribute
 @property( atomic) id  a;
@@ -13,8 +13,8 @@
 @property( unsafe_unretained) e;  // same as assign, use assign
 @property( class) id  f;          // class has a chance of being supported sometime
 
-// assign is supported 
-// we need the next two declarations for @synthesize to complain 
+// assign is supported
+// we need the next two declarations for @synthesize to complain
 @property( assign) id g;
 @property( assign) id h;
 
@@ -27,7 +27,7 @@
 // can not synthesize to a different name, ivar must be '_'<name>.
 @synthesize g = _g1;
 
-// specfiying a property as dynamic with @dynamic does nothing 
+// specfiying a property as dynamic with @dynamic does nothing
 @dynamic h;
 
 
@@ -68,13 +68,6 @@
 - (NSNumber *) literalBOOL
 {
    return( @YES);
-}
-
-
-// literal () is currently broken
-- (NSDictionary *) literalAnything
-{
-   return( @( 32));
 }
 
 

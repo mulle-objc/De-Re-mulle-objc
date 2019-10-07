@@ -1,5 +1,5 @@
 ---
-title: Porting ARC code
+title: ARC
 keywords: class
 last_updated: March 26, 2019
 tags: [runtime,compiler]
@@ -8,7 +8,9 @@ permalink: mydoc_arc.html
 folder: mydoc
 ---
 
-Ideally code should remain functional in ARC but work flawlessly in
+ARC as a technology is not available in **mulle-objc** and never will be.
+
+Ideally though, code should remain functional in ARC but work flawlessly in
 MulleObjC.
 
 
@@ -78,7 +80,7 @@ You could use this idea to modify your `-dealloc` code
 
 ```
 #if __has_feature(objc_arc)
-# define SUPER_DEALLOC()  
+# define SUPER_DEALLOC()
 #else
 # define SUPER_DEALLOC()  [super dealloc]
 #endif

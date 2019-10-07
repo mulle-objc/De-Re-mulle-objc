@@ -11,7 +11,7 @@ a collection of links, that will tell you how to install **mulle-objc** and
 also present some of the technical background." %}
 
 
-{% include note.html content="Some of the content is only applicable to version mulle-objc 8.0.0, which has not been released as of this writing." %}
+{% include note.html content="Some of the content is only applicable to version mulle-objc 9.0.0, which has not been released as of this writing." %}
 
 
 ## Why Objective-C ?
@@ -22,34 +22,56 @@ in C++ beaureaucracy, Objective-C is the answer. It is:
 
 * Easy to learn
 * Fun
-* Manages complexity easily
 * No magic
-* Powerful class-system
+* A complexity manager
+* A dynamic messenger
+* A powerful class-system
 
 
-## MulleObjC is different
+## Install
 
-If you look at the [list of features](mydoc_differences.html) you will see a
-lot of things "missing". They are missing for good reasons. But there are also
-additions and improvements to the Objective-C language.
+This guide doesn't have detailed installation instructions. Read the
+instructions on
+[foundation-developer](https://github.com/MulleFoundation/foundation-developer)
+and follow them.
 
-This developer guide will show you how to use the new features and circumvent
-the missing ones on.
+Afterwards you should have **mulle-clang** and **mulle-sde** in your PATH.
+
+``` console
+mulle-clang --version
+mulle-sde --version
+```
+
+## Development
+
+Objective-C is an [Object Oriented Programming Language](https://en.wikipedia.org/wiki/Object-oriented_programming).
+With that comes the expectation of a plug-n-play programming environment.
+It should be possible to add and remove functionality, without
+breaking the application. This expectation has been historically never
+fulfilled, due to deficiencies with the compilation tools, the Objective-C
+runtime and the way headers are handled.
 
 
-## TODO
+### Modern Workflow
 
-* Intro text for features
-* Text for C runtime porting
-* Run through modern workflow
-    * Write an executable
-    * Write a library
-    * Write a library thats based on a library
+The modern workflow provides such a plug-n-play environment.
 
+If you are a complete newbie [learn Objective-C](mydoc_links.html) with
+the [modern workflow](mydoc_modern.html).
+
+If you want to experience the full power MulleObjC has to offer, then use the
+[modern workflow](mydoc_modern.html).
+
+
+### Legacy Workflow
+
+If you are a seasoned Objective-C programmer, who would like to try porting
+some of his existing code to mulle-objc, then start with the [legacy workflow](mydoc_legacy.html).
 
 
 ## Next
 
-Get going with the [MulleObjC Start](mydoc_start.html).
+The next step is to [Learn Objective-C](mydoc_links.html). Or if you
+already know the language, skip to [Basics](mydoc_basics.html)
 
 {% include links.html %}

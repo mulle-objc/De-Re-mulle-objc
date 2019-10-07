@@ -161,7 +161,8 @@ See [Porting @synchronized](mydoc_synchronized.html) for code conversion tips.
 
 ### @YES ...
 
-**@YES** and **@NO** are not supported, use `+numberWithBool:` instead
+**@YES** and **@NO** are not supported, use |`@(YES)`, `@(NO)` or
+`+numberWithBool:` instead.
 
 ```
 // literal BOOL is not supported
@@ -171,16 +172,10 @@ See [Porting @synchronized](mydoc_synchronized.html) for code conversion tips.
 }
 ```
 
-### @()
+> Note there is a good chance that the mulle-clang compiler will forbid the use
+> of non-numeric constants for boxing. So for example@INT_MAX works currently
+> but it may not in the future.
 
-The literal @() is currently broken and returns `NSDictionary`:
-
-```
-- (NSDictionary *) literalAnything
-{
-   return( @( 32));
-}
-```
 
 ### Protocol *
 

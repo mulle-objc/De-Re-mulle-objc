@@ -3,7 +3,7 @@
 entries:
 - title: sidebar
   product: De Re MulleObjC
-  version: 0.0
+  version: 0.16
   folders:
 
   - title:
@@ -19,10 +19,9 @@ entries:
       output: pdf
       type: frontmatter
 
-  - title: Book
+  - title: Getting Started
     output: web, pdf
     folderitems:
-
     - title: Intro
       url: /index.html
       output: web, pdf
@@ -52,133 +51,167 @@ entries:
       url: /mydoc_differences.html
       output: web
 
-    - title: Modern Workflow
-      url: /mydoc_modern.html
+  - title: Development
+    output: web, pdf
+    folderitems:
+
+      - title: Modern Workflow
+        url: /mydoc_modern.html
+        output: web
+
+      - title: Dependencies
+        url: /mydoc_pnp_dependency.html
+        output: web
+
+      - title: Sources
+        url: /mydoc_pnp_source.html
+        output: web
+
+      - title: IDEs
+        url: /mydoc_ides.html
+        output: web
+
+      - title: Coverage
+        url: /mydoc_coverage.html
+        output: web
+
+      - title: Code Reduction
+        url: /mydoc_reduction.html
+        output: web
+
+      - title: Tools
+        url: /mydoc_tools.html
+        output: web
+
+      - title: Legacy Workflow
+        url: /mydoc_legacy.html
+        output: web
+
+  - title: Porting
+    output: web, pdf
+    folderitems:
+      - title: Porting Xcode projects
+        url: /mydoc_xcodeproj.html
+        output: web
+
+      - title: Porting Tips
+        url: /mydoc_porting.html
+        output: web
+
+  - title: Plug And Play Code
+    output: web
+    folderitems:
+
+    - title: Classes
+      url: /mydoc_pnp_class.html
       output: web
 
-    - title: Porting Xcode projects
-      url: /mydoc_xcodeproj.html
+    - title: Categories
+      url: /mydoc_pnp_category.html
       output: web
 
-    - title: Porting Tips
-      url: /mydoc_porting.html
-      output: web
+  - title: Language Features
+    output: web, pdf
+    folderitems:
+    - title: "+dependencies"
+      url: /mydoc_class.html
+      output: web, pdf
 
-    - title: Runtime Features
-      url: /mydoc_runtime.html
-      output: web
+    - title: "-finalize"
+      url: /mydoc_finalize.html
+      output: web, pdf
 
-    - title: Coverage
-      url: /mydoc_coverage.html
-      output: web
+    - title: "@property"
+      url: /mydoc_property_new.html
+      output: web, pdf
 
-    - title: Tools
-      url: /mydoc_tools.html
-      output: web
+    - title: "@protocolclass"
+      url: /mydoc_protocolclass.html
+      output: web, pdf
 
-      subfolders:
-      - title: Features
-        output: web, pdf
-        subfolderitems:
-        - title: "+dependencies"
-          url: /mydoc_class.html
-          output: web, pdf
+    - title: "Class-cluster"
+      url: /mydoc_classcluster.html
+      output: web, pdf
 
-        - title: "-finalize"
-          url: /mydoc_finalize.html
-          output: web, pdf
+    - title: "Singleton"
+      url: /mydoc_singleton.html
+      output: web, pdf
 
-        - title: "@property"
-          url: /mydoc_property_new.html
-          output: web, pdf
+    - title: "Forwarding"
+      url: /mydoc_forward.html
+      output: web, pdf
 
-        - title: "@protocolclass"
-          url: /mydoc_protocolclass.html
-          output: web, pdf
+    - title: "Tagged Pointer"
+      url: /mydoc_tps.html
+      output: web, pdf
 
-        - title: "Class-cluster"
-          url: /mydoc_classcluster.html
-          output: web, pdf
+    - title: "Unload"
+      url: /mydoc_unload.html
+      output: web, pdf
 
-        - title: "Singleton"
-          url: /mydoc_singleton.html
-          output: web, pdf
+    - title: "KeyValueCoding"
+      url: /mydoc_kvc.html
+      output: web, pdf
 
-        - title: "Forwarding"
-          url: /mydoc_forward.html
-          output: web, pdf
+    - title: "Universe"
+      url: /mydoc_universe.html
+      output: web, pdf
 
-        - title: "Tagged Pointer"
-          url: /mydoc_tps.html
-          output: web, pdf
+  - title: Pitfalls
+    output: web, pdf
+    folderitems:
 
-        - title: "Unload"
-          url: /mydoc_unload.html
-          output: web, pdf
+    - title: "array[0]"
+      url: /mydoc_subscripting.html
+      output: web, pdf
 
-        - title: "KeyValueCoding"
-          url: /mydoc_kvc.html
-          output: web, pdf
+    - title: "ARC"
+      url: /mydoc_arc.html
+      output: web, pdf
 
-        - title: "Universe"
-          url: /mydoc_universe.html
-          output: web, pdf
+    - title: "^block"
+      url: /mydoc_block.html
+      output: web, pdf
 
-      - title: Porting
-        output: web, pdf
-        subfolderitems:
+    - title: "Objective-C++"
+      url: /mydoc_cpp.html
+      output: web, pdf
 
-        - title: "array[0]"
-          url: /mydoc_subscripting.html
-          output: web, pdf
+    - title: "dot syntax"
+      url: /mydoc_dotsyntax.html
+      output: web, pdf
 
-        - title: "ARC"
-          url: /mydoc_arc.html
-          output: web, pdf
+    - title: "@import"
+      url: /mydoc_modules.html
+      output: web, pdf
 
-        - title: "^block"
-          url: /mydoc_block.html
-          output: web, pdf
+    - title: "@package"
+      url: /mydoc_package.html
+      output: web, pdf
 
-        - title: "Objective-C++"
-          url: /mydoc_cpp.html
-          output: web, pdf
+    - title: "@protocol"
+      url: /mydoc_protocol.html
+      output: web, pdf
 
-        - title: "dot syntax"
-          url: /mydoc_dotsyntax.html
-          output: web, pdf
+    - title: "@property"
+      url: /mydoc_property.html
+      output: web, pdf
 
-        - title: "@import"
-          url: /mydoc_modules.html
-          output: web, pdf
+    - title: "@synthesize"
+      url: /mydoc_synthesize.html
+      output: web, pdf
 
-        - title: "@package"
-          url: /mydoc_package.html
-          output: web, pdf
+    - title: "@synchronized"
+      url: /mydoc_synchronized.html
+      output: web, pdf
 
-        - title: "@protocol"
-          url: /mydoc_protocol.html
-          output: web, pdf
+    - title: "... (varargs)"
+      url: /mydoc_varargs.html
+      output: web, pdf
 
-        - title: "@property"
-          url: /mydoc_property.html
-          output: web, pdf
-
-        - title: "@synthesize"
-          url: /mydoc_synthesize.html
-          output: web, pdf
-
-        - title: "@synchronized"
-          url: /mydoc_synchronized.html
-          output: web, pdf
-
-        - title: "... (varargs)"
-          url: /mydoc_varargs.html
-          output: web, pdf
-
-        - title: "NSZone"
-          url: /mydoc_nszone.html
-          output: web, pdf
+    - title: "NSZone"
+      url: /mydoc_nszone.html
+      output: web, pdf
 
   - title: Acknowledgments
     output: web, pdf
@@ -187,7 +220,6 @@ entries:
     - title: About the Jekyll theme author
       url: /mydoc_jekyll_theme.html
       output: web, pdf
-
 
   - title: Index
     output: web

@@ -112,7 +112,6 @@ static inline Foreign  *FooGetForeign( Foo *self)
    return( ((struct{ @defs( Foo); } *) self)->_foreign);
 }
 
-
 ```
 
 #### @compatibility_alias
@@ -262,7 +261,7 @@ NS_ENDHANDLER
 }
 ```
 
-## inout ...
+#### inout ...
 
 These @encode adornments should still work and should be properly encoded
 and decoded, but noone uses them:
@@ -274,7 +273,7 @@ and decoded, but noone uses them:
 * byref
 * oneway
 
-> See: []/(https://stackoverflow.com/questions/5609564/objective-c-in-out-inout-byref-byval-and-so-on-what-are-they)
+> See: [](https://stackoverflow.com/questions/5609564/objective-c-in-out-inout-byref-byval-and-so-on-what-are-they)
 
 
 ### Literals
