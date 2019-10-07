@@ -65,8 +65,8 @@ useful:
 // we know we can message it with that protocol
 @class Foreign< MethodProtocol>;
 ```
-### Classes
 
+### Classes
 
 ```
 #pragma clang diagnostic ignored "-Wobjc-root-class"
@@ -278,10 +278,9 @@ and decoded, but noone uses them:
 
 ### Literals
 
-Literals are supported *except* **@YES**, **@NO** and **@()**.
+Literals are supported *except* **@YES** and **@NO**, but boxed versions of those are fine.
 
-
-#### @1848,@18.48,@'A'
+#### @1848,@18.48,@'A',@(YES)
 
 ```
 - (NSNumber *) literalInteger
@@ -299,6 +298,11 @@ Literals are supported *except* **@YES**, **@NO** and **@()**.
 - (NSNumber *) literalCharacter
 {
    return( @'A');
+}
+
+- (NSNumber *) literalBOOL
+{
+   return( @(YES));
 }
 ```
 
