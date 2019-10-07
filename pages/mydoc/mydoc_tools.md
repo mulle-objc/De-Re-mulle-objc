@@ -104,3 +104,8 @@ be useful for finding missing tests.
 
 See [Coverage](mydoc_coverage.html) for more details about MulleObjC coverage information.
 
+
+## Next
+
+Check out the [legacy workflow](mydoc_legacy.html) for an alternative to the
+modern workflow.

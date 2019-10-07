@@ -49,4 +49,9 @@ rm -rf .mulle
 mulle-sde init -m foundation/objc-developer executable
 ```
 
-Now read up how the setup the [modern workflow](mydoc_modern.html).
+And then you are ready to setup the [modern workflow](mydoc_modern.html).
+
+
+## Next
+
+Coming up next are the [porting tips](mydoc_porting.html).

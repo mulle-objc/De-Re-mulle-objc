@@ -32,14 +32,15 @@ Instead of `-m foundation/objc-developer` use `-m mulle-objc/objc-developer`
 
 ## Quick example "Hello World"
 
-Generate a new executable project, build and run it:
+Generate a new executable project with:
 
 ``` console
 mulle-sde init -m foundation/objc-developer -d hello-world executable
 cd hello-world
 ```
 
-You can see the demo source in `src/main.m` and edit it to taste.
+You can see the demo source in `src/main.m` and edit it to taste. Then you
+are ready to craft your executable and run it:
 
 ``` console
 mulle-sde craft
@@ -59,7 +60,7 @@ mulle-sde init -m foundation/objc-developer -d mylib library
 mulle-sde init -m foundation/objc-developer -d myexe executable
 ```
 
-Your project layout would be then like this:
+Your project layout would look like this:
 
 ```
 myproject

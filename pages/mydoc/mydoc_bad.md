@@ -172,8 +172,8 @@ See [Porting @synchronized](mydoc_synchronized.html) for code conversion tips.
 ```
 
 > Note there is a good chance that the mulle-clang compiler will forbid the use
-> of non-numeric constants for boxing. So for example@INT_MAX works currently
-> but it may not in the future.
+> of non-numeric constants for boxing. So for example `@INT_MAX` may work
+> currently but it may not in the future.
 
 
 ### Protocol *
