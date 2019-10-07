@@ -6,12 +6,9 @@ permalink: index.html
 summary: What you need to know to use MulleObjC to its full potential.
 ---
 
-{% include note.html content="This is a draft. Stuff will appear and disappear haphazardly. See [mulle-objc](https://mulle-objc.github.io/) for a quick introduction and
-a collection of links, that will tell you how to install **mulle-objc** and
-also present some of the technical background." %}
-
-
-{% include note.html content="Some of the content is only applicable to version mulle-objc 9.0.0, which has not been released as of this writing." %}
+{% include note.html content="This is a draft/work in progress. Stuff will
+appear and disappear haphazardly. Some of the content is only applicable to
+mulle-objc 9.0.0, which has not been released as of this writing." %}
 
 
 ## Why Objective-C ?
@@ -28,10 +25,10 @@ in C++ beaureaucracy, Objective-C is the answer. It is:
 * A powerful class-system
 
 
-## Install
+## Install mulle-objc
 
-This guide doesn't have detailed installation instructions. Read the
-instructions on
+This guide doesn't have detailed installation instructions for **mulle-objc**.
+Read the instructions on
 [foundation-developer](https://github.com/MulleFoundation/foundation-developer)
 and follow them.
 
