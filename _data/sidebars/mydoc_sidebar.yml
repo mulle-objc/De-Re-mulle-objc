@@ -243,3 +243,7 @@ entries:
         - title: 8.0.0 Features
           url: /tag_8.0.0.html
           output: web
+
+        - title: 9.0.0 Features
+          url: /tag_9.0.0.html
+          output: web

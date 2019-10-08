@@ -109,7 +109,7 @@ MULLE_OBJC_DEPENDS_ON_LIBRARY( Foundation);
       value = [Self._lookupTable objectForKey:key];
       value = [[value retain] autorelease];
    }
-   mulle_thread_mutex_unloc( &Self._lock);
+   mulle_thread_mutex_unlock( &Self._lock);
    return( value);
 }
 
@@ -219,8 +219,8 @@ time to hack mulle-objc runtime methods if you so desire.
 `+unload` is MulleObjC specific and does not exist in other runtimes. The
 MulleObjC Objective-C runtime is contained in a "universe", that is
 destructible. So `+unload` is a facility to release resources acquired by
-`+load`. When this is properly done by all classes, it makes for instance
-memory leak  checking that much more convenient.
+`+load`. When this is properly done by all classes, it makes memory leak
+checking that much more convenient.
 
 ```
 + (void) unload
@@ -351,7 +351,7 @@ also in `-finalize`, but often an object needs some values until the very end.
       value = [Self._lookupTable objectForKey:key];
       value = [[value retain] autorelease]; // if
    }
-   mulle_thread_mutex_unloc( &Self._lock);
+   mulle_thread_mutex_unlock( &Self._lock);
    return( value);
 }
 ```

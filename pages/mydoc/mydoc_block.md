@@ -39,5 +39,5 @@ Blocks that are stored for later execution, are basically a form of
 
 If the block is used immediately, perhaps to map it to an NSArray,
 extract the code into a C function. Encapsulate the parameters into a C
-struct. No
+struct.
 

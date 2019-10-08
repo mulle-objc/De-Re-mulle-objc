@@ -31,21 +31,35 @@ The following example builds a `libFoundation.so` on Linux or a
 `libFoundation.dylib` on MacOS. The headers and libraries are installed into
 your `~/usr` directory in this example:
 
-``` console
+```
 mulle-sde install --standalone --prefix "${HOME}/usr" "https://github.com/MulleFoundation/Foundation/archive/latest.zip"
 ```
 
+> If you have the repositories already checked out,
+> you can prefix the command with a search path, to avoid downloads
+> e.g.
+>
+> ``` sh
+> SRCROOT="/Volumes/Source/srcO&quot" ; \
+> MULLE_FETCH_SEARCH_PATH="${SRCROOT}/MulleFoundation:\
+> ${SRCROOT}/mulle-objc:\
+> ${SRCROOT}/mulle-core:\
+> ${SRCROOT}/mulle-concurrent:\
+> ${SRCROOT}/mulle-c" mulle-sde install ...
+> ```
+
+
 ### [9.0.0] Build and install Foundation-startup
 
-The Foundation-startup must be build and installed seperately.
+The Foundation-startup must be built and installed seperately.
 
 
-``` console
+```
 mulle-sde install --prefix "${HOME}/usr" "https://github.com/MulleFoundation/Foundation-startup/archive/latest.zip"
 ```
-> This duplicates much of the work already done by the previous Foundation
-> built, but this can not be avoided easily:
 
+This duplicates much of the work already done by the previous Foundation
+built, but this can not be avoided easily.
 
 
 {% include note.html content="**Homebrew support**:
@@ -82,13 +96,17 @@ Building is now platform specific (unless you use **cmake**). You must use
 
 #### Linux:
 
-``` console
+```
 mulle-clang hello-world.m \
             -o hello-world \
             -isystem "${HOME}/usr/include" \
             -L"${HOME}/usr/lib" \
             -Wl,-rpath -Wl,"${HOME}/usr/lib" \
-            -lFoundation
+            -lFoundation \
+            -Wl,--whole_archive \
+            -lFoundation-startup
+            -lmulle_atinit \
+            -lmulle_atexit
 ```
 
 
@@ -99,7 +117,7 @@ path, which can vary for each host. It is assumed you used the **brew**
 install method, otherwise you need to correct the `-isystem`, `-L`, `-rpath`
 values in the following commands:
 
-``` console
+```
 XCODE_SDK_DIR="`xcrun --show-sdk-path`"
 mulle-clang  hello-world.m \
             -o hello-world \\
@@ -107,7 +125,11 @@ mulle-clang  hello-world.m \
             -isystem "${XCODE_SDK_DIR}/include" \
             -L"/usr/local/lib" \
             -Wl,-rpath -Wl,"/usr/local/lib" \
-            -lFoundation
+            -lFoundation \
+            -Wl,-all_load \
+            -lFoundation-startup \
+            -lmulle_atinit \
+            -lmulle_atexit
 ```
 
 {% include note.html content="You can also use Xcode to build MulleObjC
@@ -118,7 +140,7 @@ code. See [Xcode integration](//github.com/mulle-objc/mulle-objc-developer/wiki/
 
 And run your first MulleObjC executable.
 
-``` console
+```
 ./hello-world
 ```
 
