@@ -27,6 +27,9 @@ basically the same as whats offered at Tutorialspoint, but there are
 differences. Someone plagiarized but I can't tell who did it.
 The codecrackers page looks a bit nicer.
 
+### Objective-C Tutorial, Etutorials
+
+As part of introducing Cocoa there is also an [Objective-C](https://etutorials.org/Programming/Cocoa/Part+I+Introducing+Cocoa/Chapter+1.+Objective-C/) tutorial.
 
 ### Programming with Objective-C, by Apple
 
