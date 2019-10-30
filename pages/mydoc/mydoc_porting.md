@@ -122,6 +122,14 @@ The proper dependencies must be declared, the only known dependency to exist is 
 MULLE_OBJC_DEPENDS_ON_LIBRARY( Foundation);
 ```
 
+#### Move class extension code to the @interface
+
+TODO
+
+#### Fix mismatching property and ivar names (rename ivars)
+
+TODO
+
 #### Issues
 
 * the runtime only knows about protocols that are adopted by a class
