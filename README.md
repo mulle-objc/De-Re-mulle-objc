@@ -2,7 +2,7 @@
 
 Draft of a developer guide for MulleObjC.
 
-Read [De Re MulleObjC](//mulle-objc.github.io/De-Re-MulleObjC) here.
+Read [De Re MulleObjC here](//mulle-objc.github.io/De-Re-MulleObjC).
 
 ## Linux
 
