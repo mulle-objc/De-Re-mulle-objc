@@ -40,7 +40,7 @@ mulle-sde install --standalone --prefix "${HOME}/usr" "https://github.com/MulleF
 > e.g.
 >
 > ``` sh
-> SRCROOT="/Volumes/Source/srcO&quot" ; \
+> SRCROOT="/Volumes/Source/srcO" ; \
 > MULLE_FETCH_SEARCH_PATH="${SRCROOT}/MulleFoundation:\
 > ${SRCROOT}/mulle-objc:\
 > ${SRCROOT}/mulle-core:\
