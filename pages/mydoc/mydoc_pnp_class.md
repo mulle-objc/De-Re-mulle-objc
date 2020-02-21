@@ -14,7 +14,7 @@ class system, we'll show how in the next example. Here we will be extending
 `NSDateFormatter`.
 
 A `NSDateFormatter` has several build-in behaviors that are specified by `NSDateFormatterBehavior10_0` or `NSDateFormatterBehavior10_4`.
-```
+
 
 We'd like to extend this with a custom behavior `MyDateFormatterBehavior` and
 here is how to do it.
