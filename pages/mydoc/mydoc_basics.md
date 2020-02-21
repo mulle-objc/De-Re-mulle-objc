@@ -311,6 +311,8 @@ needs to be retained by the instance.
 {
    [_kids autorelease];
    _kids = nil;
+   
+   [super finalize];
 }
 ```
 
