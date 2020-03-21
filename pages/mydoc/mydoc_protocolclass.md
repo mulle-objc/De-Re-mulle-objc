@@ -98,6 +98,7 @@ PROTOCOLCLASS_INTERFACE0( Foo)
 @optional
 - (void) doTheFooThing;
 PROTOCOLCLASS_END()
+```
 
 `Foo.m`:
 
