@@ -2,17 +2,17 @@
 title: Protocolclasses allow default implementations
 keywords: protocol class protocolclass
 last_updated: March 26, 2019
-tags: [runtime]
+tags: [runtime, 10.0.0]
 summary: "Protocolclasses allow default implementations"
 permalink: mydoc_protocolclass.html
 folder: mydoc
 ---
 
-A *protocolclass* is an extension to the Objective-C language. It allows
+A *protocolclass* is a mulle-objc extension of the Objective-C language. It allows
 a class to inherit default implementations from a protocol.
 
 `@protocolclass` as a keyword doesn't exist yet, but it's effect can be
-simulated by: `@class foo; @protocol foo; @end; @interface foo <foo>; @end`.
+simulated by: `@class Foo; @protocol Foo; @end; @interface Foo <Foo>; @end`.
 
 For a class to become a protocolclass it must meet the following
 requirements:
@@ -26,49 +26,180 @@ Also a protocolclass can not have any categories, this isn't enforced, but
 categories on protocolclass aren't used by the runtime for method lookup.
 The protocol of the protocolclass can adopt other protocols.
 
+## A protocolclass with a default implementation of a method
 
-## Creating a protocolclass
+### future
 
-Lets's write a *protocolclass* with everything in it. Let's assume we do need
-some internal storage in the protocol. We define this with a 'C' struct
-`FooIvars`. 
-
-`Foo.h`:
+This is how it will look like at some point in the future:
 
 ```objective-c
-struct FooIvars 
-{
-   int   a;
-};
-
-@class Foo;
-@protocol Foo
-- (struct FooIvars *) getFooIvars;
+@protocolclass Foo
 @optional
-- (void) doTheFooThing;
+- (int) someValue;
+@end
+
+@implementation Foo 
+
+- (void) someValue
+{
+   return( 1848);
+}
+
+@end
+
+@interface AdoptingClass : NSObject <Foo>
+@end
+
+@implementation AdoptingClass
+@end
+```
+
+The use of `@optional` for `-someValue` allows it to be used as a default implementation, where
+an adopting class does not get a warning, if it doesn't implement it. A `@protocolclass` must
+implement the `@optional` methods. 
+
+
+### now
+
+This is how it looks like now without macros:
+
+```objective-c
+@class Foo;              
+@protocol Foo
+@optional
+- (int) someValue;
 @end
 
 @interface Foo <Foo>
 @end
-```
-
-`Foo.m`:
-
-```
-#import "Foo.h"
 
 @implementation Foo 
 
-- (void) doTheFooThing
+- (void) someValue
 {
-  struct FooIvars   *ivars;
-  
-  ivars = [self getFooIvars];
-  ivars->a += 1848;
+   return( 1848);
 }
 
 @end
+
+@interface AdoptingClass : NSObject <Foo>
+@end
+
+@implementation AdoptingClass
+@end
 ```
+
+The declaration of `@class Foo` before `@protocol Foo` signals that this is a protocolclass.
+Notice how the class `Foo` is adopting it's protocol `Foo` of the same name. It is a root class.
+
+This will give you a number of compiler warnings, due to root classes being used and so forth.
+
+### now with macros
+
+`PROTOCOLCLASS` macros can make your life a little easier and remove the compiler warnings. 
+The above example can be transformed with macros into:
+
+`Foo.h`:
+
+```objective-c
+PROTOCOLCLASS_INTERFACE0( Foo)
+@optional
+- (int) someValue;
+PROTOCOLCLASS_END()
+
+PROTOCOLCLASS_IMPLEMENTATION( Foo)
+
+- (void) someValue
+{
+   return( 1848);
+}
+
+PROTOCOLCLASS_END()
+
+@interface AdoptingClass : NSObject <Foo>
+@end
+
+@implementation AdoptingClass
+@end
+```
+
+Due to deficiences in the way variadic arguments are handled in C macros, you must use
+`PROTOCOLCLASS_INTERFACE0` instead of `PROTOCOLCLASS_INTERFACE`, if your protocolclass
+adopts no further protocols.
+
+## A protocolclass with a property
+
+### future
+
+```objective-c
+@protocolclass Foo
+@property int  someValue;
+@end
+
+@implementation Foo 
+@end
+
+@interface AdoptingClass : NSObject <Foo>
+@end
+
+@implementation AdoptingClass
+@end
+```
+
+The adoptingClass will implement the property.
+
+
+### now
+
+This is how it looks like now without macros:
+
+```objective-c
+@class Foo;              
+@protocol Foo
+@property int someValue;
+@end
+
+@interface Foo <Foo>
+@property int someValue; 
+@end
+
+@implementation Foo 
+@end
+
+@interface AdoptingClass : NSObject <Foo>
+@property int someValue; 
+@end
+
+@implementation AdoptingClass
+@end
+```
+
+You must redeclare the property in the adopting class.
+
+### now with macros
+
+Now with even more macros:
+
+```objective-c
+
+#define FooProperties \
+@property int someValue
+
+PROTOCOLCLASS_INTERFACE0( Foo)
+FooProperties;
+PROTOCOLCLASS_END()
+
+PROTOCOLCLASS_IMPLEMENTATION( Foo)
+PROTOCOLCLASS_END()
+
+@interface AdoptingClass : NSObject <Foo>
+FooProperties;
+@end
+
+@implementation AdoptingClass
+@end
+```
+
 
 ## Supplement an existing protocol with protocolclass methods
 
@@ -79,48 +210,10 @@ and redeclare those methods, for which implementations are provided as
 {% include note.html content="Redeclaration as optional is a mulle-objc specific feature." %}
 
 
-
-## Use of PROTOCOLCLASS macros
-
-`PROTOCOLCLASS` macros can make your life a little easier. The above example 
-would be transformed with macros into:
-
-`Foo.h`:
-
-```objective-c
-struct FooIvars 
-{
-   int   a;
-};
-
-PROTOCOLCLASS_INTERFACE0( Foo)
-- (struct FooIvars *) getFooIvars;
-@optional
-- (void) doTheFooThing;
-PROTOCOLCLASS_END()
-```
-
-`Foo.m`:
-
-```objective-c
-#import "Foo.h"
-
-#pragma clang diagnostic ignored "-Wobjc-root-class"
-PROTOCOLCLASS_IMPLEMENTATION( Foo)
-PROTOCOLCLASS_END()
-```
-
-Due to deficiences in the way variadic arguments are handled in C macros, you must use
-`PROTOCOLCLASS_INTERFACE0` instead of `PROTOCOLCLASS_INTERFACE`, if your protocolclass
-adopts no further protocols.
-
-
-### Calling NSObject methods from your protocolclass methods
+## Calling NSObject methods from your protocolclass methods
 
 If your protocolclass wants to use NSObject methods, it should declare this
 in its protocol. 
-
-`Foo.h`:
 
 ```objective-c
 #import <Foundation/Foundation.h>
@@ -129,18 +222,6 @@ PROTOCOLCLASS_INTERFACE( MyProtocolClass, NSObject)
 @optional
 - (void) doSomethingWithObject:(id) object;
 PROTOCOLCLASS_END()
-```
-
-This will create a lot of unimplemented method warnings though. They are
-usefully turned off with a `#pragma`:
-
-`Foo.m`:
-
-```
-#import "Foo.h"
-
-#pragma clang diagnostic ignored "-Wprotocol"
-#pragma clang diagnostic ignored "-Wobjc-root-class"
 
 PROTOCOLCLASS_IMPLEMENTATION( Foo)
 - (BOOL) doSomethingWithObject:(id<MyProtocolClass>) object
@@ -150,41 +231,6 @@ PROTOCOLCLASS_IMPLEMENTATION( Foo)
 PROTOCOLCLASS_END()
 ```
 
-## Using the protocolclass
-
-Using the protocolclass is very simple. You just adopt the protocol.
-
-`MyClass.h`:
-
-```
-#import "Foo.h"
-
-@interface MyClass : NSObject < Foo>
-{
-  struct FooIvars   ivars;
-}
-@end
-```
-
-
-`MyClass.m`:
-
-```
-#import "MyClass.h"
-
-@implementation MyClass 
-
-- (struct FooIvars *) getFooIvars
-{
-   return( &ivars);
-}
-@end
-```
-
-Now users of your class can call `-doTheFooThing`. Protocolclasses become a time and space saver, if multiple classes
-adopt them.
-
-
 ## Things to watch out for
 
 
@@ -192,16 +238,6 @@ adopt them.
 
 In the class adopting your protocol, a call to super will first search the protocolclasses in order
 of adoption then the superclass, in the case  `MyClass` that is `Foo` first then `NSObject`.
-
-
-### Do not use @property in your protocol (yet)
-
-This will create an instance variable in your root class, which taints it.
-In the future this will be remedied by:
-
-* use `dynamic` property attribute
-* use `propertyclass` keyword 
-
 
 ### Calling super from the protocolclass
 
@@ -216,7 +252,7 @@ implementation.
 ```
    IMP   imp;
    
-   imp = MulleObjCSearchOverriddenIMP( self, @selector( doTheFooThing), @selector( Foo), 0);
+   imp = MulleObjCObjectSearchOverriddenIMP( self, @selector( doTheFooThing), @selector( Foo), 0);
    return( (*imp)( self, @selector( doTheFooThing), self));
 ```
 
