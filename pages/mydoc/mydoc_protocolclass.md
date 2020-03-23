@@ -49,9 +49,6 @@ This is how it will look like at some point in the future:
 
 @interface AdoptingClass : NSObject <Foo>
 @end
-
-@implementation AdoptingClass
-@end
 ```
 
 The use of `@optional` for `-someValue` allows it to be used as a default implementation, where
@@ -83,9 +80,6 @@ This is how it looks like now without macros:
 @end
 
 @interface AdoptingClass : NSObject <Foo>
-@end
-
-@implementation AdoptingClass
 @end
 ```
 
@@ -128,9 +122,6 @@ PROTOCOLCLASS_END()
 
 @interface AdoptingClass : NSObject <Foo>
 @end
-
-@implementation AdoptingClass
-@end
 ```
 
 Due to deficiences in the way variadic arguments are handled in C macros, you must use
@@ -150,9 +141,6 @@ adopts no further protocols.
 @end
 
 @interface AdoptingClass : NSObject <Foo>
-@end
-
-@implementation AdoptingClass
 @end
 ```
 
@@ -179,9 +167,6 @@ This is how it looks like now without macros:
 @interface AdoptingClass : NSObject <Foo>
 @property int someValue; 
 @end
-
-@implementation AdoptingClass
-@end
 ```
 
 You must redeclare the property in the adopting class.
@@ -204,9 +189,6 @@ PROTOCOLCLASS_END()
 
 @interface AdoptingClass : NSObject <Foo>
 FooProperties;
-@end
-
-@implementation AdoptingClass
 @end
 ```
 
