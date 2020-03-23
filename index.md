@@ -15,12 +15,11 @@ mulle-objc 9.0.0, which has not been released as of this writing." %}
 
 If you are comfortable writing in C, you will notice that C is fine until you
 reach a certain level of complexity. If you don't want to spend your lifetime
-in C++ beaureaucracy, Objective-C is the answer. It is:
+in C++ beaureaucracy, Objective-C is the answer:
 
 * Easy to learn
 * Fun
 * No magic
-* A complexity manager
 * A dynamic messenger
 * A powerful class-system
 
