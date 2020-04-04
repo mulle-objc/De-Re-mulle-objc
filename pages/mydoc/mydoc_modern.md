@@ -39,15 +39,96 @@ mulle-sde init -m foundation/objc-developer -d hello-world executable
 cd hello-world
 ```
 
-You can see the demo source in `src/main.m` and edit it to taste. Then you
-are ready to craft your executable and run it:
+Your project filesystem structure on your file system will be something like:
+
+```
+hello-world
+├── .mulle   // mulle-sde configuration
+│   ├── share
+│   │   └── ...
+│   ├── etc
+│   │   └── ...
+│   └── var
+│       └── ...
+├── cmake    // mulle-sde-developer cmake files
+│   ├── DependenciesAndLibraries.cmake
+│   ├── Headers.cmake
+│   ├── share   
+│   │   └── ...
+│   └── Sources.cmake
+├── CMakeLists.txt  // cmake project
+├── README.md       // documentation
+└── src             // source directory
+    ├── import.h    
+    ├── import-private.h
+    ├── main.m
+    ├── _myexe-import.h         // recreated by reflect
+    ├── _myexe-import-private.h // recreated by reflect
+    └── version.h
+```
+
+You can see the demo source in `src/main.m`. You are ready to craft your executable and run it. The following
+part will be quite slow the first time, as mulle-sde will setup a virtual environment of your project, which 
+is something akin to creating a `docker container`. But it will only have to do this once:
 
 ``` console
 mulle-sde craft
 ./kitchen/debug/hello-world
 ```
 
-## Setting up a project for the modern workflow
+{% include tip.html content="All folders named `share` are considered upgradable by
+mulle-sde. They will be wiped and recreated when you do a `mulle-sde upgrade` sometime
+into the future. You should not edit their contents. Similiarly folders called `var`
+are used for temporary content and may be wiped and recreated by commands. %}
+
+## Edit your project 
+
+You can use any IDE you like, but I suggest [Sublime Text](https://www.sublimetext.com/) or [VSCode](https://code.visualstudio.com/) in the beginning.
+Both run on all major platforms (like mulle-objc is supposed to). And there are extensions for them, 
+that remove quite a bit of tedious set up:
+
+```
+mulle-sde extension add sublime-text # will create hello-world.sublime-project
+mulle-sde extension add vscode       # will create hello-world.code-workspace
+```
+
+## Adding files to or removing files from a project
+
+Source files live in the `src` folder of your project (can be changed with `PROJECT_SOURCE_DIR`).
+
+The most convenient way to add files is with the `mulle-sde add` command, as this gives you 
+template produced implementation and interface files for a new class. 
+If you use a `+` in your filename, you will get files for category.
+
+```
+mulle-sde add src/Foo.m
+mulle-sde add src/Foo+Stuff.m
+```
+
+You can manipulate sources anyway you like though. Be it with a desktop file manager or a terminal 
+command line. After you made your changes, you run `mulle-sde reflect` to reflect your changes
+back into `CMakeListst.txt` (indirectly via `cmake/_Headers.cmake` and `cmake/_Sources.cmake`). 
+You can check if your files will be found with `mulle-sde list --files`.
+
+
+{% include tip.html content="If you look at the default project settings with `mulle-sde environment list`
+you will see these relevant entries for source files:
+
+```
+PROJECT_SOURCE_DIR=\"src\"
+MULLE_MATCH_FILENAMES=\"config:*.h:*.inc:*.c:CMakeLists.txt:*.cmake:*.m:*.aam\"
+MULLE_MATCH_IGNORE_PATH=
+MULLE_MATCH_PATH=\".mulle/etc/sourcetree/config:${PROJECT_SOURCE_DIR}:CMakeLists.txt:cmake\"
+```
+
+Files that match any of the wildcards given in `MULLE_MATCH_FILENAMES` are
+considered interesting *matchable* files. Changes in any of those files
+should trigger a rebuilt. These files are searched for in the places given by
+`MULLE_MATCH_PATH`, which is a combination of files and directories of your
+project. %}
+
+
+## Setting up a complex project for the modern workflow
 
 As a golden rule of the modern workflow: do not create projects
 with multiple targets. If you have a library and an executable, make it two
@@ -60,7 +141,7 @@ mulle-sde init -m foundation/objc-developer -d mylib library
 mulle-sde init -m foundation/objc-developer -d myexe executable
 ```
 
-Your project layout would look like this:
+Your project layout would then look like this:
 
 ```
 myproject
@@ -85,7 +166,6 @@ will be easily found. If you place it somewhere else, you need to add it's
 parent directory to the search-path variable `MULLE_FETCH_SEARCH_PATH`.
 E.g. `mylib` is `/home/wherever/src/mylib` then modify the search-path with `mulle-sde environment set MULLE_FETCH_SEARCH_PATH '/home/wherever/src:${MULLE_FETCH_SEARCH_PATH}'`" %}
 
-
 With `mulle-sde dependency list` or the more low-level `mulle-sourcetree list -ll`
 you can see the dependency structure of your project.
 
@@ -93,35 +173,7 @@ At this point you're done.
 
 {% include note.html content="You do not have to `#import` anything or add link
 statements to your `CMakeLists.txt`, it's all done for you with
-`mulle-sde update`, which you run in both projects." %}
-
-
-## Adding files to or removing files from a project
-
-Add and remove sourcefiles in `${PROJECT_SOURCE_DIR}` which is by default the
-`src` folder of your project. Then run
-`mulle-sde update`.  `mulle-sde update` will notice the file changes and will
-reflect them into the `CMakeLists.txt` indirectly via `cmake/_Headers.cmake`
-and `cmake/_Sources.cmake`. You can check if your files will be found with
-`mulle-sde list`.
-
-
-If you look at the default project settings with `mulle-sde environment list`
-you will find amongst those these relevant entries:
-
-```
-PROJECT_SOURCE_DIR="src"
-MULLE_MATCH_FILENAMES="config:*.h:*.inc:*.c:CMakeLists.txt:*.cmake:*.m:*.aam"
-MULLE_MATCH_IGNORE_PATH=
-MULLE_MATCH_PATH=".mulle/etc/sourcetree/config:${PROJECT_SOURCE_DIR}:CMakeLists.txt:cmake"
-```
-
-Files that match any of the wildcards given in `MULLE_MATCH_FILENAMES` are
-considered interesting *matchable* files. Changes in any of those files
-should trigger a rebuilt. These files are searched for in the places given by
-`MULLE_MATCH_PATH`, which is a combination of files and directories of your
-project.
-
+`mulle-sde reflect`, which you run in both projects." %}
 
 ## Next
 
