@@ -13,6 +13,13 @@ there are some useful resources online.
 
 ## Objective-C Resources
 
+### MulleObjC Cheat Sheet, Mulle kybernetiK
+
+The [MulleObjC CheatSheet](//github.com/mulle-objc/Objective-C-CheatSheet)
+is a good way to get a quick overview of what the Mulle Objective-C dialect
+has to offer. It is tailored to MulleObjC specifically, but it is no tutorial.
+
+
 ### Learn Objective-C, Tutorialspoint
 
 [Objective-C Quick Guide](https://www.tutorialspoint.com/objective_c/objective_c_quick_guide.htm) looks like
@@ -47,16 +54,21 @@ good read to understand some terminology used by fellow Objective-C coders.
 Ignore the chapters "Delegates and Data Sources", "Model View Controller",
 "Object Modeling", "Outlets", "Receptionist Pattern", "Target-Action", "Toll-Free Bridging"
 
+
 ### Learn Objective-C, CocoaDev
 
 [Learn Objective-C](https://www.cocoadevcentral.com/d/learn_objectivec) gives a
 quick overview of concepts. Ignore the part about "Dot Syntax" though.
 
+https://github.com/objc-zen/objc-zen-book
 
-### Learn C for Cocoa, CocoaDev
+### Zen and the Art of the Objective-C Craftsmanship, Bernardi - De Bortoli
 
-[Learn C for Cocoa](http://cocoadevcentral.com/articles/000081.php) is a bit
-outdated but an easy read.
+[Zen and the Art of the Objective-C Craftsmanship](https://github.com/objc-zen/objc-zen-book)](http://cocoadevcentral.com/articles/000081.php) is a more advanced read. On a cursory examination,
+there is a lot there, that's not applicable to MulleObjC or that goes against the MulleObjC
+style.
+
+## C Resources
 
 
 ### Learn-C.org
