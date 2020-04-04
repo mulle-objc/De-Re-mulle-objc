@@ -39,7 +39,7 @@ mulle-sde init -m foundation/objc-developer -d hello-world executable
 cd hello-world
 ```
 
-Your project filesystem structure on your file system will be something like:
+Your project filesystem structure on your file system will look like this:
 
 ```
 hello-world
@@ -68,12 +68,12 @@ hello-world
 ```
 
 You can see the demo source in `src/main.m`. You are ready to craft your executable and run it. The following
-part will be quite slow the first time, as mulle-sde will setup a virtual environment of your project, which 
-is something akin to creating a `docker container`. But it will only have to do this once:
+command will be quite slow the first time, as mulle-sde will setup a virtual environment of your project. This
+is something akin to creating a `docker container`. But it will only do this once:
 
 ``` console
 mulle-sde craft
-./kitchen/debug/hello-world
+./kitchen/Debug/hello-world
 ```
 
 {% include tip.html content="All folders named `share` are considered upgradable by
