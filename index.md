@@ -8,7 +8,7 @@ summary: What you need to know to use MulleObjC to its full potential.
 
 {% include note.html content="This is a draft/work in progress. Stuff will
 appear and disappear haphazardly. Some of the content is only applicable to
-mulle-objc 9.0.0, which has not been released as of this writing." %}
+mulle-objc 0.17.0 (mulle-clang 10.0.0), which has not been released as of this writing." %}
 
 
 ## Why Objective-C ?
