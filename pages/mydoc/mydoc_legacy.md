@@ -20,11 +20,6 @@ The advantages of that approach are:
 > it can be a pain in the ass to link the multitude of static libraries in
 > the correct order, with the correct linker flags in a cross-platform manner.
 
-## Build
-
-[9.0.0] You will also need the Foundation-startup library.
-
-
 ### Build and install Foundation
 
 The following example builds a `libFoundation.so` on Linux or a
@@ -49,7 +44,7 @@ mulle-sde install --standalone --prefix "${HOME}/usr" "https://github.com/MulleF
 > ```
 
 
-### [9.0.0] Build and install Foundation-startup
+### Build and install Foundation-startup
 
 The Foundation-startup must be built and installed seperately.
 
