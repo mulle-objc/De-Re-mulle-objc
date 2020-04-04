@@ -1,7 +1,7 @@
 ---
 title: Modern Workflow
 keywords: class
-last_updated: March 26, 2019
+last_updated: Apr 4, 2020
 tags: [tools modern]
 summary: ""
 permalink: mydoc_modern.html
@@ -26,11 +26,11 @@ There are two starting points. If you want a full class system with strings,
 containers and OS support, you will want to base your code on the **Foundation**.
 This will be the default.
 
-If you just want to play with a minimal runtime base your code on **MulleObjC**.
-Instead of `-m foundation/objc-developer` use `-m mulle-objc/objc-developer`
+If you just want to play with a minimal runtime, base your code on **MulleObjC**.
+Then, instead of `-m foundation/objc-developer`, use `-m mulle-objc/objc-developer`
 
 
-## Quick example "Hello World" project
+## Example "Hello World" project
 
 ### Create
 
@@ -40,8 +40,9 @@ Generate a new executable project with:
 mulle-sde init -m foundation/objc-developer -d hello-world executable
 ```
 
-Your project filesystem structure on your file system will look like the following `tree` output.
-You can see the demo source in `src/main.m` along with more generated content:
+Your project filesystem structure on your file system will look like the
+following `tree` output. You can see the demo source in `src/main.m` along
+with more generated content:
 
 <pre>
 hello-world
@@ -74,7 +75,9 @@ specifically whenever `mulle-sde reflect` is run, so don't edit them.
 {% include tip.html content="All folders named `share` are considered upgradable by
 mulle-sde. They will be wiped and recreated when you do a `mulle-sde upgrade` sometime
 into the future. You should not edit their contents. Similiarly folders called `var`
-are used for temporary content and may be wiped and recreated by commands." %}
+are used for temporary content and may be wiped and recreated by commands.
+Files with an underscore prefix will be recreated by the next run of
+`mulle-sde reflect`" %}
 
 ### Run
 
@@ -92,98 +95,82 @@ mulle-sde craft
 
 ### Edit
 
-You can use any IDE you like, but I suggest [Sublime Text](https://www.sublimetext.com/) or [VSCode](https://code.visualstudio.com/) in the beginning.
-Both run on all major platforms (like mulle-objc is supposed to). And there are extensions for them,
-that remove quite a bit of tedious set up:
+I suggest [Sublime Text](https://www.sublimetext.com/) or
+[VSCode](https://code.visualstudio.com/) in the beginning.
+Both run on all major platforms (like mulle-objc is supposed to) and there
+are extensions for both. The extensions do quite a bit of otherwise tedious
+setup:
 
 ```
 mulle-sde extension add sublime-text # will create hello-world.sublime-project
 mulle-sde extension add vscode       # will create hello-world.code-workspace
 ```
 
-### Add (and Remove)
+### Add
 
 Source files live in the `src` folder of your project (can be changed with `PROJECT_SOURCE_DIR`).
 
-The most convenient way to add files is with the `mulle-sde add` command, as this gives you
-template produced implementation and interface files for a new class.
+The most convenient way to add files is with the `mulle-sde add` command, as
+this gives you preconfigured implementation and interface files for a new class.
 If you use a `+` in your filename, you will get files for category.
 
-```
+``` console
 mulle-sde add src/Foo.m
 mulle-sde add src/Foo+Stuff.m
 ```
+The add command will automatically run `mulle-sde reflect`, so that is all
+to it. You can now craft your project with `mulle-sde craft` again.
 
-You can manipulate sources anyway you like though. Be it with a desktop file manager or a terminal
-command line. After you made your changes, you run `mulle-sde reflect` to reflect your changes
-back into `CMakeListst.txt` (indirectly via `cmake/_Headers.cmake` and `cmake/_Sources.cmake`).
-You can check if your files will be found with `mulle-sde list --files`.
+You can use the `-t` option to specify the exact filetype you want to
+generate (e.g. `mulle-sde add -t protocolclass src/Boo.m`).
+Out of the box, mulle-objc provides these three types:
 
 
-{% include tip.html content="If you look at the default project settings with `mulle-sde environment list`
-you will see these relevant entries for source files:
+Type                 | Description
+---------------------|-------------------
+`category`           | Category `.m` and `.h` file
+`protocolclass`      | Protocolclass `.m` and `.h` file
+`file`               | Class `.m` and `.h` file
 
+
+### Rename and Remove
+
+You can move, rename or remove sources anyway you like. After you made your
+changes, run `mulle-sde reflect` to reflect your changes back into
+`CMakeLists.txt` (indirectly via `cmake/_Headers.cmake` and
+`cmake/_Sources.cmake`).
+
+``` console
+mkdir -p src/foo/wherever
+mv src/Foo.* src/foo/wherever
+mulle-sde reflect
+mulle-sde craft
 ```
-PROJECT_SOURCE_DIR=\"src\"
-MULLE_MATCH_FILENAMES=\"config:*.h:*.inc:*.c:CMakeLists.txt:*.cmake:*.m:*.aam\"
+
+You can check if your files are found with `mulle-sde list --files`. You can
+see how the proper include paths are generated by looking at the
+`INCLUDE_DIRS` variable in `cmake/_Headers.cmake`.
+
+
+### Settings
+
+You can look at the project settings with `mulle-sde environment list`.
+You will see these relevant entries for source files:
+
+``` console
+PROJECT_SOURCE_DIR="src"
+MULLE_MATCH_FILENAMES="config:*.h:*.inc:*.c:CMakeLists.txt:*.cmake:*.m:*.aam"
 MULLE_MATCH_IGNORE_PATH=
-MULLE_MATCH_PATH=\".mulle/etc/sourcetree/config:${PROJECT_SOURCE_DIR}:CMakeLists.txt:cmake\"
+MULLE_MATCH_PATH=".mulle/etc/sourcetree/config:${PROJECT_SOURCE_DIR}:CMakeLists.txt:cmake"
 ```
 
 Files that match any of the wildcards given in `MULLE_MATCH_FILENAMES` are
-considered interesting *matchable* files. Changes in any of those files
-should trigger a rebuilt. These files are searched for in the places given by
-`MULLE_MATCH_PATH`, which is a combination of files and directories of your
-project." %}
+considered interesting, *matchable* files. Changes in any of those files
+should trigger a recraft. `MULLE_MATCH_PATH` contains the combination of files
+and directories that will be searched. Conversely files, will be ignored that
+are found in `MULLE_MATCH_PATH` but that are part of `MULLE_MATCH_IGNORE_PATH`.
 
-
-## Setting up a complex project for the modern workflow
-
-As a golden rule of the modern workflow: do not create projects
-with multiple targets. If you have a library and an executable, make it two
-separate projects.
-
-You can setup each type of project easily with:
-
-```
-mulle-sde init -m foundation/objc-developer -d mylib library
-mulle-sde init -m foundation/objc-developer -d myexe executable
-```
-
-Your project layout would then look like this:
-
-```
-myproject
-├── myexe
-└── mylib
-```
-
-If you want to use the library with your executable, you add the library as a
-dependency to the executable:
-
-```
-mulle-sde dependency add --objc --github "${GITHUB_USERNAME:-nobody}" mylib
-```
-
-The `GITHUB_USERNAME` can be totally fake, but it is needed to create a URL
-for the library project, just in case you want to distribute your executable
-later.
-
-
-{% include tip.html content="Since `mylib` is a sibling of `myexe` it
-will be easily found. If you place it somewhere else, you need to add it's
-parent directory to the search-path variable `MULLE_FETCH_SEARCH_PATH`.
-E.g. `mylib` is `/home/wherever/src/mylib` then modify the search-path with `mulle-sde environment set MULLE_FETCH_SEARCH_PATH '/home/wherever/src:${MULLE_FETCH_SEARCH_PATH}'`" %}
-
-With `mulle-sde dependency list` or the more low-level `mulle-sourcetree list -ll`
-you can see the dependency structure of your project.
-
-At this point you're done.
-
-{% include note.html content="You do not have to `#import` anything or add link
-statements to your `CMakeLists.txt`, it's all done for you with
-`mulle-sde reflect`, which you run in both projects." %}
 
 ## Next
 
-Add a third party [dependency](mydoc_pnp_dependency.html) to your project.
+Setup [multiple targets](mydoc_modern_complex.html) for your project.

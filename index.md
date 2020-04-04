@@ -12,18 +12,23 @@ summary: What you need to know to use MulleObjC to its full potential.
 appear and disappear haphazardly. Some of the content is only applicable to
 mulle-objc 0.17.0 (mulle-clang 10.0.0), which has not been released as of this writing." %}
 
+Welcome to the developer guide for [mulle-objc](//mulle-objc.github.io). This
+guide will enable you to get up and running quickly with Objective-C on the
+platform of your choice.
+
 
 ## Why Objective-C ?
 
 If you are comfortable writing in C, you will notice that C is fine until you
 reach a certain level of complexity. If you don't want to spend your lifetime
-in C++ beaureaucracy, Objective-C is the answer:
+in C++ bureaucracy, Objective-C is the answer:
 
 * Easy to learn
 * Fun
 * No magic
 * A dynamic messenger
 * A powerful class-system
+* Cross-platform
 
 
 ## Install mulle-objc
@@ -65,6 +70,22 @@ If you want to experience the full power MulleObjC has to offer, then use the
 
 If you are a seasoned Objective-C programmer, who would like to try porting
 some of his existing code to mulle-objc, then start with the [legacy workflow](mydoc_legacy.html).
+
+
+## Applicable Domain
+
+mulle-objc is not light-weight and it's not heavy-weight either. When you
+build the Foundation library as a shared library you end up with 2.5MB.
+That means any system with less than than 4MB RAM of address
+space, will likely not cut it. The CPU needs to be 32 bit wide at least.
+
+mulle-objc compiles directly to machine code and runs on the CPU and not in
+a java/.NET virtual machine. So cloud computing in AWS lambdas is also not
+possible, though WebAssembly is probably in the cards. For everything else
+inbetween mulle-objc is the way to go.
+
+mulle-objc is permissively licensed and free of cost, meaning you can use it
+anywhere.
 
 
 ## Next

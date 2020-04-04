@@ -82,6 +82,7 @@ void  foo( void)
 }
 ```
 
+
 ## Conclusion
 
 As platform dependent headers and `#ifdef` definitions are isolated in
@@ -89,9 +90,14 @@ the generic headers, this is basically all there is to it. Read [The beauty of g
 for more details on this topic.
 
 
+> Memo: What doesn't work yet, is full independence from other headers in the
+> same library.
+
+
 ## Next
 
 The modern workflow uses only static libraries. Static libraries can be
 unpacked and repackaged. This can be used to good advantage, if we use
-[coverage](mydoc_coverage.html) information to remove all Objective-C classes and categories, that aren't actually used.
+[coverage](mydoc_coverage.html) information to remove all Objective-C classes
+and categories, that aren't actually used.
 
