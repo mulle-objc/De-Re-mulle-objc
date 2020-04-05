@@ -44,7 +44,7 @@ For github repositories there is a special syntax available, so you don't have
 to type in the whole URL. This command adds
 [https://github.com/libexpat/libexpat]() to your project:
 
-#### C:
+### C:
 
 ```
 mulle-sde dependency add --c --github libexpat libexpat
@@ -53,7 +53,7 @@ mulle-sde dependency add --c --github libexpat libexpat
 This command adds
 [https://github.com/MulleWeb/MulleZlib]() to your project:
 
-#### Objective-C:
+### Objective-C:
 
 ```
 mulle-sde dependency add --objc --github MulleWeb MulleZlib
