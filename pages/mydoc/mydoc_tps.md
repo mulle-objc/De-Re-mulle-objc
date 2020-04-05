@@ -8,11 +8,15 @@ permalink: mydoc_tps.html
 folder: mydoc
 ---
 
-{% include note.html content="If you are using the **MulleFoundation**, then tagged pointers will be used for **NSNumber** and **NSString** leaving little (64 bit) or no (32 bit) room for own tagged pointer classes." %}
+{% include note.html content="If you are using the **MulleFoundation**, then
+tagged pointers will be used for **NSNumber** and **NSString** leaving little
+(64 bit) or no (32 bit) room for own tagged pointer classes." %}
 
 ## Create a tagged pointer (TPS) class
 
-A tagged pointer class is great, if you have a lot of instances that are extremely small. Let's say you want to encode a 24 bit color in a tagged pointer, here's how to do it.
+A tagged pointer class is great, if you have a lot of instances that are
+extremely small. Let's say you want to encode a 24 bit color in a tagged
+pointer, here's how to do it.
 
 
 ### Choose a free index
@@ -28,15 +32,17 @@ if( ! i)
 
 ###  Let the TPS class inherit your class
 
-Subclass your color class and adorn your `@interface` declaration with the `MulleObjCTaggedPointer` protocol:
+Subclass your color class and adorn your `@interface` declaration with the
+`mulle-objcTaggedPointer` protocol:
 Your class must be abstract and not contain any instance variables.
-Use `#ifdef __MULLE_OBJC_TPS__` around your code, as the user can turn off TPS code with a compiler option.
-Your code should run fine without TPS enabled (just don't use the TPS class then).
+Use `#ifdef __MULLE_OBJC_TPS__` around your code, as the user can turn off TPS
+code with a compiler option. Your code should run fine without TPS enabled
+(just don't use the TPS class then).
 
 ```
 #ifdef __MULLE_OBJC_TPS__
 
-@interface MyTPSColor : MyColor <MulleObjCTaggedPointer>
+@interface MyTPSColor : MyColor <mulle-objcTaggedPointer>
 @end
 
 #endif
@@ -44,8 +50,8 @@ Your code should run fine without TPS enabled (just don't use the TPS class then
 
 ### Create a +load method
 
-This will hookup your class into the TPS system at runtime. It's assumed you are using a fixed number scheme here and
-the TPS index chosen is '3'.
+This will hookup your class into the TPS system at runtime. It's assumed you
+are using a fixed number scheme here and the TPS index chosen is '3'.
 
 
 ```
@@ -55,7 +61,7 @@ the TPS index chosen is '3'.
 
 + (void) load
 {
-   if( MulleObjCTaggedPointerRegisterClassAtIndex( self, 0x3))
+   if( mulle-objcTaggedPointerRegisterClassAtIndex( self, 0x3))
    {
       perror( "Need tag pointer aware runtime for MyTPSColor with empty slot #3\n");
       abort();
@@ -68,7 +74,7 @@ the TPS index chosen is '3'.
 
 ### Create TPS instance depending on input
 
-Convert you color to a 24 bit value and create the instance with the `C` function `MulleObjCCreateTaggedPointerWithUnsignedIntegerValueAndIndex`. Do not use `+alloc`!
+Convert you color to a 24 bit value and create the instance with the `C` function `mulle-objcCreateTaggedPointerWithUnsignedIntegerValueAndIndex`. Do not use `+alloc`!
 
 ```
 static inline MyColor   *TPSColorNew( unsigned char r, unsigned char g , unsigned char b)
@@ -76,7 +82,7 @@ static inline MyColor   *TPSColorNew( unsigned char r, unsigned char g , unsigne
    NSUInteger   value;
 
    value = (((NSUInteger) << 16) | ((NSUInteger) g << 8) | (NSUInteger) b);
-   return( (MyColor *) MulleObjCCreateTaggedPointerWithUnsignedIntegerValueAndIndex( value, 0x3));
+   return( (MyColor *) mulle-objcCreateTaggedPointerWithUnsignedIntegerValueAndIndex( value, 0x3));
 }
 ```
 
@@ -91,7 +97,7 @@ static inline MyColor   *TPSColorNew( unsigned char r, unsigned char g , unsigne
 {
    NSUInteger   value;
 
-   value = MulleObjCTaggedPointerGetUnsignedIntegerValue( self);
+   value = mulle-objcTaggedPointerGetUnsignedIntegerValue( self);
    return( value >> 16);
 }
 ```

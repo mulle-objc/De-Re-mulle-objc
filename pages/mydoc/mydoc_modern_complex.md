@@ -8,14 +8,15 @@ permalink: mydoc_modern_complex.html
 folder: mydoc
 ---
 
+A golden rule of the modern workflow is: do not create projects
+with multiple targets. Instead create multiple projects and link them
+together via dependencies.
+
 
 ## Setting up a complex project for the modern workflow
 
-A golden rule of the modern workflow is: do not create projects
-with multiple targets. If you have a library and an executable, make it two
+If you have a library and an executable, make them two
 separate projects.
-
-You can setup and link each project easily with:
 
 ``` console
 mulle-sde init -m foundation/objc-developer -d mylib library

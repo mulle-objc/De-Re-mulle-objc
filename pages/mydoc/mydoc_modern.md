@@ -20,7 +20,7 @@ The advantages of the static library approach are:
 * static linking produces executables that are easier to install and deploy
 
 
-## Foundation vs MulleObjC
+## Foundation vs mulle-objc
 
 There are two starting points. If you want a full class system with strings,
 containers and OS support, you will want to base your code on the **Foundation**.

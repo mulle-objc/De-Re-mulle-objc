@@ -94,7 +94,7 @@ static NSLock   lock;
 ### Bad points
 
 * A **NSLock** is slower than a `mulle_thread_mutex_t`
-* The lock has not become a proper MulleObjC root object, so this code will leak in tests.
+* The lock has not become a proper mulle-objc root object, so this code will leak in tests.
 
 You could fix this with deleting `+deinitialize` and rewriting `+initialize` as:
 

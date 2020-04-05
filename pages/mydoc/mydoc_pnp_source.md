@@ -1,5 +1,5 @@
 ---
-title: Plug And Play Source
+title: Sources
 keywords: workflow modern
 last_updated: March 26, 2019
 tags: [tools modern includes]

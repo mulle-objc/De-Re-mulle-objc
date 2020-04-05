@@ -13,11 +13,11 @@ there are some useful resources online.
 
 ## Objective-C Resources
 
-### MulleObjC Cheat Sheet, Mulle kybernetiK
+### mulle-objc Cheat Sheet, Mulle kybernetiK
 
-The [MulleObjC CheatSheet](//github.com/mulle-objc/Objective-C-CheatSheet)
+The [mulle-objc CheatSheet](//github.com/mulle-objc/Objective-C-CheatSheet)
 is a good way to get a quick overview of what the Mulle Objective-C dialect
-has to offer. It is tailored to MulleObjC specifically, but it is no tutorial.
+has to offer. It is tailored to mulle-objc specifically, but it is no tutorial.
 
 
 ### Learn Objective-C, Tutorialspoint
@@ -65,7 +65,7 @@ https://github.com/objc-zen/objc-zen-book
 ### Zen and the Art of the Objective-C Craftsmanship, Bernardi - De Bortoli
 
 [Zen and the Art of the Objective-C Craftsmanship](https://github.com/objc-zen/objc-zen-book)](http://cocoadevcentral.com/articles/000081.php) is a more advanced read. On a cursory examination,
-there is a lot there, that's not applicable to MulleObjC or that goes against the MulleObjC
+there is a lot there, that's not applicable to mulle-objc or that goes against the mulle-objc
 style.
 
 ## C Resources
@@ -79,4 +79,4 @@ An interactive tutorial site to learn the basics of C is
 
 ## Next
 
-Now that you know Objective-C, your are well prepared for the [MulleObjC basics](mydoc_basics.html).
+Now that you know Objective-C, your are well prepared for the [mulle-objc basics](mydoc_basics.html).

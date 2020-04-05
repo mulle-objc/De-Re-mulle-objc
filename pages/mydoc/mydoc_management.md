@@ -8,7 +8,7 @@ permalink: mydoc_memory.html
 folder: mydoc
 ---
 
-Here are the rules for memory management in MulleObjC. 
+Here are the rules for memory management in mulle-objc.
 
 {% include note.html contents="At a later time, the compiler may enforce some of these rules." %}
 
@@ -18,7 +18,7 @@ Here are the rules for memory management in MulleObjC.
 `-release` should only be used in the following special methods:
 
 * `-init` methods
-* `-dealloc` 
+* `-dealloc`
 * `+load` and `+unload`
 * `+initialize` and `+deinitialize`
 
@@ -31,7 +31,7 @@ not recommended though:
   [array addObject:p];
   [p release];
 ```
-  
+
 ## Use of a variable after release
 
 You should not use an instance's address after it has been released.
@@ -53,7 +53,7 @@ to maintain temporal consistency and ownership transfer.
 
 Use `-autorelease` everywhere, also in `-finalize`, except where use of `-release` is indicated.
 
-`-autorelease` immediately after `+new` or `+alloc`/`-init` with `-autorelease`. This will be 
+`-autorelease` immediately after `+new` or `+alloc`/`-init` with `-autorelease`. This will be
 crucial for leak checking test code.
 
 -----

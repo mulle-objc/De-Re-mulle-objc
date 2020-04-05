@@ -24,10 +24,10 @@ like in Apple Foundation).
 ## The base class
 
 This is the "user" facing class. All other classes will be more or less hidden. This class defines the API.
-It also adopts the MulleObjCClassCluster protocolclass.
+It also adopts the mulle-objcClassCluster protocolclass.
 
 ```
-@interface BitSet : NSObject < MulleObjCClassCluster>
+@interface BitSet : NSObject < mulle-objcClassCluster>
 
 - (instancetype) initWithBits:(NSUInteger *) bits
                         count:(NSUInteger) count;
@@ -146,7 +146,7 @@ instance creation and deallocation with primitive runtime functions ourselves:
 
     set         = NSAllocateObject( self, 0, NULL);
     size        = sizeof( NSUInteger) * count;
-    set->_bits  = MulleObjCObjectAllocateNonZeroedMemory( set, size);
+    set->_bits  = mulle-objcObjectAllocateNonZeroedMemory( set, size);
     set->_count = count;
     memcpy( set->_bits, bits, size);
     return( set);
@@ -154,7 +154,7 @@ instance creation and deallocation with primitive runtime functions ourselves:
 
 - (void) dealloc
 {
-   MulleObjCObjectDeallocateMemory( self->_bits);
+   mulle-objcObjectDeallocateMemory( self->_bits);
    NSDeallocateObject( self);
 }
 
@@ -203,7 +203,7 @@ You could then expand the current init method in **BitSet**:
 }
 ```
 
-Or you could add a new `-initWithAVX2Bits:count:` method. The advantage of using another `-init` 
+Or you could add a new `-initWithAVX2Bits:count:` method. The advantage of using another `-init`
 methods is, that you can add it to your classcluster using a category:
 
 ```
@@ -266,14 +266,14 @@ as we will show with **MutableBitSet**.
 @end
 ```
 
-The main thing we will have to override is the init method, as we will have to 
+The main thing we will have to override is the init method, as we will have to
 use different classes. Because I am extremely lazy, I will restrict the code to
 just one class:
 
 ```
 #import "MutableBitSet.h"
 
-@implementation MutableBitSet 
+@implementation MutableBitSet
 
 - (instancetype) initWithBits:(NSUInteger *) bits
                         count:(NSUInteger) count

@@ -1,5 +1,5 @@
 ---
-title: MulleObjC Caveats
+title: mulle-objc Caveats
 keywords: class
 last_updated: March 26, 2019
 tags: [runtime]
@@ -8,7 +8,7 @@ folder: mydoc
 ---
 
 There are some significant differences that come into play, when you want
-to do "tricky" stuff with Objective-C. 
+to do "tricky" stuff with Objective-C.
 
 ## Allocation
 
@@ -43,14 +43,14 @@ If  you are implementing your own `+alloc` routine you should also implement `+n
 
 #### `+new`
 
-`+new` is shorter than writing `+alloc` and `-init` and in MulleObjC `+new`
+`+new` is shorter than writing `+alloc` and `-init` and in mulle-objc `+new`
 will not call `+alloc`. Users can rely on `-init` being called by `+new` though.
 
 
 #### `+allocWithZone:`
 
-The  *legacy* allocation method is `+allocWithZone:`, but you 
-should use `+alloc` in MulleObjC. For compatibility with legacy code
+The  *legacy* allocation method is `+allocWithZone:`, but you
+should use `+alloc` in mulle-objc. For compatibility with legacy code
 also implement `+allocWithZone:` the same as you implemented `+alloc`.
 You may safely ignore the `zone` pointer.
 
@@ -60,7 +60,7 @@ Do not call `+alloc` from `+allocWithZone:` or vice versa.
 ### Extra bytes and `class_getInstanceSize`
 
 Allocating extra bytes at the end of an instance can be done with `NSAllocateObject` as usual.
-You should be aware, that for compatibility reasons `class_getInstanceSize` will return 
+You should be aware, that for compatibility reasons `class_getInstanceSize` will return
 the number of bytes that are required to allocate an instance. This is *not* the same as
 the offset to the extra bytes.
 
@@ -68,7 +68,7 @@ the offset to the extra bytes.
 static inline void   *getFooExtraBytes( Foo *self)
 {
    size_t    size;
-  
+
    size = class_getInstanceSize( [self class]);
 #ifdef __MULLE_OBJC__
    size -= sizeof( struct _mulle_objc_objectheader);
@@ -80,7 +80,7 @@ static inline void   *getFooExtraBytes( Foo *self)
 
 ## Retain Counting
 
-Do not override `-retain`, `-release` except for debugging purposes. In the highest 
+Do not override `-retain`, `-release` except for debugging purposes. In the highest
 compiler optimization level these methods will not be used.
 
 

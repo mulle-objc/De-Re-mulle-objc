@@ -3,10 +3,10 @@ repository: mulle-objc/book
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
 
-topnav_title: De Re MulleObjC
+topnav_title: De Re mulle-objc
 # this appears on the top navigation bar next to the home button
 
-site_title: De Re MulleObjC
+site_title: De Re mulle-objc
 # this appears in the html browser tab for the site title (seen mostly by search engines, not users)
 
 company_name: Mulle kybernetiK
@@ -43,7 +43,7 @@ exclude:
 
 # these are the files and directories that jekyll will exclude from the build
 
-feedback_subject_line: De Re MulleObjC
+feedback_subject_line: De Re mulle-objc
 
 feedback_email: nat-mulleobjc-book@mulle-kybernetik.com
 # used as a contact email for the Feedback link in the top navigation bar

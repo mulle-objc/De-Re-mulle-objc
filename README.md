@@ -1,8 +1,8 @@
-# De Re MulleObjC
+# De Re mulle-objc
 
-Draft of a developer guide for MulleObjC.
+Draft of a developer guide for mulle-objc.
 
-### [Read De Re MulleObjC here](//mulle-objc.github.io/De-Re-MulleObjC).
+### [Read De Re mulle-objc here](//mulle-objc.github.io/De-Re-mulle-objc).
 
 
 ## Linux
@@ -11,7 +11,7 @@ Draft of a developer guide for MulleObjC.
 bundle exec jekyll serve -d /tmp/_site
 ```
 
-## Mac OS 10.4
+## macOS
 
 Update packages with `sudo bundle update`.
 

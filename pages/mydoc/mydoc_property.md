@@ -7,20 +7,20 @@ permalink: mydoc_property.html
 folder: mydoc
 ---
 
-Porting properties in a fashion that works in ARC code and in MulleObjC is
+Porting properties in a fashion that works in ARC code and in mulle-objc is
 tricky. It is best if you can restrict yourself to **assign**, **copy** and **retain**.
 
 
 
 ## Property deallocation
 
-{% include note.html content="This is a rare case, where MulleObjC is compatible with ARC, but incompatible with MMR." %}
+{% include note.html content="This is a rare case, where mulle-objc is compatible with ARC, but incompatible with MMR." %}
 
 In Apple ARC, properties are automatically cleared during `-dealloc`. In Apple Manual Retain-Release Mode (MRR)
 you have to do it yourself during `-dealloc`.
 
-In MulleObjC all properties that reference objects or pointers are cleared during `-finalize` by
-setting them to **0**. 
+In mulle-objc all properties that reference objects or pointers are cleared during `-finalize` by
+setting them to **0**.
 
 **readonly** properties - they have no setter - are not cleared. But in mulle-objc _they are backed by an **ivar**_.
 It is open to discussion if you want to release them in `-dealloc` for compatibility or use `-finalize` to break
@@ -30,12 +30,12 @@ Here is how to write `-dealloc` for compatiblity with MMR (also see [ARC Porting
 
 ```
 #if __has_feature(objc_arc) || defined( __MULLE_OBJC__)
-# define PROPERTY_RELEASE( p)  
+# define PROPERTY_RELEASE( p)
 #else
 # define PROPERTY_RELEASE( p)  [_p release]
 #endif
 #if __has_feature(objc_arc)
-# define SUPER_DEALLOC()  
+# define SUPER_DEALLOC()
 #else
 # define SUPER_DEALLOC( p)  [super dealloc]
 #endif

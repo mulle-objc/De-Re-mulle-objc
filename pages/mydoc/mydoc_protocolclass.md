@@ -28,9 +28,15 @@ The protocol of the protocolclass can adopt other protocols.
 
 ## A protocolclass with a default implementation of a method
 
+You can create a protocolclass easily with with mulle-sde:
+
+```
+mulle-sde add -t protocolclass src/<name>.m
+```
+
 ### future
 
-This is how it will look like at some point in the future:
+This is how a `@protocolclass` will look like at some point in the future:
 
 ```objective-c
 @protocolclass Foo
@@ -38,7 +44,7 @@ This is how it will look like at some point in the future:
 - (int) someValue;
 @end
 
-@implementation Foo 
+@implementation Foo
 
 - (void) someValue
 {
@@ -51,17 +57,17 @@ This is how it will look like at some point in the future:
 @end
 ```
 
-The use of `@optional` for `-someValue` allows it to be used as a default implementation, where
-an adopting class does not get a warning, if it doesn't implement it. A `@protocolclass` must
-implement the `@optional` methods. 
+The use of `@optional` for `-someValue` allows it to be used as a default
+implementation, where an adopting class does not get a warning, if it doesn't
+implement it. A `@protocolclass` must implement the `@optional` methods.
 
 
 ### now
 
-This is how it looks like now without macros:
+This is how a protocolclass looks like now, without macros:
 
 ```objective-c
-@class Foo;              
+@class Foo;
 @protocol Foo
 @optional
 - (int) someValue;
@@ -70,7 +76,7 @@ This is how it looks like now without macros:
 @interface Foo <Foo>
 @end
 
-@implementation Foo 
+@implementation Foo
 
 - (void) someValue
 {
@@ -83,21 +89,23 @@ This is how it looks like now without macros:
 @end
 ```
 
-The declaration of `@class Foo` before `@protocol Foo` signals that this is a protocolclass.
-Notice how the class `Foo` is adopting it's protocol `Foo` of the same name. It is a root class.
+The declaration of `@class Foo` before `@protocol Foo` signals that this is a
+protocolclass. Notice how the class `Foo` is adopting it's protocol `Foo` of
+the same name. It is a root class.
 
-This will give you a number of compiler warnings, due to root classes being used and so forth.
+This will give you a number of compiler warnings, due to root classes being
+used and so forth.
 
 ### now with macros
 
-`PROTOCOLCLASS` macros can make your life a little easier, by removing some typework
-and by removing the compiler warnings. 
+`PROTOCOLCLASS` macros can make your life a little easier, by removing some
+typework and by removing the compiler warnings.
 
 Macro                                 | Description
 --------------------------------------|-----------------------------------------------------
 `PROTOCOLCLASS_INTERFACE( name, ...)` | Declare a *protocolclass* that adopts other protocols
 `PROTOCOLCLASS_INTERFACE0( name)`     | Declare a *protocolclass* that adopts no other protocols
-`PROTOCOLCLASS_IMPLEMENTATION( name)` | Define a *protocolclass* 
+`PROTOCOLCLASS_IMPLEMENTATION( name)` | Define a *protocolclass*
 `PROTOCOLCLASS_END()`                 | Terminate either a *protocolclass* declaration or definition
 
 
@@ -137,7 +145,7 @@ adopts no further protocols.
 @property int  someValue;
 @end
 
-@implementation Foo 
+@implementation Foo
 @end
 
 @interface AdoptingClass : NSObject <Foo>
@@ -152,20 +160,20 @@ The adoptingClass will implement the property.
 This is how it looks like now without macros:
 
 ```objective-c
-@class Foo;              
+@class Foo;
 @protocol Foo
 @property int someValue;
 @end
 
 @interface Foo <Foo>
-@property int someValue; 
+@property int someValue;
 @end
 
-@implementation Foo 
+@implementation Foo
 @end
 
 @interface AdoptingClass : NSObject <Foo>
-@property int someValue; 
+@property int someValue;
 @end
 ```
 
@@ -205,7 +213,7 @@ and redeclare those methods, for which implementations are provided as
 ## Calling NSObject methods from your protocolclass methods
 
 If your protocolclass wants to use NSObject methods, it should declare this
-in its protocol. 
+in its protocol.
 
 ```objective-c
 #import <Foundation/Foundation.h>
@@ -235,7 +243,7 @@ of adoption then the superclass, in the case  `MyClass` that is `Foo` first then
 
 {% include warning.html content="Not recommended!" %}
 
-As a protocolclass is a root class, there is no way to call **super** from a protocolclass. There is a way 
+As a protocolclass is a root class, there is no way to call **super** from a protocolclass. There is a way
 around this though.
 
 You can search for the overridden implementation of a selector, given the class and category of the
@@ -243,8 +251,8 @@ implementation.
 
 ```
    IMP   imp;
-   
-   imp = MulleObjCObjectSearchOverriddenIMP( self, @selector( doTheFooThing), @selector( Foo), 0);
+
+   imp = mulle-objcObjectSearchOverriddenIMP( self, @selector( doTheFooThing), @selector( Foo), 0);
    return( (*imp)( self, @selector( doTheFooThing), self));
 ```
 

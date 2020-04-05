@@ -1,9 +1,9 @@
 ---
-title: "De Re MulleObjC"
+title: "De Re mulle-objc"
 keywords: homepage
 tags: [intro]
 permalink: index.html
-summary: What you need to know to use MulleObjC to its full potential.
+summary: What you need to know to use mulle-objc to its full potential.
 ---
 
 ![Logo](images/dere.png)
@@ -45,7 +45,7 @@ mulle-clang --version
 mulle-sde --version
 ```
 
-## Development
+### Modern Workflow
 
 Objective-C is an [Object Oriented Programming Language](https://en.wikipedia.org/wiki/Object-oriented_programming).
 With that comes the expectation of a [plug-n-play](https://dl.acm.org/doi/10.1145/2601328.2601334) programming environment.
@@ -54,38 +54,30 @@ breaking the application. This expectation has been historically never
 fulfilled, due to deficiencies with the compilation tools, the Objective-C
 runtime and the way headers are handled.
 
-
-### Modern Workflow
-
-The modern workflow provides such a plug-n-play environment.
-
-If you are a complete newbie [learn Objective-C](mydoc_links.html) with
-the [modern workflow](mydoc_modern.html).
-
-If you want to experience the full power MulleObjC has to offer, then use the
-[modern workflow](mydoc_modern.html).
+The [modern workflow](mydoc_modern.html) provides such a plug-n-play
+environment and it is necessary to wield the full power of mulle-objc.
 
 
 ### Legacy Workflow
 
 If you are a seasoned Objective-C programmer, who would like to try porting
-some of his existing code to mulle-objc, then start with the [legacy workflow](mydoc_legacy.html).
+some of his existing code to mulle-objc, then start with the
+[legacy workflow](mydoc_legacy.html).
 
+
+## License
+
+mulle-objc is permissively - BSD3 - licensed and free of cost, meaning you can
+use it anywhere you like and wish.
 
 ## Applicable Domain
 
-mulle-objc is not light-weight and it's not heavy-weight either. When you
-build the Foundation library as a shared library you end up with 2.5MB.
-That means any system with less than than 4MB RAM of address
-space, will likely not cut it. The CPU needs to be 32 bit wide at least.
-
-mulle-objc compiles directly to machine code and runs on the CPU and not in
-a java/.NET virtual machine. So cloud computing in AWS lambdas is also not
-possible, though WebAssembly is probably in the cards. For everything else
-inbetween mulle-objc is the way to go.
-
-mulle-objc is permissively licensed and free of cost, meaning you can use it
-anywhere.
+mulle-objc is C, so anywhere C runs Objective-C should run too. But that's
+not entirely true. mulle-objc is not suitable for tiny CPUs. When you
+build the Foundation library as a shared library you end up with 2.5MB
+(mulle-objc 0.5MB). So any system with less than 4MB RAM, will likely not
+cut it. The CPU needs to be 32 bit wide at least to use mulle-objc selectors
+efficiently.
 
 
 ## Next

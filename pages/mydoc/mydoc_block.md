@@ -26,7 +26,7 @@ in the ported library.
 
 Generally at this point, you should check _how much_ blocks code there is.
 If it is used only a few places, here are some ideas how to convert the code
-for MulleObjC.
+for mulle-objc.
 
 ### Transform to NSInvocation
 

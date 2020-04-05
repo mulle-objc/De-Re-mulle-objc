@@ -23,7 +23,7 @@ The advantages of that approach are:
 ### Build and install Foundation
 
 The following example builds a `libFoundation.so` on Linux or a
-`libFoundation.dylib` on MacOS. The headers and libraries are installed into
+`libFoundation.dylib` on macOS. The headers and libraries are installed into
 your `~/usr` directory in this example:
 
 ```
@@ -37,6 +37,7 @@ mulle-sde install --standalone --prefix "${HOME}/usr" "https://github.com/MulleF
 > ``` sh
 > SRCROOT="/Volumes/Source/srcO" ; \
 > MULLE_FETCH_SEARCH_PATH="${SRCROOT}/MulleFoundation:\
+> ${SRCROOT}/MulleWeb:\
 > ${SRCROOT}/mulle-objc:\
 > ${SRCROOT}/mulle-core:\
 > ${SRCROOT}/mulle-concurrent:\
@@ -98,16 +99,20 @@ mulle-clang hello-world.m \
             -L"${HOME}/usr/lib" \
             -Wl,-rpath -Wl,"${HOME}/usr/lib" \
             -lFoundation \
-            -Wl,--whole_archive \
-            -lFoundation-startup
-            -lmulle_atinit \
-            -lmulle_atexit
+            -Wl,--whole-archive \
+            -lFoundation-startup \
+            -lmulle-atinit \
+            -lmulle-atexit \
+            -Wl,--no-whole-archive \
+            -lpthread \
+            -ldl \
+            -lm
 ```
 
 
-#### MacOS:
+#### macOS:
 
-On MacOS we need to use Xcode platform headers and therefore need the SDK
+On macOS we need to use Xcode platform headers and therefore need the SDK
 path, which can vary for each host. It is assumed you used the **brew**
 install method, otherwise you need to correct the `-isystem`, `-L`, `-rpath`
 values in the following commands:
@@ -125,15 +130,16 @@ mulle-clang  hello-world.m \
             -lFoundation-startup \
             -lmulle_atinit \
             -lmulle_atexit
+            -Wl,-noall_load
 ```
 
-{% include note.html content="You can also use Xcode to build MulleObjC
+{% include note.html content="You can also use Xcode to build mulle-objc
 code. See [Xcode integration](//github.com/mulle-objc/mulle-objc-developer/wiki/Xcode-integration) for setup instructions." %}
 
 
 ## Run Hello World
 
-And run your first MulleObjC executable.
+And run your first mulle-objc executable.
 
 ```
 ./hello-world

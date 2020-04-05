@@ -1,5 +1,5 @@
 ---
-title: Plug And Play Dependency
+title: Dependencies
 keywords: workflow modern
 last_updated: March 26, 2019
 tags: [tools modern includes]
@@ -19,7 +19,8 @@ how.
 
 All dependencies are managed via a *sourcetree*. If you have created a
 mulle-sde project as described previously, you can look at the pre-defined
-sourcetree with `mulle-sourcetree list` (use `-l -u` for more detail).
+sourcetree with `mulle-sde dependency list` or  `mulle-sourcetree list`
+(use `-l -u` for more detail).
 
 ```
 address
@@ -28,8 +29,8 @@ Foundation
 Foundation-startup
 ```
 
-These dependencies again can be, and are in this case, mulle-sde projects.
-Each of theses mulle-sde projects in turn will have its own sourcetree with
+These dependencies again can be mulle-sde and non mulle-sde projects.
+Each mulle-sde project in turn may have its own sourcetree with
 dependencies. So you can see where this is heading...
 
 
@@ -37,22 +38,32 @@ dependencies. So you can see where this is heading...
 
 When adding a third-party repository, the first thing to decide is, if it is
 a C or an Objective-C repository. At this point in time  C is more likely, so
-we will go with that in this example.
+we will go with that first.
 
 For github repositories there is a special syntax available, so you don't have
 to type in the whole URL. This command adds
 [https://github.com/libexpat/libexpat]() to your project:
 
+#### C:
 
 ```
 mulle-sde dependency add --c --github libexpat libexpat
 ```
 
+This command adds
+[https://github.com/MulleWeb/MulleZlib]() to your project:
+
+#### Objective-C:
+
+```
+mulle-sde dependency add --objc --github MulleWeb MulleZlib
+```
+
 ## Get build commands for free
 
 **libexpat** is special, in that there is a **craftinfo** available for it.
-Many libraries can be built without a **craftinfo**, but for some like
-**libexpat** a few tweaks are desirable. The **craftinfo** contains these
+Many libraries can be built without a **craftinfo**, but for some libraries
+like **libexpat** a few tweaks are desirable. The **craftinfo** contains these
 tweaks.
 
 You can look at the [craftinfo](https://github.com/craftinfo) site to see
@@ -61,17 +72,42 @@ what is available.
 > If you have a craftinfo, that you would like to share, you are very welcome
 > to contribute this craftinfo.
 
-You can examine and manipulate craftinfos with the
-`mulle-sde dependency craftinfo` command.
+{% include tip.html content="You can examine and manipulate craftinfos with the
+`mulle-sde dependency craftinfo` command." %}
 
 
 ## Header and link commands are automatically created
 
 `mulle-sde reflect` will reflect the contents of the sourcetree into **cmake** files
 residing under `./cmake` and into header files residing under `./src`.
-This means you will not have to write `#include` statements yourself. Neither
-will you have to figure out against which library to link.
+This means you will not have to write any `#include` statements or add link
+commands to your project. As dependencies are recursive, you also won't have to
+figure out against which system library to link.
 
+### Fix a missing include
+
+Often mulle-sde can not guess the correct name and location of the central
+include header of a dependency correctly. This can be rectified with:
+
+```
+mulle-sde dependency set libexpat include "expat.h"
+mulle-sde reflect
+```
+
+### Fix a missing library
+
+More rarely a library can not be found, because the name differs from the
+project. Fix this with:
+
+```
+mulle-sde dependency set libexpat aliases eXpat
+mulle-sde reflect
+```
+
+{% include tip.html content="There is a lot more information about
+mulle-sde and various kinds of dependencies available in the
+[mulle-sde Wiki](https://github.com/mulle-sde/mulle-sde/wiki)."
+%}
 
 ## Remove dependency
 
@@ -82,9 +118,5 @@ cmake and header files.
 
 ## Next
 
-There is a lot more information about [mulle-sde](//github.com/mulle-sde) and
-dependencies available in the [mulle-sde Wiki](https://github.com/mulle-sde/mulle-sde/wiki).
-
-
-Next up lets a more detailed loon into how a mulle-sde project
-deals with [headers](mydoc_pnp_source.html) .
+A more detailed look at how a mulle-sde project deals with
+[header](mydoc_pnp_source.html) sources.

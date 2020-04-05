@@ -8,8 +8,8 @@ permalink: mydoc_basics.html
 folder: mydoc
 ---
 
-Lets write a MulleObjC class that highlights all the basics of memory management
-and being a good class in the MulleObjC runtime. Some of the topics are seldom
+Lets write a mulle-objc class that highlights all the basics of memory management
+and being a good class in the mulle-objc runtime. Some of the topics are seldom
 employed in the average Objective-C class, but it's good to be aware of them.
 
 The main takeaway points are
@@ -19,7 +19,7 @@ The main takeaway points are
 * protect your setters with `NSParameterAssert` (if using Foundation, else use `assert`)
 * `+load` and `+initialize` behave as expected if you declare `MULLE_OBJC_DEPENDS_ON_LIBRARY`
 * try to write proper `+unload` and `+deinitialize` methods to be a well behaved class, that doesn't leak in tests
-* ARC is not compatible with MulleObjC, use manual `-retain/-release/-autorelease` memory management methods
+* ARC is not compatible with mulle-objc, use manual `-retain/-release/-autorelease` memory management methods
 
 
 ## Foo does it all
@@ -34,6 +34,9 @@ The main takeaway points are
 }
 
 @property( copy) NSNumber *b;
+
++ (NSNumber *) lookup:(NSString *) key;
+- (void) addToKids:(Foo *) a;
 
 @end
 
@@ -159,7 +162,7 @@ MULLE_OBJC_DEPENDS_ON_LIBRARY( Foundation);
 
 
 // typical toMany setter code
-- (void) addKid:(Foo *) a
+- (void) addToKids:(Foo *) a
 {
    NSParameterAssert( [a isKindOfClass:[Foo class]]);
    [_kids addObject:a];
@@ -216,8 +219,8 @@ time to hack mulle-objc runtime methods if you so desire.
 
 ### +unload
 
-`+unload` is MulleObjC specific and does not exist in other runtimes. The
-MulleObjC Objective-C runtime is contained in a "universe", that is
+`+unload` is mulle-objc specific and does not exist in other runtimes. The
+mulle-objc Objective-C runtime is contained in a "universe", that is
 destructible. So `+unload` is a facility to release resources acquired by
 `+load`. When this is properly done by all classes, it makes memory leak
 checking that much more convenient.
@@ -300,7 +303,7 @@ To avoid crashes, zero your variables after freeing them.
 ```
 
 Calling `-[super init]` if `NSObject` is the direct superclass is superflous
-and can be avoided. MulleObjC uses manual retain counting, so `-retain` what
+and can be avoided. mulle-objc uses manual retain counting, so `-retain` what
 needs to be retained by the instance.
 
 
@@ -311,7 +314,7 @@ needs to be retained by the instance.
 {
    [_kids autorelease];
    _kids = nil;
-   
+
    [super finalize];
 }
 ```
@@ -408,21 +411,22 @@ do `[[obj retain] autorelease]` shenanigans, but can just return the instance
 variable.
 
 
-### -addKid:
+### -addToKids:
 
 ```
-- (void) addKid:(Foo *) a
+- (void) addToKids:(Foo *) a
 {
    NSParameterAssert( [a isKindOfClass:[Foo class]]);
    [_kids addObject:a];
 }
 ```
 
-We can not add *nil* to an array. So the assert ensures that
-`a` is nonnil and of the proper class.
+We can not add *nil* to an array. And as `_kids` is a
+`NSMutableArray` this will raise. The assert ensures that
+`a` of the proper class.
 
 
 ## Next
 
 With the basics covered, the next topic is
-on how to write [good MulleObjC code](mydoc_good.html).
+on how to write [good mulle-objc code](mydoc_good.html).

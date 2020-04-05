@@ -1,5 +1,5 @@
 ---
-title: MulleObjC Tools
+title: mulle-objc Tools
 keywords: class
 last_updated: March 26, 2019
 tags: [tools]
@@ -11,7 +11,7 @@ folder: mydoc
 ## mulle-objc-list/mulle-objc-lista
 
 **mulle-objc-list** generates CSV style information from dynamic libraries,
-that contain MulleObjC code. You can list the contained classes, methods and
+that contain mulle-objc code. You can list the contained classes, methods and
 properties. It's the backbone of the mulle-objc tool set.
 
 **mulle-objc-lista** is the variant that handles static libraries.
@@ -69,7 +69,7 @@ A little utility to fake a "class-coverage.csv" entry.
 $ mulle-objc-printline --method -foo --category Foo Bar
 bbc7dbad;Bar;c7e16770;Foo;9f37ed7a;-foo
 ```
-See [Coverage](mydoc_coverage.html) for more details about MulleObjC
+See [Coverage](mydoc_coverage.html) for more details about mulle-objc
 coverage information.
 
 
@@ -102,7 +102,7 @@ details.
 Creates a list of methods not being messaged during a programs run. This can
 be useful for finding missing tests.
 
-See [Coverage](mydoc_coverage.html) for more details about MulleObjC coverage information.
+See [Coverage](mydoc_coverage.html) for more details about mulle-objc coverage information.
 
 
 ## Next

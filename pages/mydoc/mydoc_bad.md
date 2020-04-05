@@ -1,10 +1,10 @@
 ---
-title: Bad MulleObjC Code
+title: Bad mulle-objc Code
 keywords: class
 last_updated: March 26, 2019
 tags: [language,compiler]
 summary: "A non-functional `.m` file that contains all the features that are
-absent from MulleObjC."
+absent from mulle-objc."
 permalink: mydoc_bad.html
 folder: mydoc
 ---
@@ -13,12 +13,12 @@ folder: mydoc
 
 ## Bad Code
 
-These are examples of Objective-C 2.0 code, that will not work with MulleObjC.
+These are examples of Objective-C 2.0 code, that will not work with mulle-objc.
 
 
 ### @import
 
-MulleObjC has no support for modules and the **@import** directive. This will
+mulle-objc has no support for modules and the **@import** directive. This will
 give a compiler error:
 
 ```
@@ -31,7 +31,7 @@ See [Porting @import](mydoc_modules.html) for code conversion tips.
 ### Unsupported @property attributes
 
 The attributes **atomic**,**weak**,**strong**,**nullable**,**unsafe_retained**
-**class** are all unknown to MulleObjC and will produce errors:
+**class** are all unknown to mulle-objc and will produce errors:
 
 ```
 @interface Foo
@@ -66,7 +66,7 @@ You can not synthesize to a different name, ivar must be `'_'<name>`:
 
 @synthesize g = _g1;
 
-// specfiying a property as dynamic with @dynamic does nothing in MulleObjC
+// specfiying a property as dynamic with @dynamic does nothing in mulle-objc
 @dynamic h;
 ```
 
@@ -105,7 +105,7 @@ See [Porting ARC code](mydoc_arc.html) for code conversion tips.
 
 ### Dot syntax
 
-There is no operator overloading '.' in MulleObjC. '.' is used to accessed
+There is no operator overloading '.' in mulle-objc. '.' is used to accessed
 struct and union fields, not objects:
 
 ```
@@ -178,7 +178,7 @@ See [Porting @synchronized](mydoc_synchronized.html) for code conversion tips.
 
 ### Protocol *
 
-`Protocol *` as such doesn't exist in MulleObjC. Use PROTOCOL instead:
+`Protocol *` as such doesn't exist in mulle-objc. Use PROTOCOL instead:
 
 ```
 // Protocol * is not supported, use PROTOCOL
@@ -194,18 +194,18 @@ See [Porting Protocol](mydoc_protocol.html) for code conversion tips.
 ### Casting SEL to `(char *)`
 
 In the Apple runtime a SEL is basically a string, but this is not true in
-MulleObjC:
+mulle-objc:
 
 ```
 - (void) printSelectorAsCString:(SEL) sel
 {
-   printf( "%s\n", sel); // SEL is not a C-String in MulleObjC
+   printf( "%s\n", sel); // SEL is not a C-String in mulle-objc
 }
 ```
 
 ### Accessing variable arguments with va_list
 
-Variable arguments are NOT `va_list` in MulleObjC, but
+Variable arguments are NOT `va_list` in mulle-objc, but
 [mulle-vararg](//github.com/mulle-c/mulle-vararg) instead:
 
 ```
@@ -245,4 +245,4 @@ all about it.
 ## Next
 
 [Differences](mydoc_differences.html) will list succinctly the differences
-between MulleObjC and Objective-C 2.0.
+between mulle-objc and Objective-C 2.0.

@@ -11,7 +11,7 @@ folder: mydoc
 ARC as a technology is not available in **mulle-objc** and never will be.
 
 Ideally though, code should remain functional in ARC but work flawlessly in
-MulleObjC.
+mulle-objc.
 
 
 ## Use convenience constructors
@@ -109,14 +109,14 @@ You could use this idea to modify your `-dealloc` code
 Here an instance variable is initialized with an autoreleased `NSArray`, which
 will soon be unavailable.
 
-Write `_foo = [[NSArray alloc] init];` to make your code ARC and MulleObjC
+Write `_foo = [[NSArray alloc] init];` to make your code ARC and mulle-objc
 compatible.
 
 
 ## Release instance variables manually
 
 There is often no `-dealloc` method in ARC code. That is fine if the
-class has only properties. Then MulleObjC will clean up automatically.
+class has only properties. Then mulle-objc will clean up automatically.
 If your class has non-property instance variables, they must be released in
 `-dealloc` or `-finalize`.
 

@@ -3,7 +3,7 @@ title: Porting Variable Arguments in Methods
 keywords: vararg method
 last_updated: March 26, 2019
 tags: [runtime]
-summary: "Variable Arguments in MulleObjC"
+summary: "Variable Arguments in mulle-objc"
 permalink: mydoc_varargs.html
 folder: mydoc
 ---
@@ -11,7 +11,7 @@ folder: mydoc
 ## Intro
 
 Variable arguments in methods follow the Mulle MetaABI and are incompatible
-with `va_list`. C functions continue to use `va_list` though. So MulleObjC
+with `va_list`. C functions continue to use `va_list` though. So mulle-objc
 will support both formats.
 
 ### A typical variable argument method
@@ -42,7 +42,7 @@ methods is called "arguments:":
 #### mulle_vararg_list
 
 
-In MulleObjC the type is `mulle_vararg_list`. And if it is used as a
+In mulle-objc the type is `mulle_vararg_list`. And if it is used as a
 parameter its called "mulleVarargList:" by convention. `va_list` which is still
 a possibility type due to C code (e.g. `NSLog`), is called  `varargList:`
 instead for discrimination.
@@ -67,9 +67,9 @@ MulleFoundation:
 So that's pretty similar.
 
 
-#### MulleObjC supports both
+#### mulle-objc supports both
 
-It's not an either or scenarion, as MulleObjC supports both:
+It's not an either or scenarion, as mulle-objc supports both:
 
 ```
 + (instancetype) stringWithFormat:(NSString *) format

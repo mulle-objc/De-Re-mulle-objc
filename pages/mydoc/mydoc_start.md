@@ -24,7 +24,7 @@ You can use **make** or most IDEs with this setup.
 
 Use **mulle-sde** to download all required components of the Foundation
 library and to build them. There will be an error, because it can not find an
-optional component **MulleObjCDecimalFoundation**. This is harmless.
+optional component **mulle-objcDecimalFoundation**. This is harmless.
 
 You can change the install location with the `--prefix` option. Otherwise
 the `usr` directory of your home directory, will be the install destination.
@@ -52,7 +52,7 @@ brew install mulle-kybernetik/software/Foundation
 ## Next
 
 With this success in your bag, there are two routes to choose from. If you know
-Objective-C continue with [MulleObjC basics](mydoc_basics.html).
+Objective-C continue with [mulle-objc basics](mydoc_basics.html).
 
 Otherwise use one of the tutorials in [Learn ObjC](mydoc_links.html) to get
 up to speed.

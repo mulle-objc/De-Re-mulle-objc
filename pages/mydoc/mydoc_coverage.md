@@ -10,7 +10,7 @@ folder: mydoc
 
 ## Coverage
 
-You can create Objective-C coverage information for any MulleObjC program.
+You can create Objective-C coverage information for any mulle-objc program.
 
 Coverage files will be are generated when you run the program with
 with the environment variables `MULLE_OBJC_PEDANTIC_EXIT` and

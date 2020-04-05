@@ -3,12 +3,12 @@ title: forward
 keywords: class
 last_updated: March 26, 2019
 tags: [runtime]
-summary: "MulleObjC forward speed makes object composition an alternative"
+summary: "mulle-objc forward speed makes object composition an alternative"
 permalink: mydoc_forward.html
 folder: mydoc
 ---
 
-{% include note.html content='See Objective-C Runtime Programming Guide for more information about `NSInvocation` and forwarding in general. Most if not all of it is applicable to MulleObjC' %}
+{% include note.html content='See Objective-C Runtime Programming Guide for more information about `NSInvocation` and forwarding in general. Most if not all of it is applicable to mulle-objc' %}
 
 ## Introduction
 

@@ -7,7 +7,7 @@ permalink: mydoc_jekyll_theme.html
 folder: mydoc
 ---
 
-"De Re MulleObjC" is based on [tomjoht/documentation-theme-jekyll
+"De Re mulle-objc" is based on [tomjoht/documentation-theme-jekyll
 ](https://github.com/tomjoht/documentation-theme-jekyll). This is the short
 bio of the author.
 

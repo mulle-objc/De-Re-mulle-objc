@@ -1,10 +1,10 @@
 ---
-title: Good MulleObjC Code
+title: Good mulle-objc Code
 keywords: class
 last_updated: March 26, 2019
 tags: [language]
 summary: "A functional `.m` file that contains all the features that are
-available in MulleObjC."
+available in mulle-objc."
 permalink: mydoc_good.html
 folder: mydoc
 ---
@@ -14,8 +14,7 @@ folder: mydoc
 
 Objective-C is a fairly simple language extension. In this file all available
 Objective-C keywords and concepts will be discussed. Absent will be library
-features  introduced by the Foundation, because this blows the scope of this
-treatise.
+features introduced by the Foundation.
 
 The code will be regular Objective-C, unless specifically noted to be an
 Objective-C extension.
@@ -127,8 +126,8 @@ static inline Foreign  *FooGetForeign( Foo *self)
 ### Protocolclasses
 
 You can declare [protocolclasses](mydoc_protocolclass.html). This is a
-MulleObjC extension to the Objective-C language. This will not work with
-other runtimes (though it will compile):
+mulle-objc extension to the Objective-C language. Protocolclasses will not work
+on other runtimes (though they will compile):
 
 ```
 // protocolclass Description with default implementation of -description
@@ -178,7 +177,7 @@ implement `-description`. It can override it though if desired:
 #### PROTOCOL
 
 **PROTOCOL** is a compiler keyword. Objective-C's `Protocol *` does not work, as
-PROTOCOL is a kind of **@selector** in MulleObjC:
+PROTOCOL is a kind of **@selector** in mulle-objc:
 
 
 ```
@@ -263,8 +262,8 @@ NS_ENDHANDLER
 
 #### inout ...
 
-These @encode adornments should still work and should be properly encoded
-and decoded, but noone uses them:
+These @encode adornments should still work but they are not encoded
+and decoded:
 
 * in
 * out
@@ -273,7 +272,7 @@ and decoded, but noone uses them:
 * byref
 * oneway
 
-> See: [](https://stackoverflow.com/questions/5609564/objective-c-in-out-inout-byref-byval-and-so-on-what-are-they)
+> See: [Stack Overflow](https://stackoverflow.com/questions/5609564/objective-c-in-out-inout-byref-byval-and-so-on-what-are-they)
 
 
 ### Literals
@@ -367,7 +366,7 @@ int main()
 {
    Bar   *bar;
 
-   // don't need an enclosing @autoreleasepool in MulleObjC
+   // don't need an enclosing @autoreleasepool in mulle-objc
 
    bar = [Bar new];
 
