@@ -24,7 +24,6 @@ The advantages of the static library approach are:
 
 There are two starting points. If you want a full class system with strings,
 containers and OS support, you will want to base your code on the **Foundation**.
-This will be the default.
 
 If you just want to play with a minimal runtime, base your code on **MulleObjC**.
 Then, instead of `-m foundation/objc-developer`, use `-m mulle-objc/objc-developer`
@@ -76,8 +75,8 @@ specifically whenever `mulle-sde reflect` is run, so don't edit them.
 mulle-sde. They will be wiped and recreated when you do a `mulle-sde upgrade` sometime
 into the future. You should not edit their contents. Similiarly folders called `var`
 are used for temporary content and may be wiped and recreated by commands.
-Files with an underscore prefix will be recreated by the next run of
-`mulle-sde reflect`" %}
+And then there are some header files with an underscore prefix, that will also be 
+recreated by `mulle-sde reflect`" %}
 
 ### Run
 
@@ -99,30 +98,32 @@ I suggest [Sublime Text](https://www.sublimetext.com/) or
 [VSCode](https://code.visualstudio.com/) in the beginning.
 Both run on all major platforms (like mulle-objc is supposed to) and there
 are extensions for both. The extensions do quite a bit of otherwise tedious
-setup:
+setup and create a project file for you:
 
 ```
 mulle-sde extension add sublime-text # will create hello-world.sublime-project
 mulle-sde extension add vscode       # will create hello-world.code-workspace
 ```
-
+ 
 ### Add
 
 Source files live in the `src` folder of your project (can be changed with `PROJECT_SOURCE_DIR`).
 
 The most convenient way to add files is with the `mulle-sde add` command, as
-this gives you preconfigured implementation and interface files for a new class.
-If you use a `+` in your filename, you will get files for category.
+this gives you preconfigured implementation and interface files for a new class 
+for instance.
+If you use a `+` in your filename, you will get files for a category.
 
 ``` console
 mulle-sde add src/Foo.m
 mulle-sde add src/Foo+Stuff.m
 ```
-The add command will automatically run `mulle-sde reflect`, so that is all
-to it. You can now craft your project with `mulle-sde craft` again.
 
-You can use the `-t` option to specify the exact filetype you want to
-generate (e.g. `mulle-sde add -t protocolclass src/Boo.m`).
+The add command will automatically run `mulle-sde reflect`, so that is all
+there is to it. You can now craft your project with `mulle-sde craft` again.
+
+You can use the `-t` option to specify the exact type of Objective-C
+construct you want to generate (e.g. `mulle-sde add -t protocolclass src/Boo.m`).
 Out of the box, mulle-objc provides these three types:
 
 
@@ -135,7 +136,8 @@ Type                 | Description
 
 ### Rename and Remove
 
-You can move, rename or remove sources anyway you like. After you made your
+You can move, rename or remove sources anyway you like with whatever 
+tool you like. After you made your
 changes, run `mulle-sde reflect` to reflect your changes back into
 `CMakeLists.txt` (indirectly via `cmake/_Headers.cmake` and
 `cmake/_Sources.cmake`).
