@@ -60,11 +60,11 @@ Ignore the chapters "Delegates and Data Sources", "Model View Controller",
 [Learn Objective-C](https://www.cocoadevcentral.com/d/learn_objectivec) gives a
 quick overview of concepts. Ignore the part about "Dot Syntax" though.
 
-https://github.com/objc-zen/objc-zen-book
+
 
 ### Zen and the Art of the Objective-C Craftsmanship, Bernardi - De Bortoli
 
-[Zen and the Art of the Objective-C Craftsmanship](https://github.com/objc-zen/objc-zen-book)](http://cocoadevcentral.com/articles/000081.php) is a more advanced read. On a cursory examination,
+[Zen and the Art of the Objective-C Craftsmanship](https://github.com/objc-zen/objc-zen-book)](https://github.com/objc-zen/objc-zen-book) is a more advanced read. On a cursory examination,
 there is a lot there, that's not applicable to mulle-objc or that goes against the mulle-objc
 style.
 
