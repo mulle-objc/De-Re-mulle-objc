@@ -43,7 +43,6 @@ Your project filesystem structure on your file system will look like the
 following `tree` output. You can see the demo source in `src/main.m` along
 with more generated content:
 
-<pre>
 <pre><font color="#3465A4"><b>hello-world</b></font>
 ├── <font color="#3465A4"><b><i>.mulle</i></b></font>
 ├── CMakeLists.txt
