@@ -51,7 +51,7 @@ The Foundation-startup must be built and installed seperately.
 
 
 ```
-mulle-sde install --prefix "${HOME}/usr" "https://github.com/MulleFoundation/Foundation-startup/archive/latest.zip"
+mulle-sde install --only-project --prefix "${HOME}/usr" "https://github.com/MulleFoundation/Foundation-startup/archive/latest.zip"
 ```
 
 This duplicates much of the work already done by the previous Foundation
