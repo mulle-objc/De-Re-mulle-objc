@@ -8,7 +8,7 @@ permalink: mydoc_modern.html
 folder: mydoc
 ---
 
-The preferred development workflow is the "modern worflow".
+The preferred development workflow is the "modern workflow".
 The modern workflow is static library based. You can also use the
 [legacy workflow](mydoc_legacy.html), which is shared library based.
 
