@@ -70,13 +70,13 @@ with more generated content:
 </pre>
 
 
-`CMakeLists.txt` is your main [cmake](//cmake.org) project file. `cmake` is
-the default mulle-sde build system, but it can be substitued with another
+`CMakeLists.txt` is your main [cmake](//cmake.org) project file. [cmake](//cmake.org) is
+the default mulle-sde build system, but it can be substituted with another,
 if so desired.
 
-The source is in the `src` folder and will be found there or in any of the
+The source is in the `src` folder. Source will be found in `src` or in any of the
 `src` subfolders. A source file anywhere else will not be picked up by
-`mulle-sde reflect` and will therefor not be built. (You can change the
+`mulle-sde reflect` and will therefore not be built. (You can change the
 default behaviour later)
 
 
