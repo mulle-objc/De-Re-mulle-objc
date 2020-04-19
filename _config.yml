@@ -1,4 +1,4 @@
-repository: mulle-objc/book
+repository: mulle-objc/De-Re-mulle-objc
 
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
@@ -12,7 +12,7 @@ site_title: De Re mulle-objc
 company_name: Mulle kybernetiK
 # this appears in the footer
 
-github_editme_path: mulle-objc/book/blob/master/
+github_editme_path: mulle-objc/De-Re-mulle-objc/blob/master/
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
 
 # gitlab_editme_path: tomjoht/documentation-theme-jekyll/blob/gh-pages/
@@ -45,7 +45,7 @@ exclude:
 
 feedback_subject_line: De Re mulle-objc
 
-feedback_email: nat-mulleobjc-book@mulle-kybernetik.com
+feedback_email: nat-De-Re-mulle-objc@mulle-kybernetik.com
 # used as a contact email for the Feedback link in the top navigation bar
 
 # feedback_disable: true
@@ -89,7 +89,7 @@ sidebars:
 - mydoc_sidebar
 - test_sidebar
 
-description: "This book tells you what you need to know, to navigate the more trickier waters of Objective-C using MulleObjC"
+description: "This developer guide tells you what you need to know, to navigate the more trickier waters of Objective-C using MulleObjC"
 # the description is used in the feed.xml file
 
 # needed for sitemap.xml file only

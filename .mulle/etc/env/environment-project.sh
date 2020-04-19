@@ -1,25 +1,25 @@
 #
 #
 #
-export PROJECT_NAME="book"
+export PROJECT_NAME="De-Re-mulle-objc"
 
 
 #
 #
 #
-export PROJECT_IDENTIFIER="book"
+export PROJECT_IDENTIFIER="De_Re_mulle_objc"
 
 
 #
 #
 #
-export PROJECT_DOWNCASE_IDENTIFIER="book"
+export PROJECT_DOWNCASE_IDENTIFIER="de_re_mulle_objc"
 
 
 #
 #
 #
-export PROJECT_UPCASE_IDENTIFIER="BOOK"
+export PROJECT_UPCASE_IDENTIFIER="DE_RE_MULLE_OBJC"
 
 
 #

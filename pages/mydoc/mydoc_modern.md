@@ -44,39 +44,53 @@ following `tree` output. You can see the demo source in `src/main.m` along
 with more generated content:
 
 <pre>
-hello-world
-├<font color="#888">── .mulle                       // mulle-sde configuration</font>
-│<font color="#888">   └── ...</font>
-├── cmake
-│   ├── DependenciesAndLibraries.cmake
-│   ├── <i>_Dependencies.cmake</i>      // reflect
-│   ├── Headers.cmake
-│   ├── <i>_Headers.cmake</i>           // reflect
-│   ├── <i>_Libraries.cmake</i>         // reflect
-│   ├<font color="#888">── share                    // mulle-sde cmake files</font>
-│   │<font color="#888">   └── ...</font>
-│   ├── <i>_Sources.cmake</i>           // reflect
-│   └── Sources.cmake
-├── CMakeLists.txt               // cmake project
+<pre><font color="#3465A4"><b>hello-world</b></font>
+├── <font color="#3465A4"><b><i>.mulle</i></b></font>
+├── CMakeLists.txt
 ├── README.md
-└── src                          // source directory
+├── <font color="#3465A4"><b>cmake</b></font>
+│   ├── <font color="#3465A4"><b>reflect</b></font>
+│   │   ├── _Dependencies.cmake
+│   │   ├── _Headers.cmake
+│   │   ├── _Libraries.cmake
+│   │   ├── README.md
+│   │   └── _Sources.cmake
+│   └── <font color="#3465A4"><b>share</b></font>
+│       ├── AAMSupportObjC.cmake
+│       ├── ...
+│       └── UnwantedWarningsC.cmake
+└── <font color="#3465A4"><b>src</b></font>
     ├── import.h
     ├── import-private.h
-    ├── <b>main.m</b>
-    ├── <i>_myexe-import.h</i>          // reflect
-    ├── <i>_myexe-import-private.h</i>  // reflect
+    ├── main.m
+    ├── <font color="#3465A4"><b><i>reflect</i></b></font>
+    │   ├── <i>_hello-world-import.h</i>
+    │   ├── <i>_hello-world-import-private.h</i>
+    │   └── <i>objc-loader.inc</i>
     └── version.h
 </pre>
 
-Files marked with `reflect` will be recreated by mulle-sde on demand - more
-specifically whenever `mulle-sde reflect` is run, so don't edit them.
 
-{% include tip.html content="All folders named `share` are considered upgradable by
-mulle-sde. They will be wiped and recreated when you do a `mulle-sde upgrade` sometime
-into the future. You should not edit their contents. Similiarly folders called `var`
-are used for temporary content and may be wiped and recreated by commands.
-And then there are some header files with an underscore prefix, that will also be 
-recreated by `mulle-sde reflect`" %}
+`CMakeLists.txt` is your main [cmake](//cmake.org) project file. `cmake` is
+the default mulle-sde build system, but it can be substitued with another
+if so desired.
+
+The source is in the `src` folder and will be found there or in any of the
+`src` subfolders. A source file anywhere else will not be picked up by
+`mulle-sde reflect` and will therefor not be built. (You can change the
+default behaviour later)
+
+
+#### Special folders
+
+* The `.mulle` folder is used for project management. You usually edit its
+contents via mulle-sde commands and not directly.
+* `reflect` folders will be recreated whenever the `mulle-sde reflect`
+command is run, so don't edit them.
+* `share` folders will be overwritten when the `mulle-sde upgrade`
+command is run, so don't edit those either.
+* `var` folders can change at any time a mulle-sde command is run, so don't
+touch them.
 
 ### Run
 
@@ -104,13 +118,13 @@ setup and create a project file for you:
 mulle-sde extension add sublime-text # will create hello-world.sublime-project
 mulle-sde extension add vscode       # will create hello-world.code-workspace
 ```
- 
+
 ### Add
 
 Source files live in the `src` folder of your project (can be changed with `PROJECT_SOURCE_DIR`).
 
 The most convenient way to add files is with the `mulle-sde add` command, as
-this gives you preconfigured implementation and interface files for a new class 
+this gives you preconfigured implementation and interface files for a new class
 for instance.
 If you use a `+` in your filename, you will get files for a category.
 
@@ -136,7 +150,7 @@ Type                 | Description
 
 ### Rename and Remove
 
-You can move, rename or remove sources anyway you like with whatever 
+You can move, rename or remove sources anyway you like with whatever
 tool you like. After you made your
 changes, run `mulle-sde reflect` to reflect your changes back into
 `CMakeLists.txt` (indirectly via `cmake/_Headers.cmake` and
