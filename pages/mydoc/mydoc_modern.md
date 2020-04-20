@@ -75,7 +75,7 @@ the default mulle-sde build system, but it can be substituted with another,
 if so desired.
 
 The source is in the `src` folder. Source will be found in `src` or in any of the
-`src` subfolders. A source file anywhere else will not be picked up by
+its subfolders. A source file anywhere else will not be picked up by
 `mulle-sde reflect` and will therefore not be built. (You can change the
 default behaviour later)
 
@@ -88,15 +88,15 @@ contents via mulle-sde commands and not directly.
 command is run, so don't edit them.
 * `share` folders will be overwritten when the `mulle-sde upgrade`
 command is run, so don't edit those either.
-* `var` folders can change at any time a mulle-sde command is run, so don't
+* `var` folders (found inside `.mulle`) can change any time a mulle-sde command is run, so don't
 touch them.
 
 ### Run
 
 You are ready to craft your executable and run it. The very first `craft`
 command will be quite slow, as mulle-sde will setup a virtual environment
-for your project. This is somewhat akin to creating a `docker container`. But
-it will only do this once:
+for your project. This is somewhat akin to creating a *docker* container. 
+mulle-sde needs to do it once:
 
 ``` console
 cd hello-world
