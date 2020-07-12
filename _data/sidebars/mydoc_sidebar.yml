@@ -114,7 +114,7 @@ entries:
       url: /mydoc_pnp_category.html
       output: web
 
-  - title: Language Features
+  - title: Features
     output: web, pdf
     folderitems:
     - title: "+dependencies"
@@ -143,6 +143,10 @@ entries:
 
     - title: "Forwarding"
       url: /mydoc_forward.html
+      output: web, pdf
+
+    - title: "Overridden methods"
+      url: /mydoc_overridden.html
       output: web, pdf
 
     - title: "Tagged Pointer"
