@@ -8,6 +8,7 @@ permalink: mydoc_property_new.html
 folder: mydoc
 ---
 
+
 ## dynamic
 
 Indicate that a property is not backed by an ivar. This is useful for
@@ -40,3 +41,15 @@ class.
 @property( assign, serializable=Bar) NSArray   *foo;
 ```
 
+
+## container
+
+A property backed by a container gains two additional methods. If the property
+is called "foos", the two methods will be `addToFoos:` and `removeFromFoos:`.
+These will call `addObject:` and `removeObject:` on the instance variable
+respectively.
+
+
+```
+@property( container) NSArray   *foos;
+```

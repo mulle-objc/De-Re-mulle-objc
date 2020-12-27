@@ -13,11 +13,6 @@ there are some useful resources online.
 
 ## Objective-C Resources
 
-### Learn Objective-C in 24 days for mulle-objc
-
-[Learn Objective-C in 24 Days with mulle-objc](https://github.com/mulle-objc/Learn-Mulle-Objective-C-in-24-Days) is
-a tutorial that's been adapted to mulle-objc. Unfortunately it is not complete yet, but it can be a good start.
-
 ### mulle-objc Cheat Sheet, Mulle kybernetiK
 
 The [mulle-objc CheatSheet](//github.com/mulle-objc/Objective-C-CheatSheet)

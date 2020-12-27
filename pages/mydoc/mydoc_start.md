@@ -24,7 +24,7 @@ You can use **make** or most IDEs with this setup.
 
 Use **mulle-sde** to download all required components of the Foundation
 library and to build them. There will be an error, because it can not find an
-optional component **mulle-objcDecimalFoundation**. This is harmless.
+optional component **MulleObjCDecimalFoundation**. This is harmless.
 
 You can change the install location with the `--prefix` option. Otherwise
 the `usr` directory of your home directory, will be the install destination.

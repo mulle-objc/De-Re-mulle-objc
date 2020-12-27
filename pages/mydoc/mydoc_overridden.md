@@ -198,10 +198,10 @@ If you want to call `-foo` of **A**:
 and so on.
 
 
-## `MulleObjCObjectSearchClobberChain`
+## `MulleObjCClassSearchInstanceClobberChain`
 
-If a class wants to call all `foo` defined by itself and its categories,
-it can use `MulleObjCObjectSearchClobberChain`.
+If a class wants to call all instance methods `foo` defined by itself and
+its categories, it can use `MulleObjCClassSearchInstanceClobberChain`.
 This function will add the implementations of **Y**, **X** and **B** to an
 array of type `IMP` - in that order.
 
@@ -212,7 +212,7 @@ array of type `IMP` - in that order.
    IMP            imps[ 8];
    unsigned int   i, n;
 
-   n = MulleObjCObjectSearchClobberChain( self, @selector( foo), imps, 8);
+   n = MulleObjCClassSearchInstanceClobberChain( self, @selector( foo), imps, 8);
    assert( n <= 8);
    for( i = n; i;)
       MulleObjCIMPCall0( imps[ --i], self, @selector( foo));
@@ -225,4 +225,6 @@ useful. Therefore **B**'s foo will be called first, then **X** and then **Y**:
 
 ![](images/chain.svg)
 
+There is also a function `MulleObjCClassSearchClobberChain` to retrieve
+class methods.
 
