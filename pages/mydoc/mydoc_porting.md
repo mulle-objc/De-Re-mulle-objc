@@ -23,7 +23,7 @@ Rewrite code that imports specific headers to use the envelope header.
 Example: Rewrite
 
 
-```
+``` objc
 #import <Foundation/NSObject.h>
 #import <Foundation/NSString.h>
 ```
@@ -53,7 +53,7 @@ required to hold an instance (including mulle-objc runtime overhead).
 But the actual object will be at an offset. Pass the allocated memory to
 `objc_constructInstance` and use the return value as the instance pointer.
 
-``` c
+``` objc
 id        obj;
 size_t    size;
 void      *allocation;
@@ -77,7 +77,7 @@ in your class implementation may not be correct.
 
 The proper and portable way to get a pointer to the extra bytes is:
 
-``` c
+``` objc
 size_t    size;
 void      *allocation;
 void      *extra;
@@ -141,3 +141,18 @@ TODO
 
 If you create ephemeral instances in your `+load` method, you should wrap
 the code yourself inside an `NSAutoreleasePool`.
+
+### sizeof( unichar) is different
+
+Apple Foundation uses UTF-16 as unichar, whereas the mulle-objc Foundation
+uses UTF-32 as unichar. As long as your code is not assuming 16-bit for its
+size, there should be no problem.
+
+When accessing string contents as `unichar *` with say `-dataUsingEncoding:`
+use the generic `NSUnicodeStringEncoding` instead of `NSUTF32StringEncoding/NSUTF16StringEncoding`.
+
+``` objc
+  data = [s dataUsingEncoding:NSUnicodeStringEncoding];
+  here_some_unichars( (unichar *) [data bytes], [data length] / sizeof( unichar));
+```
+TODO: How about printf with %S ?

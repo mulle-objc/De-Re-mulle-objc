@@ -3,8 +3,8 @@ title: Porting unichar
 keywords: load unload
 last_updated: March 26, 2019
 tags: [foundation]
-summary: "How classes are loaded and how to orchestrate them."
-permalink: mydoc_class.html
+summary: "unichar is a different size"
+permalink: mydoc_unichar.html
 folder: mydoc
 ---
 
