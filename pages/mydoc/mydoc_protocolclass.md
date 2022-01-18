@@ -252,7 +252,7 @@ implementation.
 ```
    IMP   imp;
 
-   imp = mulle-objcObjectSearchOverriddenIMP( self, @selector( doTheFooThing), @selector( Foo), 0);
+   imp = MulleObjCObjectSearchOverriddenIMP( self, @selector( doTheFooThing), @selector( Foo), 0);
    return( (*imp)( self, @selector( doTheFooThing), self));
 ```
 
