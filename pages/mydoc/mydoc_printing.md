@@ -83,11 +83,11 @@ mulle-varargs arguments. There is support for this as well.
 
 ### Functions printing into autoreleased C strings
 
-With `asprintf` a `malloc`ed bit of memory is returned, which the caller will
-have to free eventually. Wouldn't it be convenient, if that was already
-autoreleased ?
+With `asprintf` a `malloc`ed string is returned. The caller should
+`free` this string eventually. Wouldn't it be convenient, if the string was
+already autoreleased, so the caller wouldn't have to free it ?
 
-You can create a string you don't have to free with
+You can create such autoreleases C strings like so:
 
 ```c
 char   *s;
@@ -95,7 +95,7 @@ char   *s;
 s = MulleObjC_asprintf( "%d", 1848)`
 ```
 
-The following mulle functions create autoreleased UTF8 strings:
+The following mulle functions create autoreleased C strings:
 
 
 | Function               | Description
