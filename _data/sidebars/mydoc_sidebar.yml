@@ -149,6 +149,10 @@ entries:
       url: /mydoc_overridden.html
       output: web, pdf
 
+    - title: "Printing functions"
+      url: /mydoc_printing.html
+      output: web, pdf
+
     - title: "Tagged Pointer"
       url: /mydoc_tps.html
       output: web, pdf
