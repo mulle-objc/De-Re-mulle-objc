@@ -21,15 +21,15 @@ printf( "%s\n", [obj UTF8String]);
 ```
 
 But when objects are involved it is more convenient to use the
-`mulle_printf` variants. With `mulle-printf` you can use the special '%@' conversion to simplify the code to:
+`mulle_printf` variants. With `mulle-printf` you can use the special '%@'
+object conversion. This simplifies the code to:
 
 ``` c
 mulle_printf( "%@\n", obj);
 ```
 
 Internally the same thing happens, the -UTF8String method of **obj** is called
-and used to replace `%@`. The advantage of using the mulle variant is, that
-it's easier to write. It also compiles to less code.
+and used to replace `%@`.
 
 
 ## Functions with C format strings
@@ -44,7 +44,8 @@ it's easier to write. It also compiles to less code.
 | `sprintf`   | `mulle_sprintf`    | print to "big enough" char buffer
 | `snprintf`  | `mulle_snprintf`   | print to char buffer of given size
 
-There are some non-POSIX extensions which are available on BSD and Linux for C. The mulle functions are available on all platforms.
+There are some non-POSIX extensions which are available on BSD and Linux for C.
+The mulle functions are available on all platforms.
 
 | stdio       | mulle              | Description
 |-------------|--------------------|------------------
@@ -71,10 +72,13 @@ forwarding arguments in a C function, that itself accepts variable arguments.
 Methods with variable arguments don't receive stdarg arguments but
 mulle-varargs arguments. There is support for this as well.
 
-| stdio       | mulle              | Description
-|-------------|--------------------|------------------
-|  -          | `mulle_mvprintf`   | print to stdout with mulle-varargs (Objective-C) varargs (C)
-|  -          | `mulle_mvasprintf` | allocate char buffer and print with mulle-varargs (Objective-C)
+| Function           | Description
+|--------------------|------------------
+| `mulle_mvprintf`   | print to stdout with mulle-varargs (Objective-C)
+| `mulle_mvfprintf`  | print to FILE with mulle-varargs (Objective-C)
+| `mulle_mvsprintf`  | print to "big enough" char buffer with mulle-varargs (Objective-C)
+| `mulle_mvsnprintf` | print to char buffer of given size with mulle-varargs (Objective-C)
+| `mulle_mvasprintf` | allocate char buffer and print with mulle-varargs (Objective-C)
 
 
 ### Functions printing into autoreleased C strings
@@ -83,14 +87,22 @@ With `asprintf` a `malloc`ed bit of memory is returned, which the caller will
 have to free eventually. Wouldn't it be convenient, if that was already
 autoreleased ?
 
-You can create autoreleased UTF8 strings using the following mulle functions.
+You can create a string you don't have to free with
+
+```c
+char   *s;
+
+s = MulleObjC_asprintf( "%d", 1848)`
+```
+
+The following mulle functions create autoreleased UTF8 strings:
 
 
-| stdio       | mulle                  | Description
-|-------------|------------------------|------------------
-| `asprintf`  | `MulleObjC_asprintf`   | allocate autoreleased char buffer and print to it
-| `vasprintf` | `MulleObjC_vasprintf`  | allocate autoreleased char buffer and print to it with varargs (C)
-| -           | `MulleObjC_mvasprintf` | allocate autoreleased char buffer and print to it with mulle-varargs (Objective-C)
+| Function               | Description
+|------------------------|------------------
+| `MulleObjC_asprintf`   | allocate autoreleased char buffer and print to it
+| `MulleObjC_vasprintf`  | allocate autoreleased char buffer and print to it with varargs (C)
+| `MulleObjC_mvasprintf` | allocate autoreleased char buffer and print to it with mulle-varargs (Objective-C)
 
 
 ## Functions with Objective-C format strings
