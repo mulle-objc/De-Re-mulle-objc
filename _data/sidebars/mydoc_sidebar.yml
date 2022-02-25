@@ -150,7 +150,7 @@ entries:
       output: web, pdf
 
     - title: "Allocation"
-      url: /mydoc_alloation.html
+      url: /mydoc_allocation.html
       output: web, pdf
 
     - title: "Printing"
