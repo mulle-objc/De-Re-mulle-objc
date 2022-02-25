@@ -149,7 +149,11 @@ entries:
       url: /mydoc_overridden.html
       output: web, pdf
 
-    - title: "Printing functions"
+    - title: "Allocation"
+      url: /mydoc_alloation.html
+      output: web, pdf
+
+    - title: "Printing"
       url: /mydoc_printing.html
       output: web, pdf
 

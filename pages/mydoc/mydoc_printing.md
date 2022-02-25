@@ -1,7 +1,7 @@
 ---
-title: Printing functions
+title: Printing
 keywords: class
-last_updated: July 23, 2022
+last_updated: February 26, 2022
 tags: [language]
 summary: "Printing functions"
 permalink: mydoc_printing.html
@@ -92,7 +92,7 @@ You can create such autoreleases C strings like so:
 ```c
 char   *s;
 
-s = MulleObjC_asprintf( "%d", 1848)`
+s = MulleObjC_asprintf( "%d", 1848);
 ```
 
 The following mulle functions create autoreleased C strings:
@@ -108,9 +108,7 @@ The following mulle functions create autoreleased C strings:
 ## Functions with Objective-C format strings
 
 `MulleObjCPrintf( @"%@\n", @VfL Bochum 1848")` is basically the same as
-`mulle_printf( ["@%s\n" UTF8String], @"VfL Bochum 1848\n")`. Using an
-Objective-C format string instead of C String can be useful or just look
-nicer:
+`mulle_printf( ["@%s\n" UTF8String], @"VfL Bochum 1848\n")`.
 
 MulleObjC supports Objective-C format strings with the following functions:
 
