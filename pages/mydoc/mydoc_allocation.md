@@ -10,11 +10,13 @@ folder: mydoc
 
 ## Intro
 
-Low level heap memory allocation in C is done with `malloc` and `free`.
-In Objective-C high level autoreleased memory allocation is done with
-`[[NSMutableData dataWithLength:] mutableBytes]`.
+Heap memory management in C is done with `malloc` and `free`. These functions
+can also be used in Objective-C. For temporary memory it can be convenient to
+use  `[[NSMutableData dataWithLength:] mutableBytes]` instead, as you are
+getting an autoreleased memory block.
 
-MulleObjC provides some memory functions for all purposes that are "inbetween".
+MulleObjC provides more memory functions for convenience, better leak checking
+and more control.
 
 
 ### struct mulle_allocator
@@ -37,14 +39,15 @@ to
 p = mulle_malloc( 1848);
 ```
 
-> If you want to know why and how this works, read the mulle-allocator [README.md](//github.com/mulle-c/mulle-allocator/blob/release/README.md)
+> If you want to know why and how this works, read the mulle-allocator [README.md](//github.com/mulle-c/mulle-allocator/blob/release/README.md). For leak checking refer to the
+> mulle-testallocator [README.md](//github.com/mulle-core/mulle-testallocator/blob/release/README.md)
 
 
 ### Creating autoreleased and zeroed memory
 
-If `NSMutableData` is not available, you can use `MulleObjCCallocAutoreleased`
+If NSMutableData is not available, you can use `MulleObjCCallocAutoreleased`
 to create an autoreleased and zeroed block of memory. Note that the block
-_will_ be reclaimed by the enclosing NSAutoreleasePool.
+_will_ be reclaimed by the enclosing `NSAutoreleasePool`.
 
 ``` c
 p = MulleObjCCallocAutoreleased( 1, sizeof( struct whatever));
@@ -53,8 +56,9 @@ p = MulleObjCCallocAutoreleased( 1, sizeof( struct whatever));
 
 ### Creating instances
 
-The usual way to create an instance is +new or a combination of +alloc and an
--init method. The actual allocation is hidden inside the +new/+alloc methods.
+The usual Objective-C way to create an instance is `+new` or a combination of
+`+alloc` and an `-init` method. The actual allocation is hidden inside the
+`+new`/`+alloc` methods.
 
 > Nomenclauture: Classes create instances. Classes and instances are objects.
 > ![](images/object-class-instance.svg)
@@ -70,10 +74,9 @@ The default implementation of `+alloc` is:
 
 
 You can call `_MulleObjCClassAllocateInstance` directly, to create an instance.
-This can be usefule when writing your own `+alloc` or `+new` method.
+This can be useful, when writing your own `+alloc` or `+new` method.
 
-
-Calling `_MulleObjCClassAllocateInstance` on not self-written classes,
+Calling `_MulleObjCClassAllocateInstance` on a class not under your control,
 may create unexpected side-effects or errors. You need to consider, if the
 class is a [TPS](mydoc_tps.html) class or a [Singleton](mydoc_singleton.html)
 class or a [Classcluster](mydoc_classcluster.html) or any class that may do
@@ -97,10 +100,10 @@ basis.
 ### Allocating extra memory for an instance
 
 If your instance needs some extra memory to store data, it could use
-a NSMutableData instance variable:
+a `NSMutableData` instance variable:
 
 ``` objc
-@interface Foo
+@interface Foo : NSObject
 {
    NSMutableData   *_buffer;
 }
@@ -131,14 +134,13 @@ a NSMutableData instance variable:
 ```
 
 A disadvantage of this scheme is, that you don't have control over the
-allocator used to create the memory. That control lies with *NSMutableData*.
+allocator used to create the memory. That control lies with `NSMutableData`.
 To use the allocator, the instance was created with, use
 `MulleObjCInstanceAllocateMemory`:
 
 
-
 ``` objc
-@interface Foo
+@interface Foo : NSObject
 {
    void   *_buffer;
 }
@@ -220,7 +222,7 @@ allocation and `MulleObjCClassConstructInstance` zeroes the memory and
 initializes `isa` and the `retainCount`.
 
 
-```
+``` c
 size_t   size;
 void     *block;
 Class    myClass;
@@ -236,9 +238,15 @@ my_free( obj);
 
 There are a lot of caveats:
 
-* ascertain that -dealloc doesn't interfere with your memory scheme
+* ascertain that `-dealloc` doesn't interfere with your memory scheme
 * ascertain that all instance variables are freed before deallocing
-* calling -init may trigger -release  and therefore -dealloc in an error case
+* calling `-init` may trigger `-release`  and therefore `-dealloc` in an error case
 
 
 Reasonably, this scheme can only be used for very simple value type objects.
+
+
+### Tidbits
+
+If you want to create an object, whose property objects are allocated with the
+same custom allocator as the owner object, you will have to subclass a lot.
