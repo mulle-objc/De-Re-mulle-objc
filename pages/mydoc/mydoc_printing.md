@@ -14,22 +14,22 @@ The C way to print anything to a file, the console or even to memory
 is `printf` and friend functions which are defined in `<stdio.h>`.
 
 `printf` is still absolutely viable with mulle-obj. To print an
-object with standard printf, you would use the objects -UTF8String method:
+object with standard printf, you would use the objects `-UTF8String` method:
 
 ``` c
 printf( "%s\n", [obj UTF8String]);
 ```
 
 But when objects are involved it is more convenient to use the
-`mulle_printf` variants. With `mulle-printf` you can use the special '%@'
+`mulle_printf` family of functions. `mulle_printf` allows the special '%@'
 object conversion. This simplifies the code to:
 
 ``` c
 mulle_printf( "%@\n", obj);
 ```
 
-Internally the same thing happens, the -UTF8String method of **obj** is called
-and used to replace `%@`.
+Internally the same thing happens, the `-UTF8String` method of **obj** is
+called and the result is used to replace `%@`.
 
 
 ## Functions with C format strings

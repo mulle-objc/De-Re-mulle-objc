@@ -133,11 +133,11 @@ entries:
       url: /mydoc_protocolclass.html
       output: web, pdf
 
-    - title: "Class-cluster"
+    - title: "Classcluster Classes"
       url: /mydoc_classcluster.html
       output: web, pdf
 
-    - title: "Singleton"
+    - title: "Singleton Classes"
       url: /mydoc_singleton.html
       output: web, pdf
 
@@ -157,7 +157,7 @@ entries:
       url: /mydoc_printing.html
       output: web, pdf
 
-    - title: "Tagged Pointer"
+    - title: "Tagged Pointer Classes"
       url: /mydoc_tps.html
       output: web, pdf
 

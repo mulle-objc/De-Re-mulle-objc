@@ -1,5 +1,5 @@
 ---
-title: classcluster
+title: Classcluster Classes
 keywords: class
 last_updated: March 26, 2019
 tags: [runtime,library]

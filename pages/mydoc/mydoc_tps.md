@@ -1,9 +1,8 @@
 ---
-title: tps
+title: Tagged Pointer Classes
 keywords: class
 last_updated: March 26, 2019
 tags: [runtime,8.0.0]
-summary: ""
 permalink: mydoc_tps.html
 folder: mydoc
 ---
@@ -33,7 +32,7 @@ if( ! i)
 ###  Let the TPS class inherit your class
 
 Subclass your color class and adorn your `@interface` declaration with the
-`mulle-objcTaggedPointer` protocol:
+`MulleObjCTaggedPointer` protocol:
 Your class must be abstract and not contain any instance variables.
 Use `#ifdef __MULLE_OBJC_TPS__` around your code, as the user can turn off TPS
 code with a compiler option. Your code should run fine without TPS enabled
@@ -42,7 +41,7 @@ code with a compiler option. Your code should run fine without TPS enabled
 ```
 #ifdef __MULLE_OBJC_TPS__
 
-@interface MyTPSColor : MyColor <mulle-objcTaggedPointer>
+@interface MyTPSColor : MyColor <MulleObjCTaggedPointer>
 @end
 
 #endif
@@ -61,7 +60,7 @@ are using a fixed number scheme here and the TPS index chosen is '3'.
 
 + (void) load
 {
-   if( mulle-objcTaggedPointerRegisterClassAtIndex( self, 0x3))
+   if( MulleObjCTaggedPointerRegisterClassAtIndex( self, 0x3))
    {
       perror( "Need tag pointer aware runtime for MyTPSColor with empty slot #3\n");
       abort();
@@ -74,7 +73,8 @@ are using a fixed number scheme here and the TPS index chosen is '3'.
 
 ### Create TPS instance depending on input
 
-Convert you color to a 24 bit value and create the instance with the `C` function `mulle-objcCreateTaggedPointerWithUnsignedIntegerValueAndIndex`. Do not use `+alloc`!
+Convert you color to a 24 bit value and create the instance with the `C` function
+`MulleObjCCreateTaggedPointerWithUnsignedIntegerValueAndIndex`. Do not use `+alloc`!
 
 ```
 static inline MyColor   *TPSColorNew( unsigned char r, unsigned char g , unsigned char b)
@@ -82,7 +82,7 @@ static inline MyColor   *TPSColorNew( unsigned char r, unsigned char g , unsigne
    NSUInteger   value;
 
    value = (((NSUInteger) << 16) | ((NSUInteger) g << 8) | (NSUInteger) b);
-   return( (MyColor *) mulle-objcCreateTaggedPointerWithUnsignedIntegerValueAndIndex( value, 0x3));
+   return( (MyColor *) MulleObjCCreateTaggedPointerWithUnsignedIntegerValueAndIndex( value, 0x3));
 }
 ```
 
@@ -97,7 +97,7 @@ static inline MyColor   *TPSColorNew( unsigned char r, unsigned char g , unsigne
 {
    NSUInteger   value;
 
-   value = mulle-objcTaggedPointerGetUnsignedIntegerValue( self);
+   value = MulleObjCTaggedPointerGetUnsignedIntegerValue( self);
    return( value >> 16);
 }
 ```

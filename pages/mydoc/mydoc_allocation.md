@@ -11,11 +11,10 @@ folder: mydoc
 ## Intro
 
 Heap memory management in C is done with `malloc` and `free`. These functions
-can also be used in Objective-C. For temporary memory it can be convenient to
-use  `[[NSMutableData dataWithLength:] mutableBytes]` instead, as you are
-getting an autoreleased memory block.
+can also be used in Objective-C. To get a temporary, autoreleased memory block,
+you can use `[[NSMutableData dataWithLength:] mutableBytes]`.
 
-MulleObjC provides more memory functions for convenience, better leak checking
+MulleObjC provides many memory functions for convenience, better leak checking
 and more control.
 
 
@@ -233,7 +232,7 @@ size  = MulleObjCClassGetInstanceSize( myClass);
 block = my_malloc(size);
 obj   = MulleObjCClassConstructInstance( myClass, block, size, NO);
 ...
-my_free( obj);
+my_free( block);  // not obj!
 ```
 
 There are a lot of caveats:

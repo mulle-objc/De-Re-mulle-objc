@@ -42,7 +42,7 @@ shouldn't call `-dealloc` manually on a reference counted object.
 The finalization can happen in the "middle of the lifetime" of the object.
 And it is guaranteed that `-finalize` is only called once.
 
-{% include note.html content="Never call `-finalize` directly, always use `-performFinalize`." %}
+{% include note.html content="Never call `-finalize` directly, always use `-mullePerformFinalize`." %}
 
 A finalized object is still useable in the object hierarchy,
 but it is not active anymore. An example, where this is useful, is a window
