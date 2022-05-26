@@ -2,7 +2,7 @@
 
 Draft of a developer guide for mulle-objc.
 
-### [Read De Re mulle-objc here](//mulle-objc.github.io/De-Re-mulle-objc).
+### [Read De Re mulle-objc here](//mulle-objc.github.io/De-Re-mulle-objc)
 
 
 ## Linux
