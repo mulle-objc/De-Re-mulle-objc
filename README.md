@@ -7,8 +7,14 @@ Draft of a developer guide for mulle-objc.
 
 ## Linux
 
-```
+``` bash
 bundle exec jekyll serve -d /tmp/_site
+```
+
+or use [mulle-dockerize](//github.com/mulle-nat/mulle-dockerize) and just say:
+
+``` bash
+jekyll serve -d /tmp/_site
 ```
 
 ## macOS
