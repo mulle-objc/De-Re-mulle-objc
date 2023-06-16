@@ -27,7 +27,7 @@ This is the "user" facing class. All other classes will be more or less hidden. 
 It also adopts the mulle-objcClassCluster protocolclass.
 
 ```
-@interface BitSet : NSObject < mulle-objcClassCluster>
+@interface BitSet : NSObject < MulleObjCClassCluster>
 
 - (instancetype) initWithBits:(NSUInteger *) bits
                         count:(NSUInteger) count;
@@ -154,7 +154,7 @@ instance creation and deallocation with primitive runtime functions ourselves:
 
 - (void) dealloc
 {
-   mulle-objcObjectDeallocateMemory( self->_bits);
+   MulleObjCObjectDeallocateMemory( self->_bits);
    NSDeallocateObject( self);
 }
 
@@ -257,7 +257,7 @@ as we will show with **MutableBitSet**.
 ```
 #import "BitSet.h"
 
-@interface MutableBitSet : BitSet <MulleObjCSingleton>
+@interface MutableBitSet : BitSet <MulleObjCClassCluster>
 
 - (BOOL) setBool:(BOOL) flag
          atIndex:(NSUInteger) index;
