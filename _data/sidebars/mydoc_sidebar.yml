@@ -28,10 +28,6 @@ entries:
       output: web, pdf
       type: homepage
 
-    - title: Get Started
-      url: /mydoc_start.html
-      output: web
-
     - title: Learn ObjC
       url: /mydoc_links.html
       output: web
@@ -56,27 +52,35 @@ entries:
         url: /mydoc_pnp_source.html
         output: web
 
-      - title: Coverage
-        url: /mydoc_coverage.html
-        output: web
-
-      - title: Code Reduction
-        url: /mydoc_reduction.html
-        output: web
-
-      - title: Tools
-        url: /mydoc_tools.html
-        output: web
-
   - title: Language
     output: web, pdf
     folderitems:
+    - title: Good Code
+      url: /mydoc_good.html
+      output: web
+
     - title: Basics
       url: /mydoc_basics.html
       output: web
 
-    - title: Good Code
-      url: /mydoc_good.html
+    - title: "Printing"
+      url: /mydoc_printing.html
+      output: web, pdf
+
+    - title: "KeyValueCoding"
+      url: /mydoc_kvc.html
+      output: web, pdf
+
+    - title: "Overridden methods"
+      url: /mydoc_overridden.html
+      output: web, pdf
+
+    - title: Plug and Play Classes
+      url: /mydoc_pnp_class.html
+      output: web
+
+    - title: Plug and Play Categories
+      url: /mydoc_pnp_category.html
       output: web
 
   - title: Advanced Programming Techniques
@@ -98,10 +102,6 @@ entries:
       url: /mydoc_forward.html
       output: web, pdf
 
-    - title: "Overridden methods"
-      url: /mydoc_overridden.html
-      output: web, pdf
-
     - title: "@protocolclass"
       url: /mydoc_protocolclass.html
       output: web, pdf
@@ -114,28 +114,12 @@ entries:
       url: /mydoc_singleton.html
       output: web, pdf
 
-    - title: Plug and Play Classes
-      url: /mydoc_pnp_class.html
-      output: web
-
-    - title: Plug and Play Categories
-      url: /mydoc_pnp_category.html
-      output: web
-
     - title: "Allocation"
       url: /mydoc_allocation.html
       output: web, pdf
 
-    - title: "Printing"
-      url: /mydoc_printing.html
-      output: web, pdf
-
     - title: "Tagged Pointer Classes"
       url: /mydoc_tps.html
-      output: web, pdf
-
-    - title: "KeyValueCoding"
-      url: /mydoc_kvc.html
       output: web, pdf
 
     - title: "Universe"
@@ -215,6 +199,21 @@ entries:
 
       - title: Xcode projects
         url: /mydoc_xcodeproj.html
+        output: web
+
+  - title: Advanced Tooling
+    output: web, pdf
+    folderitems:
+      - title: Coverage
+        url: /mydoc_coverage.html
+        output: web
+
+      - title: Code Reduction
+        url: /mydoc_reduction.html
+        output: web
+
+      - title: Tools
+        url: /mydoc_tools.html
         output: web
 
   - title: Acknowledgments

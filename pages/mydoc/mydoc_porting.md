@@ -156,3 +156,21 @@ use the generic `NSUnicodeStringEncoding` instead of `NSUTF32StringEncoding/NSUT
   here_some_unichars( (unichar *) [data bytes], [data length] / sizeof( unichar));
 ```
 TODO: How about printf with %S ?
+
+
+
+
+### inout ...
+
+These `@encode` adornments should still work, but they are not encoded
+and decoded:
+
+* in
+* out
+* inout
+* bycopy
+* byref
+* oneway
+
+> See: [Stack Overflow](https://stackoverflow.com/questions/5609564/objective-c-in-out-inout-byref-byval-and-so-on-what-are-they)
+

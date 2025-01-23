@@ -189,7 +189,7 @@ PROTOCOL is a kind of **@selector** in mulle-objc:
 
 #### instancetype
 
-**instancetype** behaves normally:
+**instancetype** is a standin for `id` the generic object pointer:
 
 
 ```
@@ -214,7 +214,7 @@ PROTOCOL is a kind of **@selector** in mulle-objc:
 
 #### @autoreleasepool
 
-You can use **@autoreleasepool**:
+You can use **@autoreleasepool** to create nested pool structures:
 
 ```
 // keyword autoreleasepool
@@ -259,20 +259,6 @@ NS_HANDLER
 NS_ENDHANDLER
 }
 ```
-
-#### inout ...
-
-These @encode adornments should still work but they are not encoded
-and decoded:
-
-* in
-* out
-* inout
-* bycopy
-* byref
-* oneway
-
-> See: [Stack Overflow](https://stackoverflow.com/questions/5609564/objective-c-in-out-inout-byref-byval-and-so-on-what-are-they)
 
 
 ### Literals
@@ -411,4 +397,5 @@ literalSelector: <invalid selector>
 
 ## Next
 
-The followup to "good code" is of course [bad code](mydoc_bad.html)
+Lets examine a how to write a [basic class](mydoc_basics.html) with everything
+in it.

@@ -8,7 +8,15 @@ permalink: mydoc_modern_complex.html
 folder: mydoc
 ---
 
-A golden rule of the modern workflow is: do not create projects
+Objective-C is an [Object Oriented Programming Language](https://en.wikipedia.org/wiki/Object-oriented_programming).
+With that comes the expectation of a [plug-n-play](https://dl.acm.org/doi/10.1145/2601328.2601334) programming environment.
+
+It should be possible to add and remove functionality, without
+breaking the application. This expectation has been historically never
+fulfilled, due to deficiencies with the compilation tools, the Objective-C
+runtime and the way headers are handled.
+
+A golden rule of mulle-objc is: do not create projects
 with multiple targets. Instead create multiple projects and link them
 together via dependencies.
 

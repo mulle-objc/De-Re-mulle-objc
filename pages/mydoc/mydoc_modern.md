@@ -1,5 +1,5 @@
 ---
-title: Modern Workflow
+title: Project Setup
 keywords: class
 last_updated: January 23, 2025
 tags: [tools modern]
@@ -7,15 +7,6 @@ summary: ""
 permalink: mydoc_modern.html
 folder: mydoc
 ---
-
-The preferred development workflow is the "modern workflow".
-The modern workflow is static library based.
-The advantages of the static library approach are:
-
-* static linking works on platforms that do not support dynamic libraries
-* static linking can be optimized to remove unused classes and categories
-* static linking produces executables that are easier to install and deploy
-
 
 ## Foundation vs mulle-objc
 

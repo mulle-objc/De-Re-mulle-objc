@@ -22,7 +22,7 @@ Assuming  that your Xcode project file is named "project.xcodeproj", these
 steps may already be sufficient:
 
 
-```
+``` bash
 mulle-xcode-to-cmake export project.xcodeproj > CMakeLists.txt
 mulle-sde init -m foundation/objc-porter executable
 mulle-sde craft
@@ -31,7 +31,7 @@ mulle-sde craft
 To install:
 
 
-```
+``` bash
 mulle-sde craft craftorder
 mulle-sde run mulle-make install --prefix /tmp/whereever
 ```
@@ -44,12 +44,12 @@ up into multiple projects.
 
 Replace the *objc-porter* environment with the *objc-developer* environment:
 
-```
+``` bash
 rm -rf .mulle
 mulle-sde init -m foundation/objc-developer executable
 ```
 
-And then you are ready to setup the [modern workflow](mydoc_modern.html).
+And then you are ready to setup a [project](mydoc_modern.html).
 
 
 ## Next

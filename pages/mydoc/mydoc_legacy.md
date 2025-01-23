@@ -8,7 +8,17 @@ permalink: mydoc_legacy.html
 folder: mydoc
 ---
 
-The legacy workflow is shared library based.
+
+### Modern Workflow
+
+The modern workflow is static library based, which gives the following
+advantages over shared libraries:
+
+* static linking works on platforms that do not support dynamic libraries
+* static linking can be optimized to remove unused classes and categories
+* static linking produces executables that are easier to install and deploy
+
+In contrast, the legacy workflow is shared library based.
 
 The advantages of that approach are:
 
@@ -20,15 +30,35 @@ The advantages of that approach are:
 > it can be a pain in the ass to link the multitude of static libraries in
 > the correct order, with the correct linker flags in a cross-platform manner.
 
-### Build and install Foundation
 
-The following example builds a `libFoundation.so` on Linux or a
-`libFoundation.dylib` on macOS. The headers and libraries are installed into
-your `~/usr` directory in this example:
+## Legacy workflow
 
-```
+The legacy workflow installs the **mulle-objc** Foundation as a *shared* library.
+You use the custom compiler **mulle-clang** to compile Objective-C files.
+These are then liked with the `Foundation` shared library and some startup
+libraries.
+
+You can use **make** or most IDEs with this setup.
+
+{% include note.html content="The \"modern workflow\" uses static libraries." %}
+
+
+### Install a shared MulleFoundation library
+
+Use **mulle-sde** to download all required components of the Foundation
+library and to build them. There will be an error, because it can not find an
+optional component **MulleObjCDecimalFoundation**. This is harmless.
+
+You can change the install location with the `--prefix` option. Otherwise
+the `usr` directory of your home directory, will be the install destination.
+
+
+``` console
 mulle-sde install --standalone --prefix "${HOME}/usr" "https://github.com/MulleFoundation/Foundation/archive/latest.zip"
 ```
+
+A shared (dynamic) `libFoundation` library and some other static libraries
+should be present in your `~/usr/lib` folder now.
 
 > If you have the repositories already checked out,
 > you can prefix the command with a search path, to avoid downloads
@@ -47,7 +77,7 @@ mulle-sde install --standalone --prefix "${HOME}/usr" "https://github.com/MulleF
 
 ### Build and install Foundation-startup
 
-The Foundation-startup must be built and installed seperately.
+The Foundation-startup must be built and installed separately.
 
 
 ```
@@ -56,16 +86,6 @@ mulle-sde install --only-project --prefix "${HOME}/usr" "https://github.com/Mull
 
 This duplicates much of the work already done by the previous Foundation
 built, but this can not be avoided easily.
-
-
-{% include note.html content="**Homebrew support**:
-
-On MacOS there is a [brew](https://brew.sh) formula, which will install a
-`libFoundation.dylib` and all required headers into `/usr/local` with:
-
-`brew install mulle-kybernetik/software/Foundation`
-" %}
-
 
 ## Usage
 
