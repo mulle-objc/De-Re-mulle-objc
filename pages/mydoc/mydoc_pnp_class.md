@@ -1,7 +1,7 @@
 ---
 title: Plug And Play Class
 keywords: workflow modern
-last_updated: March 26, 2019
+last_updated: January 23, 2025
 tags: [tools modern includes]
 summary: ""
 permalink: mydoc_pnp_class.html

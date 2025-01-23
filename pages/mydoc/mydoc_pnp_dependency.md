@@ -1,7 +1,7 @@
 ---
 title: Dependencies
 keywords: workflow modern
-last_updated: March 26, 2019
+last_updated: January 23, 2025
 tags: [tools modern includes]
 summary: ""
 permalink: mydoc_pnp_dependency.html
@@ -12,7 +12,7 @@ Your mulle-objc project will have dependencies. One dependency is either the
 MulleObjC library or the Foundation library and their constituent libraries.
 But you will likely want to add more.
 
-The modern workflow makes this easy and in the best case a one-liner. Here's
+mulle-sde makes this easy and in the best case a one-liner. Here's
 how.
 
 ## mulle-sde dependency manages the sourcetree
@@ -47,7 +47,7 @@ to type in the whole URL. This command adds
 ### C:
 
 ```
-mulle-sde dependency add --c --github libexpat libexpat
+mulle-sde dependency add --c github:libexpat/libexpat
 ```
 
 This command adds
@@ -56,7 +56,7 @@ This command adds
 ### Objective-C:
 
 ```
-mulle-sde dependency add --objc --github MulleWeb MulleZlib
+mulle-sde dependency add github:MulleWeb/MulleZlib
 ```
 
 ## Get build commands for free

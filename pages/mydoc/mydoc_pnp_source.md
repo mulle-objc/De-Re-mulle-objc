@@ -1,7 +1,7 @@
 ---
 title: Sources
 keywords: workflow modern
-last_updated: March 26, 2019
+last_updated: January 23, 2025
 tags: [tools modern includes]
 summary: ""
 permalink: mydoc_pnp_source.html
@@ -18,12 +18,12 @@ to a project with mulle-sde. All the **external** dependencies are isolated
 in header files with generic names. Headers belonging to the project do not
 appear in these files.
 
-Header               |
----------------------|-------------------
-`include.h`          | Used by C header files
-`include-private.h`  | Used by C source files
-`import.h`           | Used by Objective-C interface files
-`import-private.h`   | Used by Objective-C implementation files
+| Header               | Description
+|----------------------|-------------------
+| `include.h`          | Used by C header files
+| `include-private.h`  | Used by C source files
+| `import.h`           | Used by Objective-C interface files
+| `import-private.h`   | Used by Objective-C implementation files
 
 
 

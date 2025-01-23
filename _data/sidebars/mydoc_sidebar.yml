@@ -3,7 +3,7 @@
 entries:
 - title: sidebar
   product: "De Re mulle-objc"
-  version: "0.20"
+  version: "0.3"
   folders:
 
   - title:
@@ -14,6 +14,7 @@ entries:
       url: /titlepage.html
       output: pdf
       type: frontmatter
+
     - title:
       url: /tocpage.html
       output: pdf
@@ -33,22 +34,6 @@ entries:
 
     - title: Learn ObjC
       url: /mydoc_links.html
-      output: web
-
-    - title: Basics
-      url: /mydoc_basics.html
-      output: web
-
-    - title: Good Code
-      url: /mydoc_good.html
-      output: web
-
-    - title: Bad Code
-      url: /mydoc_bad.html
-      output: web
-
-    - title: Differences
-      url: /mydoc_differences.html
       output: web
 
   - title: Development
@@ -71,10 +56,6 @@ entries:
         url: /mydoc_pnp_source.html
         output: web
 
-      - title: IDEs
-        url: /mydoc_ides.html
-        output: web
-
       - title: Coverage
         url: /mydoc_coverage.html
         output: web
@@ -87,34 +68,18 @@ entries:
         url: /mydoc_tools.html
         output: web
 
-      - title: Legacy Workflow
-        url: /mydoc_legacy.html
-        output: web
-
-  - title: Porting
+  - title: Language
     output: web, pdf
     folderitems:
-      - title: Porting Xcode projects
-        url: /mydoc_xcodeproj.html
-        output: web
-
-      - title: Porting Tips
-        url: /mydoc_porting.html
-        output: web
-
-  - title: Plug And Play Code
-    output: web
-    folderitems:
-
-    - title: Classes
-      url: /mydoc_pnp_class.html
+    - title: Basics
+      url: /mydoc_basics.html
       output: web
 
-    - title: Categories
-      url: /mydoc_pnp_category.html
+    - title: Good Code
+      url: /mydoc_good.html
       output: web
 
-  - title: Features
+  - title: Advanced Programming Techniques
     output: web, pdf
     folderitems:
     - title: "+dependencies"
@@ -129,6 +94,14 @@ entries:
       url: /mydoc_property_new.html
       output: web, pdf
 
+    - title: "Forwarding"
+      url: /mydoc_forward.html
+      output: web, pdf
+
+    - title: "Overridden methods"
+      url: /mydoc_overridden.html
+      output: web, pdf
+
     - title: "@protocolclass"
       url: /mydoc_protocolclass.html
       output: web, pdf
@@ -141,13 +114,13 @@ entries:
       url: /mydoc_singleton.html
       output: web, pdf
 
-    - title: "Forwarding"
-      url: /mydoc_forward.html
-      output: web, pdf
+    - title: Plug and Play Classes
+      url: /mydoc_pnp_class.html
+      output: web
 
-    - title: "Overridden methods"
-      url: /mydoc_overridden.html
-      output: web, pdf
+    - title: Plug and Play Categories
+      url: /mydoc_pnp_category.html
+      output: web
 
     - title: "Allocation"
       url: /mydoc_allocation.html
@@ -161,10 +134,6 @@ entries:
       url: /mydoc_tps.html
       output: web, pdf
 
-    - title: "Unload"
-      url: /mydoc_unload.html
-      output: web, pdf
-
     - title: "KeyValueCoding"
       url: /mydoc_kvc.html
       output: web, pdf
@@ -173,61 +142,80 @@ entries:
       url: /mydoc_universe.html
       output: web, pdf
 
-  - title: Pitfalls
+  - title: Porting Guide
     output: web, pdf
     folderitems:
+      - title: Differences to Objective-C 2.0
+        url: /mydoc_differences.html
+        output: web
 
-    - title: "array[0]"
-      url: /mydoc_subscripting.html
-      output: web, pdf
+      - title: Legacy Workflow
+        url: /mydoc_legacy.html
+        output: web
 
-    - title: "ARC"
-      url: /mydoc_arc.html
-      output: web, pdf
+      - title: Bad Code
+        url: /mydoc_bad.html
+        output: web
 
-    - title: "^block"
-      url: /mydoc_block.html
-      output: web, pdf
+      - title: General Porting Tips
+        url: /mydoc_porting.html
+        output: web
 
-    - title: "Objective-C++"
-      url: /mydoc_cpp.html
-      output: web, pdf
+      - title: "array[0]"
+        url: /mydoc_subscripting.html
+        output: web, pdf
 
-    - title: "dot syntax"
-      url: /mydoc_dotsyntax.html
-      output: web, pdf
+      - title: "ARC"
+        url: /mydoc_arc.html
+        output: web, pdf
 
-    - title: "@import"
-      url: /mydoc_modules.html
-      output: web, pdf
+      - title: "^block"
+        url: /mydoc_block.html
+        output: web, pdf
 
-    - title: "@package"
-      url: /mydoc_package.html
-      output: web, pdf
+      - title: "dot syntax"
+        url: /mydoc_dotsyntax.html
+        output: web, pdf
 
-    - title: "@protocol"
-      url: /mydoc_protocol.html
-      output: web, pdf
+      - title: "@import"
+        url: /mydoc_modules.html
+        output: web, pdf
 
-    - title: "@property"
-      url: /mydoc_property.html
-      output: web, pdf
+      - title: "@package"
+        url: /mydoc_package.html
+        output: web, pdf
 
-    - title: "@synthesize"
-      url: /mydoc_synthesize.html
-      output: web, pdf
+      - title: "@protocol"
+        url: /mydoc_protocol.html
+        output: web, pdf
 
-    - title: "@synchronized"
-      url: /mydoc_synchronized.html
-      output: web, pdf
+      - title: "@property"
+        url: /mydoc_property.html
+        output: web, pdf
 
-    - title: "... (varargs)"
-      url: /mydoc_varargs.html
-      output: web, pdf
+      - title: "@synthesize"
+        url: /mydoc_synthesize.html
+        output: web, pdf
 
-    - title: "NSZone"
-      url: /mydoc_nszone.html
-      output: web, pdf
+      - title: "@synchronized"
+        url: /mydoc_synchronized.html
+        output: web, pdf
+
+      - title: "... (varargs)"
+        url: /mydoc_varargs.html
+        output: web, pdf
+
+      - title: "NSZone"
+        url: /mydoc_nszone.html
+        output: web, pdf
+
+      - title: "Objective-C++"
+        url: /mydoc_cpp.html
+        output: web, pdf
+
+      - title: Xcode projects
+        url: /mydoc_xcodeproj.html
+        output: web
 
   - title: Acknowledgments
     output: web, pdf
