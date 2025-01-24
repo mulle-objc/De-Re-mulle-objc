@@ -23,10 +23,10 @@ sourcetree with `mulle-sde dependency list` or  `mulle-sourcetree list`
 (use `-l -u` for more detail).
 
 ```
-address
--------
-Foundation
-Foundation-startup
+| address
+|--------
+| Foundation
+| Foundation-startup
 ```
 
 These dependencies again can be mulle-sde and non mulle-sde projects.
@@ -46,7 +46,7 @@ to type in the whole URL. This command adds
 
 ### C:
 
-```
+``` console
 mulle-sde dependency add --c github:libexpat/libexpat
 ```
 
@@ -55,7 +55,7 @@ This command adds
 
 ### Objective-C:
 
-```
+``` console
 mulle-sde dependency add github:MulleWeb/MulleZlib
 ```
 
@@ -89,7 +89,7 @@ figure out against which system library to link.
 Often mulle-sde can not guess the correct name and location of the central
 include header of a dependency correctly. This can be rectified with:
 
-```
+``` console
 mulle-sde dependency set libexpat include "expat.h"
 mulle-sde reflect
 ```
@@ -99,7 +99,7 @@ mulle-sde reflect
 More rarely a library can not be found, because the name differs from the
 project. Fix this with:
 
-```
+``` console
 mulle-sde dependency set libexpat aliases eXpat
 mulle-sde reflect
 ```

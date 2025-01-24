@@ -15,7 +15,7 @@ To create a
 instantiates via `+sharedInstance`, you merely adopt the **MulleObjCSingleton**
 protocol and you are done.
 
-```
+``` objc
 @interface Foo : NSObject < MulleObjCSingleton>
 @end
 
@@ -37,7 +37,7 @@ singleton will now coexist with the base class singleton.
 If you want to use a different name than `+sharedInstance` add this to your
 class:
 
-```
+``` objc
 + (instancetype) myInit
 {
    return( MulleObjCSingletonCreate( self));
@@ -60,12 +60,12 @@ singleton with `-__initSingleton`.
 As a result you can now expect to be able to use pointer equality for
 `-isEqual:` comparisons.
 
-```
+``` objc
 - (id) init
 {
    Class   cls;
 
-   cls = mulle-objcGetClass( self);
+   cls = MulleObjCInstanceGetClass( self);
    [self release];
    return( [MulleObjCSingletonCreate( cls) retain]);
 }

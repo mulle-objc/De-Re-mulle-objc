@@ -21,7 +21,7 @@ The way to validate array content in Objective-C is at runtime, when you
 are inserting a value:
 
 
-```
+``` objc
 NSParameterAssert( [obj isKindOfClass:[NSNumber class]]);
 [array addObject:obj];
 ```

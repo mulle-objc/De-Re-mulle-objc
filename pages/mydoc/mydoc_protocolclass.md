@@ -30,7 +30,7 @@ The protocol of the protocolclass can adopt other protocols.
 
 You can create a protocolclass easily with with mulle-sde:
 
-```
+``` console
 mulle-sde add -t protocolclass src/<name>.m
 ```
 
@@ -101,12 +101,12 @@ used and so forth.
 `PROTOCOLCLASS` macros can make your life a little easier, by removing some
 typework and by removing the compiler warnings.
 
-Macro                                 | Description
---------------------------------------|-----------------------------------------------------
-`PROTOCOLCLASS_INTERFACE( name, ...)` | Declare a *protocolclass* that adopts other protocols
-`PROTOCOLCLASS_INTERFACE0( name)`     | Declare a *protocolclass* that adopts no other protocols
-`PROTOCOLCLASS_IMPLEMENTATION( name)` | Define a *protocolclass*
-`PROTOCOLCLASS_END()`                 | Terminate either a *protocolclass* declaration or definition
+| Macro                                 | Description
+|---------------------------------------|----------------------------------------
+| `PROTOCOLCLASS_INTERFACE( name, ...)` | Declare a *protocolclass* that adopts other protocols
+| `PROTOCOLCLASS_INTERFACE0( name)`     | Declare a *protocolclass* that adopts no other protocols
+| `PROTOCOLCLASS_IMPLEMENTATION( name)` | Define a *protocolclass*
+| `PROTOCOLCLASS_END()`                 | Terminate either a *protocolclass* declaration or definition
 
 
 Thus the above example can be transformed with macros into:
@@ -249,7 +249,7 @@ around this though.
 You can search for the overridden implementation of a selector, given the class and category of the
 implementation.
 
-```
+``` objc
    IMP   imp;
 
    imp = MulleObjCObjectSearchOverriddenIMP( self, @selector( doTheFooThing), @selector( Foo), 0);

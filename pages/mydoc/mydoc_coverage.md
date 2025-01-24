@@ -16,7 +16,7 @@ Coverage files will be are generated when you run the program with
 with the environment variables `MULLE_OBJC_PEDANTIC_EXIT` and
 `MULLE_OBJC_COVERAGE` set to YES:
 
-```
+``` bash
 MULLE_OBJC_PEDANTIC_EXIT=YES MULLE_OBJC_COVERAGE=YES myexe
 ```
 
@@ -34,7 +34,7 @@ yourself, when you know the runtime system is quiescent." %}
 A second "coverage" run will append to previously existing coverage files.
 But you can also concatenate coverage files from various source with `cat`.
 
-```
+``` bash
 cat coverage*.txt | sort -u > class-coverage.csv
 ```
 

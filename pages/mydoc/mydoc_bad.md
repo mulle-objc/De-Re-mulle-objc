@@ -21,7 +21,7 @@ These are examples of Objective-C 2.0 code, that will not work with mulle-objc.
 mulle-objc has no support for modules and the **@import** directive. This will
 give a compiler error:
 
-```
+``` objc
 @import Whatever;             // @import doesn't work
 ```
 
@@ -33,7 +33,7 @@ See [Porting @import](mydoc_modules.html) for code conversion tips.
 The attributes **atomic**,**weak**,**strong**,**nullable**,**unsafe_retained**
 **class** are all unknown to mulle-objc and will produce errors:
 
-```
+``` objc
 @interface Foo
 
 // unsupported property attribute
@@ -54,7 +54,7 @@ See [Porting @property](mydoc_property.html) for conversion tips.
 You can not synthesize to a different name, ivar must be `'_'<name>`:
 
 
-```
+``` objc
 // continuing the interface declaration...
 // we need the next two declarations for @synthesize to complain
 @property( assign) id g;
@@ -78,7 +78,7 @@ See [Porting @synthesize](mydoc_synthesize.html) for code conversion tips.
 Subscripting for `NSArray` and `NSDictionary` or any other class is not
 supported. Instead the compiler will use C indexing:
 
-```
+``` objc
 // subscripting is not supported
 - (id) getFirst:(NSArray *) array
 {
@@ -94,7 +94,7 @@ See [Porting Subscripting](mydoc_subscripting.html) for code conversion tips.
 ARC code will crash or leak depending on what you are doing:
 
 
-```
+``` objc
 - (id) ARC
 {
    return( [[NSArray alloc] init]);
@@ -108,7 +108,7 @@ See [Porting ARC code](mydoc_arc.html) for code conversion tips.
 There is no operator overloading '.' in mulle-objc. '.' is used to accessed
 struct and union fields, not objects:
 
-```
+``` objc
 // dotsyntax is not supported
 - (void) dotsyntax
 {
@@ -122,7 +122,7 @@ See [Porting Dot Syntax](mydoc_dotsyntax.html) for code conversion tips.
 
 ### Generics
 
-```
+``` objc
 // generics are not supported
 - (void) generics:(NSArray<NSString *> *) array
 {
@@ -134,7 +134,7 @@ See [Porting Generics](mydoc_generics.html) for code conversion tips.
 
 ### Block
 
-```
+``` objc
 // blocks are not supported
 - (void) blocks:(int (^)(NSString *)) aBlock
 {
@@ -144,9 +144,9 @@ See [Porting Generics](mydoc_generics.html) for code conversion tips.
 See [Porting Blocks](mydoc_blocks.html) for code conversion tips.
 
 
-### @synchronized,@dynamic
+### @synchronized
 
-```
+``` objc
 // synchronized is not supported
 - (void) synchronized
 {
@@ -163,7 +163,7 @@ See [Porting @synchronized](mydoc_synchronized.html) for code conversion tips.
 
 **@YES** and **@NO** are not supported, use `@(YES)`,`@(NO)` or `+numberWithBool:` instead
 
-```
+``` objc
 // literal BOOL is not supported
 - (NSNumber *) literalBOOL
 {
@@ -180,7 +180,7 @@ See [Porting @synchronized](mydoc_synchronized.html) for code conversion tips.
 
 `Protocol *` as such doesn't exist in mulle-objc. Use PROTOCOL instead:
 
-```
+``` objc
 // Protocol * is not supported, use PROTOCOL
 - (void) keepProtocol:(Protocol *) proto
 {
@@ -196,7 +196,7 @@ See [Porting Protocol](mydoc_protocol.html) for code conversion tips.
 In the Apple runtime a SEL is basically a string, but this is not true in
 mulle-objc:
 
-```
+``` objc
 - (void) printSelectorAsCString:(SEL) sel
 {
    printf( "%s\n", sel); // SEL is not a C-String in mulle-objc
@@ -208,7 +208,7 @@ mulle-objc:
 Variable arguments are NOT `va_list` in mulle-objc, but
 [mulle-vararg](//github.com/mulle-c/mulle-vararg) instead:
 
-```
+``` objc
 - (void) variableArguments:(NSString *) format, ...
 {
    va_list   args;
@@ -227,7 +227,7 @@ See [Porting Varargs](mydoc_varargs.html) for code conversion tips.
 
 **@package** is an unsupported keyword.It will produce a compiler error:
 
-```
+``` objc
 @interface NoWorky
 @package
 @end

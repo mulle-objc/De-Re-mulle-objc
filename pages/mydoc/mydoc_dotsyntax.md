@@ -14,7 +14,7 @@ translate dot syntax to Objective-C calls.
 
 e.g.
 
-```
+``` objc
 - (void) setup
 {
    self.propertyA         = 0;
@@ -23,7 +23,7 @@ e.g.
 }
 ```
 
-```
+``` objc
 - (void) setup
 {
    id   propertyB;

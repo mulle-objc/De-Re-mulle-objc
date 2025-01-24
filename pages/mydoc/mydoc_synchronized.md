@@ -18,7 +18,7 @@ is available on all platforms, that run Objective-C.
 
 Use `mulle_thread_mutex_t` to transform
 
-```
+``` objc
 - (void) myFunction
 {
    @synchronized()
@@ -30,7 +30,7 @@ Use `mulle_thread_mutex_t` to transform
 to
 
 
-```
+``` objc
 static mulle_thread_mutex_t   lock;
 
 
@@ -39,6 +39,10 @@ static mulle_thread_mutex_t   lock;
    mulle_thread_mutex_init( &lock);
 }
 
++ (void) unload
+{
+   mulle_thread_mutex_done( &lock);
+}
 
 - (void) myFunction
 {
@@ -55,14 +59,14 @@ static mulle_thread_mutex_t   lock;
 ## Use NSLock instead
 
 
-```
+``` objc
 static NSLock   lock;
 
 
 + (void) initialize
 {
    if( ! lock)
-      lock = [[NSLock alloc] init];
+      lock = [NSLock new];
 }
 
 + (void) deinitialize
@@ -98,12 +102,12 @@ static NSLock   lock;
 
 You could fix this with deleting `+deinitialize` and rewriting `+initialize` as:
 
-```
+``` objc
 + (void) initialize
 {
    if( ! lock)
    {
-      lock = [[NSLock alloc] init];
+      lock = [NSLock new];
 #ifdef __MULLE_OBJC__
       [lock _becomeRootObject];
       [lock release;]

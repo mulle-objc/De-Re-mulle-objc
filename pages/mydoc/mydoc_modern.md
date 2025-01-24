@@ -16,6 +16,9 @@ containers and OS support, you will want to base your code on the **Foundation**
 If you just want to play with a minimal runtime, base your code on **MulleObjC**.
 Then, instead of `-m foundation/objc-developer`, use `-m mulle-objc/objc-developer`
 
+mulle-sde is powerful enough to warrant its own guide [De Re mulle-sde](//www.mulle-kybernetik.com/de-re-mulle-sde/). But to get you moving quickly,
+lets set up a demo project right now:
+
 
 ## Example "Hello World" project
 

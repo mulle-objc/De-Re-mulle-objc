@@ -23,7 +23,7 @@ pointer, here's how to do it.
 On 32 bit you have 1-3 available, on 64 bit it is 1-7. You can use this function
 to search for a free index:
 
-```
+``` c
 i =  mulle_objc_universe_search_free_taggedpointerclass( universe);
 if( ! i)
    return( i);
@@ -38,7 +38,7 @@ Use `#ifdef __MULLE_OBJC_TPS__` around your code, as the user can turn off TPS
 code with a compiler option. Your code should run fine without TPS enabled
 (just don't use the TPS class then).
 
-```
+``` objc
 #ifdef __MULLE_OBJC_TPS__
 
 @interface MyTPSColor : MyColor <MulleObjCTaggedPointer>
@@ -53,7 +53,7 @@ This will hookup your class into the TPS system at runtime. It's assumed you
 are using a fixed number scheme here and the TPS index chosen is '3'.
 
 
-```
+``` objc
 #ifdef __MULLE_OBJC_TPS__
 
 @implementation MyTPSColor
@@ -76,7 +76,7 @@ are using a fixed number scheme here and the TPS index chosen is '3'.
 Convert you color to a 24 bit value and create the instance with the `C` function
 `MulleObjCCreateTaggedPointerWithUnsignedIntegerValueAndIndex`. Do not use `+alloc`!
 
-```
+``` objc
 static inline MyColor   *TPSColorNew( unsigned char r, unsigned char g , unsigned char b)
 {
    NSUInteger   value;
@@ -88,7 +88,7 @@ static inline MyColor   *TPSColorNew( unsigned char r, unsigned char g , unsigne
 
 ### Retrieve value from TPS instance
 
-```
+``` objc
 @implementation MyTPSColor
 
 ...

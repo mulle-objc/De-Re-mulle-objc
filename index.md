@@ -21,9 +21,12 @@ build the Foundation library as a shared library you end up with 2.5MB
 cut it. The CPU needs to be at least 32 bit wide to be able to
 use mulle-objc selectors efficiently.
 
+
 ## Install mulle-objc
 
-This guide doesn't have detailed installation instructions for **mulle-objc**.
+This guide doesn't have detailed installation instructions for
+**mulle-objc**.
+
 Read the instructions on
 [foundation-developer](https://github.com/MulleFoundation/foundation-developer)
 and follow them.
@@ -39,12 +42,27 @@ and you should all be setup for coding.
 
 ## License
 
-mulle-objc is permissively - BSD3 - licensed and free of cost, meaning you can
-use it anywhere you like and wish.
+mulle-objc is permissively - BSD3 - licensed and free of cost, meaning
+you can use it anywhere you like and wish.
+
+
+## Related mulle-objc documentation
+
+These titles have been released by the mulle-objc project. They cover
+specifically mulle-objc:
+
+| Title                 | Description
+|-----------------------|----------------------------------
+| [Development with IDEs](//www.mulle-kybernetik.com/mulle-objc-ide/) | IDE Setup Guide for  Jetbrains, Sublime Text, VSCode
+| [De Re NSObject](//www.mulle-kybernetik.com/de-re-property/) | All about the basic Objective-C object conventions as implemented in `NSObject`
+| [De Re @property](//www.mulle-kybernetik.com/de-re-property/) | A comprehensive guide to `@property` as provided by mulle-objc
+| [De Re mulle-sde](//www.mulle-kybernetik.com/de-re-mulle-sde/) | All about the terminal based software development environment used by mulle-objc
+| [Objective-C Runtime in Pictures](//www.mulle-kybernetik.com/objc-runtime-in-pictures/) | An in depth view and explanation of all Objective-C entities such as classes, protocols etc.
+
 
 ## Next
 
 The next step is to [Learn Objective-C](mydoc_links.html). Or if you
-already know the language, skip to the [modern workflow](mydoc_modetn.html)
+already know the language, skip to the [modern workflow](mydoc_modern.html)
 
 {% include links.html %}

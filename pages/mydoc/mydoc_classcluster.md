@@ -26,7 +26,7 @@ like in Apple Foundation).
 This is the "user" facing class. All other classes will be more or less hidden. This class defines the API.
 It also adopts the mulle-objcClassCluster protocolclass.
 
-```
+``` objc
 @interface BitSet : NSObject < MulleObjCClassCluster>
 
 - (instancetype) initWithBits:(NSUInteger *) bits
@@ -42,7 +42,7 @@ It also adopts the mulle-objcClassCluster protocolclass.
 The implementation now either produces an **EmptyBitSet** or a **ConcreteBitSet**, depending on all input
 bits being clear or not:
 
-```
+``` objc
 #import "BitSet.h"
 
 @implementation BitSet
@@ -92,7 +92,7 @@ The **EmptyBitSet** is very simple, as the instance creation is done with +
 `+sharedInstance` provided by `MulleObjCSingleton` already:
 
 
-```
+``` objc
 #import "BitSet.h"
 
 @interface EmptyBitSet : BitSet <MulleObjCSingleton>
@@ -102,7 +102,7 @@ The **EmptyBitSet** is very simple, as the instance creation is done with +
 @end
 ```
 
-```
+``` objc
 #import "EmptyBitSet.h"
 
 @implementation EmptyBitSet
@@ -114,7 +114,7 @@ The **EmptyBitSet** is very simple, as the instance creation is done with +
 @end
 ```
 
-```
+``` objc
 #import "BitSet.h"
 
 @interface ConcreteBitSet : BitSet
@@ -133,7 +133,7 @@ the placeholder class **BitSet**. So `+alloc` will just produce the same
 placeholder object that 'self' already is. We therefore need to implement the
 instance creation and deallocation with primitive runtime functions ourselves:
 
-```
+``` objc
 #import "ConcreteBitSet.h"
 
 @implementation ConcreteBitSet
@@ -182,7 +182,7 @@ a class `ConcreteAVX2Bitset` for larger bitsets, when AVX2 is available.
 
 You could then expand the current init method in **BitSet**:
 
-```
+``` objc
 - (instancetype) initWithBits:(NSUInteger *) bits
                         count:(NSUInteger) count
 {
@@ -206,7 +206,7 @@ You could then expand the current init method in **BitSet**:
 Or you could add a new `-initWithAVX2Bits:count:` method. The advantage of using another `-init`
 methods is, that you can add it to your classcluster using a category:
 
-```
+``` objc
 @implementation BitSet( ConcreteAVX2Bitset)
 
 - (instancetype) initWithAVX2Bits:(NSUInteger *) bits
@@ -223,7 +223,7 @@ The main obstacle to subclassing a classcluster is the reimplementation of the
 instance allocation methods. You should reimplement the following methods in
 your subclass:
 
-```
+``` objc
 + (instancetype) alloc
 {
    return( NSAllocateObject( self, 0, NULL));
@@ -254,7 +254,7 @@ It's entirely possible to create a classcluster on top of another classcluster,
 as we will show with **MutableBitSet**.
 
 
-```
+``` objc
 #import "BitSet.h"
 
 @interface MutableBitSet : BitSet <MulleObjCClassCluster>
@@ -270,7 +270,7 @@ The main thing we will have to override is the init method, as we will have to
 use different classes. Because I am extremely lazy, I will restrict the code to
 just one class:
 
-```
+``` objc
 #import "MutableBitSet.h"
 
 @implementation MutableBitSet

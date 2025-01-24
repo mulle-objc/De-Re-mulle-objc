@@ -25,7 +25,7 @@ here is how to do it.
 This will implement the desired behavior. How this is implemented is not
 shown. Lets just assume it's a class called `MyDateFormatter`.
 
-```
+``` objc
 @interface MyDateFormatter : NSDateFormatter
 ...
 ```
@@ -46,7 +46,7 @@ Now comes the bad news, which is: it can be tricky.
 The following implementation is correct, but you have to know why.
 
 
-```
+``` objc
 @implementation MyDateFormatter
 
 + (void) load
@@ -71,7 +71,7 @@ should be **Foundation** or some equivalent.
 
 Adding
 
-```
+``` objc
 MULLE_OBJC_DEPENDS_ON_LIBRARY( Foundation);
 ```
 

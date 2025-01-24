@@ -3,7 +3,7 @@
 entries:
 - title: sidebar
   product: "De Re mulle-objc"
-  version: "0.3"
+  version: "0.30"
   folders:
 
   - title:
@@ -52,7 +52,7 @@ entries:
         url: /mydoc_pnp_source.html
         output: web
 
-  - title: Language
+  - title: Fundamental Programming Techniques
     output: web, pdf
     folderitems:
     - title: Good Code
@@ -63,16 +63,12 @@ entries:
       url: /mydoc_basics.html
       output: web
 
+    - title: Objects and Properties
+      url: /mydoc_objects.html
+      output: web
+
     - title: "Printing"
       url: /mydoc_printing.html
-      output: web, pdf
-
-    - title: "KeyValueCoding"
-      url: /mydoc_kvc.html
-      output: web, pdf
-
-    - title: "Overridden methods"
-      url: /mydoc_overridden.html
       output: web, pdf
 
     - title: Plug and Play Classes
@@ -86,16 +82,12 @@ entries:
   - title: Advanced Programming Techniques
     output: web, pdf
     folderitems:
+    - title: "Overridden methods"
+      url: /mydoc_overridden.html
+      output: web, pdf
+
     - title: "+dependencies"
       url: /mydoc_class.html
-      output: web, pdf
-
-    - title: "-finalize"
-      url: /mydoc_finalize.html
-      output: web, pdf
-
-    - title: "@property"
-      url: /mydoc_property_new.html
       output: web, pdf
 
     - title: "Forwarding"
@@ -106,11 +98,11 @@ entries:
       url: /mydoc_protocolclass.html
       output: web, pdf
 
-    - title: "Classcluster Classes"
+    - title: "Classcluster"
       url: /mydoc_classcluster.html
       output: web, pdf
 
-    - title: "Singleton Classes"
+    - title: "Singleton"
       url: /mydoc_singleton.html
       output: web, pdf
 
@@ -118,7 +110,7 @@ entries:
       url: /mydoc_allocation.html
       output: web, pdf
 
-    - title: "Tagged Pointer Classes"
+    - title: "Tagged Pointer Class"
       url: /mydoc_tps.html
       output: web, pdf
 

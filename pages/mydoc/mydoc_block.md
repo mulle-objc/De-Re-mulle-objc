@@ -13,7 +13,7 @@ folder: mydoc
 
 A good first step is to wrap all method declarations and definitions with
 
-```
+``` c
 #ifdef __has_extension(blocks)
 #endif
 ```

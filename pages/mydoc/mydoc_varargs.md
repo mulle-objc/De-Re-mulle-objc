@@ -24,7 +24,7 @@ Apple Foundation. Conventionally the `va_list` parameter in Apple Foundation
 methods is called "arguments:":
 
 
-```
+``` objc
 + (instancetype) stringWithFormat:(NSString *) format, ...
 {
    NSString   *s;
@@ -50,7 +50,7 @@ instead for discrimination.
 This is how `+[NSString stringWithFormat:]` is actually coded in
 MulleFoundation:
 
-```
+``` objc
 + (instancetype) stringWithFormat:(NSString *) format, ...
 {
    NSString             *s;
@@ -71,7 +71,7 @@ So that's pretty similar.
 
 It's not an either or scenarion, as mulle-objc supports both:
 
-```
+``` objc
 + (instancetype) stringWithFormat:(NSString *) format
                   mulleVarargList:(mulle_vararg_list) arguments
 {

@@ -16,7 +16,7 @@ to do "tricky" stuff with Objective-C.
 
 The example implementation of NSObject:
 
-```
+``` objc
 + (instancetype) alloc
 {
    return( NSAllocateObject( self, 0, NULL));

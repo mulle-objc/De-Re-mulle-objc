@@ -22,7 +22,7 @@ C++
 
 `cpp.h:`
 
-```
+``` c++
 #ifdef __cplusplus
 extern "C"
 {
@@ -40,7 +40,7 @@ Objective-C
 
 `foo.m`
 
-```
+``` objc
 #include <cpp.h>
 
 @implementation Foo
@@ -66,7 +66,7 @@ only:
 
 > TODO: test this does this work with mulle-c11 ?
 
-```
+``` objc
 #ifdef __cplusplus
 extern "C"
 {

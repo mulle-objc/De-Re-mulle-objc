@@ -16,7 +16,7 @@ One of the "Patterns" of OO programming is composition. Basically you add
 references  to other objects into your object and forward messages to them.
 An example of composition would be this:
 
-```
+``` objc
 @interface MyOrderedDictionary : NSDictionary
 {
    NSDictionary   *_other;
@@ -29,7 +29,7 @@ An example of composition would be this:
 @end
 ```
 
-```
+``` objc
 @implementation MyOrderedDictionary
 
 - (NSUInteger) count
@@ -57,12 +57,12 @@ This is nice but can get tedious if you need to implement a lot of methods.
 Once you have this code in place, you can forward all unknown method calls to
 the array instance but send  `-objectForKey:` to the dictionary instance:
 
-```
+``` objc
 @implementation MyOrderedDictionary
 
 - (NSMethodSignature *) methodSignatureForSelector:(SEL) sel
 {
-   if( sel == @selector( objectForKey:)
+   if( sel == @selector( objectForKey:))
       return( [_other methodSignatureForSelector:sel]);
    return( [_order methodSignatureForSelector:sel]);
 }
@@ -70,7 +70,7 @@ the array instance but send  `-objectForKey:` to the dictionary instance:
 
 - (void) forwardInvocation:(NSInvocation *) anInvocation
 {
-   if( [anInvocation selector] == @selector( objectForKey:)
+   if( [anInvocation selector] == @selector( objectForKey:))
       [anInvocation setTarget:_other];
    else
       [anInvocation setTarget:_order];
@@ -87,7 +87,7 @@ still quite slow.
 
 As selectors are a type of integer in **mulle-objc**, we can even use a switch here:
 
-```
+``` objc
 @implementation MyOrderedDictionary
 
 - (void *) forward:(void *) _param

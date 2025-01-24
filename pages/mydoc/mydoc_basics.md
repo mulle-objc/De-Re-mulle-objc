@@ -24,7 +24,7 @@ The main takeaway points are
 
 ## Foo does it all
 
-```
+``` objc
 #import <Foundation/Foundation.h>
 
 @interface Foo : NSObject
@@ -177,7 +177,7 @@ MULLE_OBJC_DEPENDS_ON_LIBRARY( Foundation);
 
 ### MULLE_OBJC_DEPENDS_ON_LIBRARY
 
-```
+``` c
 // Ensure that Foundation is loaded completely before our class
 MULLE_OBJC_DEPENDS_ON_LIBRARY( Foundation);
 ```
@@ -196,7 +196,7 @@ If you want to specify classes and categories in a more finegrained way, see
 
 ### +load
 
-```
+``` objc
 // run as soon as class is added to the runtime
 + (void) load
 {
@@ -225,7 +225,7 @@ destructible. So `+unload` is a facility to release resources acquired by
 `+load`. When this is properly done by all classes, it makes memory leak
 checking that much more convenient.
 
-```
+``` objc
 + (void) unload
 {
    mulle_thread_mutex_done( &Self._lock);
@@ -235,7 +235,7 @@ checking that much more convenient.
 
 ### +initialize
 
-```
+``` objc
 + (void) initialize
 {
    if( ! Self._lookupTable)
@@ -276,7 +276,7 @@ You should release all resources, that were allocated during `+initialize`.
 * `+deinitialize` is running single-threaded
 
 
-```
+``` objc
 + (void) deinitialize
 {
    [Self._lookupTable release];
@@ -291,7 +291,7 @@ To avoid crashes, zero your variables after freeing them.
 
 ### -init
 
-```
+``` objc
 - (id) init
 {
    _a    = [[NSNumber alloc] initWithInt:18];
@@ -309,7 +309,7 @@ needs to be retained by the instance.
 
 ### -finalize
 
-```
+``` objc
 - (void) finalize
 {
    [_kids autorelease];
@@ -332,7 +332,7 @@ finalized once.
 
 ### -dealloc
 
-```
+``` objc
 - (void) dealloc
 {
    [_a release];
@@ -370,7 +370,7 @@ autoreleasepool.
 
 ### -setA:
 
-```
+``` objc
 - (void) setA:(NSNumber *) a
 {
    NSParameterAssert( ! a || [a isKindOfClass:[NSNumber class]]);
@@ -388,7 +388,7 @@ All code outside of `+load`/`+unload` `+initialize`/`+deinitialize`
 `-init`/`-dealloc` must use **`-autorelease`**.
 The only allowable use of `-release` is for ephemeral objects like in:
 
-```
+``` objc
    p = [Foo new];
    ...
    [p release];
@@ -398,7 +398,7 @@ The only allowable use of `-release` is for ephemeral objects like in:
 
 ### -a
 
-```
+``` objc
 - (NSNumber *) a
 {
    return( _a);
@@ -413,7 +413,7 @@ variable.
 
 ### -addToKids:
 
-```
+``` objc
 - (void) addToKids:(Foo *) a
 {
    NSParameterAssert( [a isKindOfClass:[Foo class]]);

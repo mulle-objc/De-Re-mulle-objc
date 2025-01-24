@@ -26,7 +26,7 @@ Here are the rules for memory management in mulle-objc.
 that the intervening code can not raise an exception. This is still
 not recommended though:
 
-```
+``` objc
   p = [Foo new];
   [array addObject:p];
   [p release];
@@ -38,7 +38,7 @@ You should not use an instance's address after it has been released.
 
 E.g. this is not good code:
 
-```
+``` objc
   p = [Foo new];
   [array addObject:p];
   q = p;  // alias to trick a future compiler

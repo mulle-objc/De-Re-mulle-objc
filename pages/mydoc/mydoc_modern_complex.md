@@ -70,7 +70,7 @@ mylib               no-singlephase
 
 At this point you're ready to craft again.
 
-```
+``` console
 mulle-sde craft
 ```
 

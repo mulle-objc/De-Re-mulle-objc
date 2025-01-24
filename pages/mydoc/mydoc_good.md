@@ -9,7 +9,6 @@ permalink: mydoc_good.html
 folder: mydoc
 ---
 
-
 ## Good Code
 
 Objective-C is a fairly simple language extension. In this file all available
@@ -24,7 +23,7 @@ Objective-C extension.
 
 You can `#import`  and forward declare code:
 
-```
+``` objc
 #import <Foundation/Foundation.h>
 
 // forward declarations of a class and a protocol
@@ -37,7 +36,7 @@ You can `#import`  and forward declare code:
 You can declare a protocol with **@optional**  and **@required** methods and
 properties:
 
-```
+``` objc
 // declare a protocol with a required (default)
 // and an optional method
 @protocol MethodProtocol
@@ -59,7 +58,7 @@ properties:
 You can extend forward declared classes with your protocol, but this is rarely
 useful:
 
-```
+``` objc
 // extend Foreign class with this method, so
 // we know we can message it with that protocol
 @class Foreign< MethodProtocol>;
@@ -67,7 +66,7 @@ useful:
 
 ### Classes
 
-```
+``` objc
 #pragma clang diagnostic ignored "-Wobjc-root-class"
 @interface Foo : NSObject < MethodProtocol>
 {
@@ -89,7 +88,7 @@ The implementation can **@synthesize** a property but it is superflous. The name
 of the instance variable is fixed by the compiler to be `'_'<name>`.
 `Foo` implements the required method from `MethodProtocol`.
 
-```
+``` objc
 @implementation Foo
 
 @synthesize foreign = _foreign;
@@ -105,7 +104,7 @@ of the instance variable is fixed by the compiler to be `'_'<name>`.
 **@defs** is available and great for writing fast accessors, when you don't want
 your instance variables to be **@public**:
 
-```
+``` objc
 static inline Foreign  *FooGetForeign( Foo *self)
 {
    return( ((struct{ @defs( Foo); } *) self)->_foreign);
@@ -117,7 +116,7 @@ static inline Foreign  *FooGetForeign( Foo *self)
 
 **@compatibility_alias** will work as expected.
 
-```
+``` objc
 // use Foo under alias Foobar
 @compatibility_alias Foobar Foo;
 ```
@@ -129,7 +128,7 @@ You can declare [protocolclasses](mydoc_protocolclass.html). This is a
 mulle-objc extension to the Objective-C language. Protocolclasses will not work
 on other runtimes (though they will compile):
 
-```
+``` objc
 // protocolclass Description with default implementation of -description
 @class Description;
 @protocol Description
@@ -157,7 +156,7 @@ on other runtimes (though they will compile):
 Your classes can now inherit the description protocol, but it doesn't have to
 implement `-description`. It can override it though if desired:
 
-```
+``` objc
 @interface Bar : Foo < Description>
 @end
 
@@ -180,7 +179,7 @@ implement `-description`. It can override it though if desired:
 PROTOCOL is a kind of **@selector** in mulle-objc:
 
 
-```
+``` objc
 - (BOOL) knowsThisProtocol:(PROTOCOL) proto
 {
    return( @protocol( Description) == proto);
@@ -192,7 +191,7 @@ PROTOCOL is a kind of **@selector** in mulle-objc:
 **instancetype** is a standin for `id` the generic object pointer:
 
 
-```
+``` objc
 // instancetype keyword
 - (instancetype) init
 {
@@ -204,7 +203,7 @@ PROTOCOL is a kind of **@selector** in mulle-objc:
 
 **@encode** behaves normally and is 90% compatible with the Apple runtime:
 
-```
+``` objc
 // @encode keyword
 + (char *) type
 {
@@ -216,7 +215,7 @@ PROTOCOL is a kind of **@selector** in mulle-objc:
 
 You can use **@autoreleasepool** to create nested pool structures:
 
-```
+``` objc
 // keyword autoreleasepool
 - (void) autoreleasepool
 {
@@ -230,7 +229,7 @@ You can use **@autoreleasepool** to create nested pool structures:
 
 Exception handling can be done with **@try**,**@catch**,**@finally**:
 
-```
+``` objc
 - (void) trycatchfinally
 {
    @try
@@ -249,7 +248,7 @@ Exception handling can be done with **@try**,**@catch**,**@finally**:
 
 Or with old-skool  **`NS_DURING`**,**`NS_HANDLER`**,**`NS_ENDHANDLER`**:
 
-```
+``` objc
 // exception handling with nsduring
 - (void) nsduring
 {
@@ -267,7 +266,7 @@ Literals are supported *except* **@YES** and **@NO**, but boxed versions of thos
 
 #### @1848,@18.48,@'A',@(YES)
 
-```
+``` objc
 - (NSNumber *) literalInteger
 {
    return( @1848);
@@ -293,7 +292,7 @@ Literals are supported *except* **@YES** and **@NO**, but boxed versions of thos
 
 #### @{} and @[]
 
-```
+``` objc
 - (NSDictionary *) literalDictionary
 {
    return( @{ @"VfL Bochum" : @1848 });
@@ -307,7 +306,7 @@ Literals are supported *except* **@YES** and **@NO**, but boxed versions of thos
 
 #### @protocol
 
-```
+``` objc
 - (PROTOCOL) literalProtocol
 {
    return( @protocol( Description));
@@ -316,7 +315,7 @@ Literals are supported *except* **@YES** and **@NO**, but boxed versions of thos
 
 #### @selector
 
-```
+``` objc
 - (SEL) literalSelector
 {
    return( @selector( whatever:));
@@ -328,7 +327,7 @@ Literals are supported *except* **@YES** and **@NO**, but boxed versions of thos
 
 *Fast Enumeration* is supported:
 
-```
+``` objc
 // fast enumeration
 - (void) fastEnumerate:(NSArray *) array
 {
@@ -347,29 +346,27 @@ Literals are supported *except* **@YES** and **@NO**, but boxed versions of thos
 Run the `main` function, to verify the truth of what's been written ([good-code.m]({{ site.baseurl}}/files/good-code.m)).
 
 
-```
+``` objc
 int main()
 {
    Bar   *bar;
 
-   // don't need an enclosing @autoreleasepool in mulle-objc
-
-   bar = [Bar new];
+   bar = [Bar object];
 
    [bar fastEnumerate:[NSArray arrayWithObject:@"foo"]];
 
-   NSLog( @"description: %@", [bar description]);
-   NSLog( @"literalInteger: %@", [bar literalInteger]);
-   NSLog( @"literalDouble: %@", [bar literalDouble]);
-   NSLog( @"literalCharacter: %@", [bar literalCharacter]);
-   NSLog( @"literalArray: %@", [bar literalArray]);
-   NSLog( @"literalDictionary: %@", [bar literalDictionary]);
+   mulle_printf( "description       : %@", [bar description]);
+   mulle_printf( "literalInteger    : %@", [bar literalInteger]);
+   mulle_printf( "literalDouble     : %@", [bar literalDouble]);
+   mulle_printf( "literalCharacter  : %@", [bar literalCharacter]);
+   mulle_printf( "literalArray      : %@", [bar literalArray]);
+   mulle_printf( "literalDictionary : %@", [bar literalDictionary]);
 
 // NSStringFromProtocol is a 8.0.0 feature
 #if MULLE_FOUNDATION_VERSION  >= ((0 << 20) | (15 << 8) | 0)
-   NSLog( @"literalProtocol: %@", NSStringFromProtocol( [bar literalProtocol]));
+   mulle_printf( "literalProtocol   : %@", NSStringFromProtocol( [bar literalProtocol]));
 #endif
-   NSLog( @"literalSelector: %@", NSStringFromSelector( [bar literalSelector]));
+   mulle_printf( "literalSelector   : %@", NSStringFromSelector( [bar literalSelector]));
 
    return( 0);
 }
@@ -379,7 +376,7 @@ int main()
 ### Expected output
 
 
-```
+``` objc
 description: VfL Bochum 1848
 literalInteger: 1848
 literalDouble: 18.480000

@@ -29,7 +29,7 @@ This is the code to replace a `[[Foo alloc] initWithRandomNumber]` with
 `[Foo fooWithRandomNumber]`:
 
 
-```
+``` objc
 @interface Foo( Convenience)
 
 + (instancetype) fooWithRandomNumber;
@@ -57,7 +57,7 @@ This is the code to replace a `[[Foo alloc] initWithRandomNumber]` with
 
 You could also use this idea to wrap your `[[obj alloc] init]` code
 
-```
+``` objc
 #if __has_feature(objc_arc)
 # define AUTORELEASE( x)  x
 #else
@@ -67,7 +67,7 @@ You could also use this idea to wrap your `[[obj alloc] init]` code
 
 So you can simplify the above written `+fooWithRandomNumber` like this:
 
-```
+``` objc
 + (instancetype) fooWithRandomNumber
 {
    return( AUTORELEASE( [[Foo alloc] initWithRandomNumber:rand()] ));
@@ -78,7 +78,7 @@ So you can simplify the above written `+fooWithRandomNumber` like this:
 
 You could use this idea to modify your `-dealloc` code
 
-```
+``` objc
 #if __has_feature(objc_arc)
 # define SUPER_DEALLOC()
 #else
@@ -86,7 +86,7 @@ You could use this idea to modify your `-dealloc` code
 #endif
 ```
 
-```
+``` objc
 - (void) dealloc
 {
    SUPER_DEALLOC();
@@ -96,7 +96,7 @@ You could use this idea to modify your `-dealloc` code
 
 ## Fix convenience constructors in -init
 
-```
+``` objc
 - (id) init
 {
    self = [super init];
@@ -123,7 +123,7 @@ If your class has non-property instance variables, they must be released in
 Since `-finalize` isn't used in ARC code, it can be a good place to do it.
 Othewise you could use `#if __has_feature( objc_arc)` in `-dealloc`.
 
-```
+``` objc
 #ifdef __MULLE_OBJC__
 - (void) finalize
 {

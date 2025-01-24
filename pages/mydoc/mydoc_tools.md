@@ -25,12 +25,12 @@ details.
 Generates the `@selector()` hash value from a string. This can be useful when
 writing C code, that calls Objective-C.
 
-```
+``` console
 $ mulle-objc-uniqueid alloc
 ab1bb16b
 ```
 
-```
+``` c
 mulle_objc_object_call( self, 0xab1bb16b, nil);
 ```
 
@@ -53,7 +53,7 @@ details.
 Separates an '@encode()' Objective-C type into constituents, separated by ';'.
 This can be useful for creating inspection tools.
 
-```
+``` console
 $ mulle-objc-uniqueid alloc ^v@:@"NSString"
 ^v;@;:;@"NSString"
 ```
@@ -65,7 +65,7 @@ details.
 
 A little utility to fake a "class-coverage.csv" entry.
 
-```
+``` console
 $ mulle-objc-printline --method -foo --category Foo Bar
 bbc7dbad;Bar;c7e16770;Foo;9f37ed7a;-foo
 ```
@@ -78,7 +78,7 @@ coverage information.
 Grep through libraries to find the matching string for a selector, classid,
 protocol et.c.  This can be useful when debugging optimized code.
 
-```
+``` console
 $ mulle-objc-searchid ab1bb16b
 @selector( alloc) is ab1bb16b
 ```

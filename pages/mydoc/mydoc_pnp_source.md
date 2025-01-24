@@ -34,7 +34,7 @@ So we can write our source code in a uniform way.
 
 `Foo.h`:
 
-```
+``` objc
 #import "import.h"
 
 
@@ -46,7 +46,7 @@ and the implementation like so:
 
 `Foo.m`:
 
-```
+``` objc
 #import "Foo.h"
 
 #import "import-private.h"
@@ -62,7 +62,7 @@ For C its quite the same, but different header files are used.
 
 `foo.h`:
 
-```
+``` objc
 #include "include.h"
 
 
@@ -71,7 +71,7 @@ void  foo( void);
 
 `foo.c`:
 
-```
+``` objc
 #include "foo.h"
 
 #include "include-private.h"
@@ -96,8 +96,4 @@ for more details on this topic.
 
 ## Next
 
-The modern workflow uses only static libraries. Static libraries can be
-unpacked and repackaged. This can be used to good advantage, if we use
-[coverage](mydoc_coverage.html) information to remove all Objective-C classes
-and categories, that aren't actually used.
-
+Alright lets actually look at the [language](https://mulle-objc.github.io/De-Re-mulle-objc/mydoc_good.html) as it's implemented by mulle-objc.

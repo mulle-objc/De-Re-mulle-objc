@@ -11,10 +11,8 @@ folder: mydoc
 ## Intro
 
 The C way to print anything to a file, the console or even to memory
-is `printf` and friend functions which are defined in `<stdio.h>`.
-
-`printf` is still absolutely viable with mulle-obj. To print an
-object with standard printf, you would use the objects `-UTF8String` method:
+is `printf` and friend functions which are defined in `<stdio.h>`. `printf` is still absolutely viable with mulle-objc. To print an object with standard
+printf, you would use the objects `-UTF8String` method:
 
 ``` c
 printf( "%s\n", [obj UTF8String]);
@@ -28,9 +26,12 @@ object conversion. This simplifies the code to:
 mulle_printf( "%@\n", obj);
 ```
 
-Internally the same thing happens, the `-UTF8String` method of **obj** is
-called and the result is used to replace `%@`.
+Technically the same thing happens as in the printf example: the `-UTF8String` method of **obj** is called and the result is used to replace `%@`.
 
+
+{% include note.html content="In many Objective-C tutorials you will
+see <tt>NSLog</tt> being used instead of printf. This is not a good
+replacement though, as <tt>NSLog</tt> actually also writes into the system log." %}
 
 ## Functions with C format strings
 
