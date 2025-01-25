@@ -87,5 +87,4 @@ to do anything with the placeholder:
 
 ## Next
 
-Now lets configure a class from a [category](mydoc_pnp_class.html).
-
+This wraps up the basic developer guide. The [Advanced Programming Guide](https://mulle-objc.github.io/De-Re-mulle-objc/mydoc_overridden.html) leads you into more esoteric territory.

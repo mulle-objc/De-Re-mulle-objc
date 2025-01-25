@@ -18,3 +18,7 @@ their properties.
 * [De Re NSObject](//www.mulle-kybernetik.com/de-re-nsobject)
 * [De Re @property](//www.mulle-kybernetik.com/de-re-property)
 
+
+## Next
+
+When you return from those two guides, continue on to [printing](mydoc_printing.html).

@@ -124,3 +124,8 @@ MulleObjC supports Objective-C format strings with the following functions:
 
 For all other purposes use the `NSString stringWithFormat:` methods.
 
+
+## Next
+
+Ok lets have some fun with writing [Plug and Play Classes](mydoc_pnp_class.html)
+

@@ -83,5 +83,5 @@ before the `+load` method definition will be sufficient in most cases.
 
 ## Next
 
-Now lets see how a [category](mydoc_pnp_category.html) supports Plug And Play.
+Now lets see how a [category](mydoc_pnp_category.html) would support Plug And Play.
 

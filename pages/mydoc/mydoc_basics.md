@@ -429,4 +429,4 @@ We can not add *nil* to an array. And as `_kids` is a
 ## Next
 
 With the basics covered, the next topic is
-on how to write [good mulle-objc code](mydoc_good.html).
+on how to utilize [objects and properties](mydoc_objects.html).
