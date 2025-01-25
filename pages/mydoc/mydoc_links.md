@@ -24,11 +24,11 @@ In general ignore parts about "gcc", "Xcode", "MacOSX", "GNUStep". Ignore parts 
 |  Book   | Publisher | Description
 |---------|-----------|-----------------
 [ [Ry’s Objective-C Tutorial](https://fullonrager.github.io/rys-objective-c-tutorial-archive/introduction.html) | RyPress | Very easy to read. Just keep in mind, that mulle-objc prefers `+object` over `+alloc`/`-init` and prefers `mulle_printf` over `NSLog`
-| [Learn Objective-C Quick Guide](https://www.tutorialspoint.com/objective_c/objective_c_quick_guide.htm) | Noob | Tutorialspoint | Looks like a good tutorial.
+| [Learn Objective-C Quick Guide](https://www.tutorialspoint.com/objective_c/objective_c_quick_guide.htm) | Tutorialspoint | Looks like a good tutorial.
 | [Objective-C Tutorial](https://codescracker.com/objective-c/index.htm)  |  Codecrackers | This is basically the same as whats offered at Tutorialspoint, but there are differences. Someone plagiarized but I can't tell who did it. The codecrackers page looks a bit nicer
 | [Objective-C Tutorial](https://etutorials.org/Programming/Cocoa/Part+I+Introducing+Cocoa/Chapter+1.+Objective-C/) tutorial | Etutorials | ???
 | [Learn Objective-C](https://www.cocoadevcentral.com/d/learn_objectivec) |  CocoaDev | Gives a quick overview of concepts.
-| [Programming With Objective C](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html) | Nerd | Apple | This covers all the basics.
+| [Programming With Objective C](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html) | Apple | This covers all the basics.
 
 ## Other Objective-C Resources
 
