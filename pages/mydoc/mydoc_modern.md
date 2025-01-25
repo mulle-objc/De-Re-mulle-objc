@@ -176,4 +176,5 @@ are found in `MULLE_MATCH_PATH` but that are part of `MULLE_MATCH_IGNORE_PATH`.
 
 ## Next
 
-How to setup [multiple targets](mydoc_modern_complex.html) for your project.
+A more detailed look at how a mulle-sde project deals with
+[header](mydoc_pnp_source.html) sources.

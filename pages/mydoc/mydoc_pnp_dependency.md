@@ -116,7 +116,7 @@ remove libexpat` and letting `mulle-sde reflect` reflect the changes back into
 cmake and header files.
 
 
+
 ## Next
 
-A more detailed look at how a mulle-sde project deals with
-[header](mydoc_pnp_source.html) sources.
+How to setup [multiple targets](mydoc_modern_complex.html) for your project.

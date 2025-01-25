@@ -28,7 +28,7 @@ entries:
       output: web, pdf
       type: homepage
 
-    - title: Learn ObjC
+    - title: Learning Resources
       url: /mydoc_links.html
       output: web
 
@@ -36,20 +36,20 @@ entries:
     output: web, pdf
     folderitems:
 
-      - title: Modern Workflow
+      - title: Project Setup
         url: /mydoc_modern.html
         output: web
 
-      - title: Multiple Targets
-        url: /mydoc_modern_complex.html
+      - title: Generic Headers
+        url: /mydoc_pnp_source.html
         output: web
 
       - title: Dependencies
         url: /mydoc_pnp_dependency.html
         output: web
 
-      - title: Sources
-        url: /mydoc_pnp_source.html
+      - title: Projects with Multiple Targets
+        url: /mydoc_modern_complex.html
         output: web
 
   - title: Fundamental Programming Techniques

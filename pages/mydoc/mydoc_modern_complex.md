@@ -1,5 +1,5 @@
 ---
-title: Multiple Targets in the Modern Workflow
+title: Projects with Multiple Targets
 keywords: class
 last_updated: Apr 4, 2020
 tags: [tools modern]
@@ -80,6 +80,7 @@ And there you are.
 statements to your `CMakeLists.txt`, it's all done for you with
 `mulle-sde reflect`." %}
 
+
 ## Next
 
-Add a third party [dependency](mydoc_pnp_dependency.html) to your project.
+Alright lets actually look at the [language](https://mulle-objc.github.io/De-Re-mulle-objc/mydoc_good.html) as it's implemented by mulle-objc.

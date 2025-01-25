@@ -1,5 +1,5 @@
 ---
-title: Sources
+title: Generic Headers
 keywords: workflow modern
 last_updated: January 23, 2025
 tags: [tools modern includes]
@@ -94,6 +94,7 @@ for more details on this topic.
 > same library.
 
 
+
 ## Next
 
-Alright lets actually look at the [language](https://mulle-objc.github.io/De-Re-mulle-objc/mydoc_good.html) as it's implemented by mulle-objc.
+Add a third party [dependency](mydoc_pnp_dependency.html) to your project.
