@@ -6,6 +6,7 @@ tags: [language,compiler]
 summary: "A non-functional `.m` file that contains all the features that are
 absent from mulle-objc."
 permalink: mydoc_bad.html
+next_page: mydoc_porting.html
 folder: mydoc
 ---
 

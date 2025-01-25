@@ -5,6 +5,7 @@ last_updated: March 26, 2019
 tags: [compiler]
 summary: "It's gone"
 permalink: mydoc_dotsyntax.html
+next_page: mydoc_modules.html
 folder: mydoc
 ---
 

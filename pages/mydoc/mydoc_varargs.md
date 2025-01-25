@@ -5,6 +5,7 @@ last_updated: March 26, 2019
 tags: [runtime]
 summary: "Variable Arguments in mulle-objc"
 permalink: mydoc_varargs.html
+next_page: mydoc_nszone.html
 folder: mydoc
 ---
 

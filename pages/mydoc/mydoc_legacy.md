@@ -5,6 +5,7 @@ last_updated: October 1, 2019
 tags: [tools]
 summary: ""
 permalink: mydoc_legacy.html
+next_page: mydoc_bad.html
 folder: mydoc
 ---
 

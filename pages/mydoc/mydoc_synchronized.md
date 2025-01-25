@@ -5,6 +5,7 @@ last_updated: March 26, 2019
 tags: [compiler,runtime]
 summary: "Synchronized as a keyword and property is not available"
 permalink: mydoc_synchronized.html
+next_page: mydoc_varargs.html
 folder: mydoc
 ---
 

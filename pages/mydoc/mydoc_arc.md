@@ -5,6 +5,7 @@ last_updated: March 26, 2019
 tags: [runtime,compiler]
 summary: "This is a list of porting tips for ARC code"
 permalink: mydoc_arc.html
+next_page: mydoc_block.html
 folder: mydoc
 ---
 

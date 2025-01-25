@@ -830,6 +830,10 @@ span.soft {
     color: #c0c0c0;
 }
 
+.nextButton {
+    margin-bottom:7px;
+}
+
 .githubEditButton {
     margin-bottom:7px;
 }

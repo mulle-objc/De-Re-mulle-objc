@@ -5,6 +5,7 @@ last_updated: March 26, 2019
 tags: [language]
 summary: "There are no blocks and never will be"
 permalink: mydoc_block.html
+next_page: mydoc_dotsyntax.html
 folder: mydoc
 ---
 

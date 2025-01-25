@@ -5,6 +5,7 @@ last_updated: March 26, 2019
 tags: [language,compiler,runtime]
 summary: "But how can less be more ? It's impossible! More is more! -- Y. Malmsteen"
 permalink: mydoc_differences.html
+next_page: mydoc_legacy.html
 folder: mydoc
 ---
 

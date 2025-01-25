@@ -4,6 +4,7 @@ keywords: property class
 last_updated: March 26, 2019
 tags: [runtime]
 permalink: mydoc_property.html
+next_page: mydoc_synthesize.html
 folder: mydoc
 ---
 
