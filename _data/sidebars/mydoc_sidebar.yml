@@ -3,7 +3,7 @@
 entries:
 - title: sidebar
   product: "De Re mulle-objc"
-  version: "0.40"
+  version: "0.41"
   folders:
 
   - title:
@@ -28,44 +28,36 @@ entries:
       output: web, pdf
       type: homepage
 
-    - title: Learning Resources
-      url: /mydoc_links.html
-      output: web
+    - title: Project Setup
+      url: /mydoc_modern.html
+      output: web, pdf
 
-  - title: Development
-    output: web, pdf
-    folderitems:
+    - title: Generic Headers
+      url: /mydoc_pnp_source.html
+      output: web, pdf
 
-      - title: Project Setup
-        url: /mydoc_modern.html
-        output: web
+    - title: Dependencies
+      url: /mydoc_pnp_dependency.html
+      output: web, pdf
 
-      - title: Generic Headers
-        url: /mydoc_pnp_source.html
-        output: web
-
-      - title: Dependencies
-        url: /mydoc_pnp_dependency.html
-        output: web
-
-      - title: Projects with Multiple Targets
-        url: /mydoc_modern_complex.html
-        output: web
+    - title: Projects with Multiple Targets
+      url: /mydoc_modern_complex.html
+      output: web, pdf
 
   - title: Fundamental Programming Techniques
     output: web, pdf
     folderitems:
     - title: Good Code
       url: /mydoc_good.html
-      output: web
+      output: web, pdf
 
     - title: Basics
       url: /mydoc_basics.html
-      output: web
+      output: web, pdf
 
     - title: Objects and Properties
       url: /mydoc_objects.html
-      output: web
+      output: web, pdf
 
     - title: "Printing"
       url: /mydoc_printing.html
@@ -73,11 +65,11 @@ entries:
 
     - title: Plug and Play Classes
       url: /mydoc_pnp_class.html
-      output: web
+      output: web, pdf
 
     - title: Plug and Play Categories
       url: /mydoc_pnp_category.html
-      output: web
+      output: web, pdf
 
   - title: Advanced Programming Techniques
     output: web, pdf
@@ -235,14 +227,3 @@ entries:
           url: /tag_runtime.html
           output: web
 
-        - title: 8.0.0 Features
-          url: /tag_8.0.0.html
-          output: web
-
-        - title: 9.0.0 Features
-          url: /tag_9.0.0.html
-          output: web
-
-        - title: 10.0.0 Features
-          url: /tag_10.0.0.html
-          output: web

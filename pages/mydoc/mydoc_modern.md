@@ -8,12 +8,31 @@ permalink: mydoc_modern.html
 folder: mydoc
 ---
 
+## Install mulle-objc
+
+This guide doesn't have detailed installation instructions for
+**mulle-objc**.
+
+Read the instructions on
+[foundation-developer](https://github.com/MulleFoundation/foundation-developer)
+and follow them.
+
+Afterwards you should have **mulle-clang** and **mulle-sde** in your PATH.
+
+``` console
+mulle-clang --version
+mulle-sde --version
+```
+
+and you should all be setup for coding.
+
+
 ## Foundation vs mulle-objc
 
 There are two starting points. If you want a full class system with strings,
 containers and OS support, you will want to base your code on the **Foundation**.
 
-If you just want to play with a minimal runtime, base your code on **MulleObjC**.
+If you just want to play with a minimal runtime, base your code on **MulleObjC**. This is the best choice for new platforms.
 Then, instead of `-m foundation/objc-developer`, use `-m mulle-objc/objc-developer`
 
 mulle-sde is powerful enough to warrant its own guide [De Re mulle-sde](//www.mulle-kybernetik.com/de-re-mulle-sde/). But to get you moving quickly,
