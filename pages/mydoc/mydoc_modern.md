@@ -117,8 +117,8 @@ mulle-sde run
 
 ### Edit
 
-First you should read the [mulle-objc Development with IDEs] (https://www.mulle-kybernetik.com/mulle-objc-ide/)
-guide to set you up with an editor or IDE of your liking.
+Consult the [mulle-objc Development with IDEs](https://www.mulle-kybernetik.com/mulle-objc-ide/)
+guide to set up an editor or IDE of your preference.
 
 You can then edit your project with:
 
