@@ -59,13 +59,14 @@ pamphlets will surely be of interest:
 
 | Title | Description |
 |-------|-------------|
+| [De Re mulle-objc](https://mulle-objc.github.io/De-Re-mulle-objc/index.html#mulle-objc-portal) | A hands on intro to develop mulle-objc programs combined with some deeper technical insights. |
 | [De Re NSObject](https://www.mulle-kybernetik.com/de-re-nsobject) | All about NSObject, object management, @autoreleasepool and coding conventions. A must read. |
 | [De Re @property](https://www.mulle-kybernetik.com/de-re-property/) | All about @property and its attributes. Required reading for all mulle-objc developers. |
 | [Objective-C Runtime in Pictures](https://www.mulle-kybernetik.com/objc-runtime-in-pictures/) | The bits and bytes perspective on the mulle-objc runtime |
-| [mulle-objc Development with IDEs](https://www.mulle-kybernetik.com/mulle-objc-ide/) | How to setup several popular IDEs for mulle-objc development |
+| [mulle-objc Development with IDEs](https://www.mulle-kybernetik.com/mulle-objc-ide/) | How to setup several popular IDEs for mulle-objc development. |
 | [De Re mulle-sde](https://www.mulle-kybernetik.com/de-re-mulle-sde/) | Developer guide for mulle-sde, should cover most workflow topics |
 | [mulle-objc CheatSheet](https://github.com/mulle-objc/Objective-C-CheatSheet) | The is a good way to get a quick overview of what the Mulle Objective-C dialect has to offer. It is tailored to mulle-objc specifically, but it is no tutorial.
-| [Mulle-sde WiKi](https://github.com/mulle-sde/mulle-sde/wiki) | Mulle-sde WIKI more indepth information about the tooling |
+| [Mulle-sde WiKi](https://github.com/mulle-sde/mulle-sde/wiki) | Mulle-sde WIKI more indepth information about the tooling. |
 | [mulle-objc community membership](https://github.com/mulle-objc/mulle-objc.github.io/issues/1) | It's free!
 
 
@@ -90,4 +91,4 @@ for all things mulle-objc.
 
 ## Next
 
-Now its tile fo create your first [project](mydoc_modern.html).
+Now its time to create your first [mulle-objc project](mydoc_modern.html).
