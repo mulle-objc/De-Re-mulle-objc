@@ -2,9 +2,14 @@
 
 Outdated former version of a developer guide for mulle-objc.
 
-~~~
-<H1>Superseded by this version of [De Re mulle-objc](https://www.mulle-kybernetik.com/de-re-mulle-objc/)</h1>
-~~~
+---
+
+Superseded by this version of [De Re mulle-objc](https://www.mulle-kybernetik.com/de-re-mulle-objc/)</h1>
+
+---
+
+
+
 
 ### [Read De Re mulle-objc here](//mulle-objc.github.io/De-Re-mulle-objc)
 
